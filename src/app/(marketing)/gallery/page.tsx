@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Instagram } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { GalleryFilter } from '@/components/gallery/gallery-filter'
 import { businessInfo } from '@/lib/constants'
 
 export const metadata: Metadata = {
@@ -38,17 +39,10 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Gallery Grid Placeholder */}
+      {/* Gallery with Filter */}
       <section className="px-4 py-16">
         <div className="mx-auto max-w-6xl">
-          <div className="flex flex-wrap justify-center gap-4">
-            {[...Array(9)].map((_, i) => (
-              <div
-                key={i}
-                className="w-full aspect-square rounded-2xl bg-pink-soft md:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)]"
-              />
-            ))}
-          </div>
+          <GalleryFilter />
         </div>
       </section>
 
