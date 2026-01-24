@@ -211,6 +211,8 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    scrollbar-color: #FF6B95 #FFD6E0; /* pink-accent para thumb, pink-soft para track */
+    scrollbar-width: thin;
   }
   a, button, [role="button"] {
     @apply cursor-pointer;
