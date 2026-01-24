@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -22,12 +23,24 @@ export default function ServicesPage() {
   return (
     <div className="bg-pink-bg">
       {/* Hero */}
-      <section className="bg-gradient-brand px-4 pt-28 pb-16 md:pt-40 md:pb-24">
-        <div className="mx-auto max-w-6xl text-center">
-          <h1 className="mb-4 text-4xl font-bold text-pink-text md:text-5xl">
+      <section className="relative overflow-hidden px-4 pt-28 pb-16 md:pt-40 md:pb-24">
+        {/* Background Image */}
+        <Image
+          src="/images/services/services-1.avif"
+          alt="Dulce Antojo dessert cart services"
+          fill
+          className="object-cover blur-[0.5px] brightness-90"
+          priority
+        />
+        {/* Overlay: dark base + subtle pink tint */}
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-pink-dark/20" />
+
+        <div className="relative mx-auto max-w-6xl text-center">
+          <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl drop-shadow-md">
             Our Services
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+          <p className="mx-auto max-w-2xl text-lg text-white/95 drop-shadow-sm">
             From sweet mini pancakes to savory Mexican snacks, we have the
             perfect cart for your event.
           </p>

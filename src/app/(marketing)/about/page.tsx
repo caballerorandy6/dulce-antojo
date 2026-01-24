@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Heart, Star, Users } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -15,12 +16,24 @@ export default function AboutPage() {
   return (
     <div className="bg-pink-bg">
       {/* Hero */}
-      <section className="bg-gradient-brand px-4 pt-28 pb-16 md:pt-40 md:pb-24">
-        <div className="mx-auto max-w-6xl text-center">
-          <h1 className="mb-4 text-4xl font-bold text-pink-text md:text-5xl">
+      <section className="relative overflow-hidden px-4 pt-28 pb-16 md:pt-40 md:pb-24">
+        {/* Background Image */}
+        <Image
+          src="/images/about/about-1.avif"
+          alt="About Dulce Antojo dessert cart service"
+          fill
+          className="object-cover blur-[0.5px] brightness-90"
+          priority
+        />
+        {/* Overlay: dark base + subtle pink tint */}
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-pink-dark/20" />
+
+        <div className="relative mx-auto max-w-6xl text-center">
+          <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl drop-shadow-md">
             About {businessInfo.name}
           </h1>
-          <p className="mx-auto max-w-2xl text-xl text-pink-dark">
+          <p className="mx-auto max-w-2xl text-xl text-white/95 drop-shadow-sm">
             {businessInfo.tagline}
           </p>
         </div>

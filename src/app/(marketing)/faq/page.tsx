@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { FAQSection } from '@/components/sections/faq-section'
 import { faqs } from '@/lib/constants'
@@ -14,12 +15,24 @@ export default function FAQPage() {
   return (
     <div className="bg-pink-bg">
       {/* Hero */}
-      <section className="bg-gradient-brand px-4 pt-28 pb-16 md:pt-40 md:pb-24">
-        <div className="mx-auto max-w-6xl text-center">
-          <h1 className="mb-4 text-4xl font-bold text-pink-text md:text-5xl">
+      <section className="relative overflow-hidden px-4 pt-28 pb-16 md:pt-40 md:pb-24">
+        {/* Background Image */}
+        <Image
+          src="/images/faq/faq-1.avif"
+          alt="Frequently asked questions about Dulce Antojo"
+          fill
+          className="object-cover blur-[0.5px] brightness-90"
+          priority
+        />
+        {/* Overlay: dark base + subtle pink tint */}
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-pink-dark/20" />
+
+        <div className="relative mx-auto max-w-6xl text-center">
+          <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl drop-shadow-md">
             Frequently Asked Questions
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+          <p className="mx-auto max-w-2xl text-lg text-white/95 drop-shadow-sm">
             Find answers to common questions about our services, booking
             process, and event details.
           </p>
