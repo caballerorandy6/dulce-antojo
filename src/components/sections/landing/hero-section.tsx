@@ -104,7 +104,7 @@ export function HeroSection() {
           <Button
             size="lg"
             onClick={scrollToContact}
-            className="bg-gold hover:bg-gold-dark text-white shadow-brand min-w-[160px]"
+            className="bg-gold hover:bg-gold-dark text-white min-w-[160px] animate-pulse-subtle"
           >
             Get a Quote
           </Button>

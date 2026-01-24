@@ -51,7 +51,7 @@ export function CTASection() {
           <Button
             size="lg"
             onClick={scrollToContact}
-            className="bg-white text-pink-accent hover:bg-pink-soft"
+            className="bg-white text-pink-accent hover:bg-pink-soft animate-pulse-subtle"
           >
             Get a Quote
           </Button>
