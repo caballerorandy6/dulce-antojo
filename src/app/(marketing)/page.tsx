@@ -114,9 +114,9 @@ export default function HomePage() {
       />
       <main className="bg-pink-bg">
         <HeroSection />
+        <GallerySection />
         <ServicesSection />
         <FeaturesSection />
-        <GallerySection />
         <TestimonialsSection />
         <FAQSection />
         <ContactSection />
