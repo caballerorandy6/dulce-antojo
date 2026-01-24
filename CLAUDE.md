@@ -166,6 +166,8 @@ src/
 - DO NOT mention Claude, Anthropic, OpenAI or any AI/company in commits
 - DO NOT use "Co-Authored-By" with AI references
 - Keep commits clean and professional
+- ALWAYS show the commit message to the user BEFORE executing git commit
+- Wait for user approval before committing
 
 ---
 
