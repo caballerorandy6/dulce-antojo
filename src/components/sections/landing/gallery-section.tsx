@@ -5,18 +5,26 @@ import { Button } from '@/components/ui/button'
 import { FloatingStickers } from '@/components/shared/floating-stickers'
 
 const galleryItems = [
-  { id: 1, src: '/images/gallery/gallery-1.avif', alt: 'Mini pancakes setup at wedding in Houston' },
-  { id: 2, src: '/images/gallery/gallery-2.avif', alt: 'Paletas cart at quinceañera' },
-  { id: 3, src: '/images/gallery/gallery-3.avif', alt: 'Churro sundaes at birthday party' },
-  { id: 4, src: '/images/gallery/gallery-4.avif', alt: 'Elote cups at corporate event' },
-  { id: 5, src: '/images/gallery/gallery-5.avif', alt: 'Dessert cart decorated for baby shower' },
-  { id: 6, src: '/images/gallery/gallery-6.avif', alt: 'Snack cup station at graduation' },
+  { id: 1, src: '/images/carousel/mini-pankakes-1.avif', alt: 'Mini pancakes with strawberries and chocolate drizzle' },
+  { id: 2, src: '/images/carousel/mini-pankakes-2.avif', alt: 'Mini pancakes station setup at Houston event' },
+  { id: 3, src: '/images/carousel/paleta-1.avif', alt: 'Mexican paleta with colorful toppings' },
+  { id: 4, src: '/images/carousel/paleta-2.avif', alt: 'Paletas locas with chamoy and candy' },
+  { id: 5, src: '/images/carousel/paletas-cart-1.avif', alt: 'Paletas cart setup for events in Houston' },
+  { id: 6, src: '/images/carousel/paletas-cart-2.avif', alt: 'Dulce Antojo paletas cart at party' },
+  { id: 7, src: '/images/carousel/churro-sundae-1.avif', alt: 'Churro sundae with vanilla ice cream and strawberries' },
+  { id: 8, src: '/images/carousel/churro-sundae-2.avif', alt: 'Churros with ice cream dessert' },
+  { id: 9, src: '/images/carousel/elote-cup-1.avif', alt: 'Elote cup with cheese and chile' },
+  { id: 10, src: '/images/carousel/elote-cup-2.avif', alt: 'Mexican corn cup with toppings' },
+  { id: 11, src: '/images/carousel/fresa-cup-1.avif', alt: 'Fresa cup with cream and cake' },
+  { id: 12, src: '/images/carousel/mango-loco-1.avif', alt: 'Mango loco cup with chamoy and tajin' },
+  { id: 13, src: '/images/carousel/snack-cup-1.avif', alt: 'Snack cup with takis and candy' },
+  { id: 14, src: '/images/carousel/ramen-1.avif', alt: 'Maruchan ramen with hot cheetos at wedding' },
+  { id: 15, src: '/images/carousel/ramen-2.avif', alt: 'Mexican style instant ramen' },
+  { id: 16, src: '/images/carousel/toppings-station-1.avif', alt: 'Toppings station with candy and fruits' },
+  { id: 17, src: '/images/carousel/toppings-station-2.avif', alt: 'Mini pancakes toppings bar setup' },
 ]
 
 export function GallerySection() {
-  // Duplicate items for seamless infinite scroll
-  const duplicatedItems = [...galleryItems, ...galleryItems]
-
   return (
     <section
       id="gallery"
@@ -37,18 +45,36 @@ export function GallerySection() {
 
       {/* Infinite Marquee Carousel */}
       <div className="w-full overflow-hidden">
-        <div className="flex animate-marquee">
-          {duplicatedItems.map((item, index) => (
+        <div className="flex animate-marquee w-fit">
+          {/* First set */}
+          {galleryItems.map((item) => (
             <div
-              key={`${item.id}-${index}`}
+              key={`first-${item.id}`}
               className="shrink-0 px-2"
             >
-              <div className="relative h-64 w-72 md:h-80 md:w-96 overflow-hidden rounded-2xl bg-pink-medium/30">
+              <div className="relative h-64 w-72 md:h-80 md:w-96 overflow-hidden rounded-2xl bg-pink-medium/30 border border-pink-medium/30 shadow-lg transition-all duration-300 hover:shadow-xl hover:border-gold">
                 <Image
                   src={item.src}
                   alt={item.alt}
                   fill
-                  className="object-cover transition-transform duration-300 hover:scale-105"
+                  className="object-cover transition-transform duration-300 hover:scale-110"
+                  sizes="(max-width: 768px) 288px, 384px"
+                />
+              </div>
+            </div>
+          ))}
+          {/* Duplicate set for seamless loop */}
+          {galleryItems.map((item) => (
+            <div
+              key={`second-${item.id}`}
+              className="shrink-0 px-2"
+            >
+              <div className="relative h-64 w-72 md:h-80 md:w-96 overflow-hidden rounded-2xl bg-pink-medium/30 border border-pink-medium/30 shadow-lg transition-all duration-300 hover:shadow-xl hover:border-gold">
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  className="object-cover transition-transform duration-300 hover:scale-110"
                   sizes="(max-width: 768px) 288px, 384px"
                 />
               </div>
