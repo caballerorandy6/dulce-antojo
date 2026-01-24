@@ -43,13 +43,13 @@ export function FeaturesSection() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="flex flex-wrap justify-center gap-6">
           {features.map((feature) => {
             const Icon = feature.icon
             return (
               <Card
                 key={feature.title}
-                className="border-pink-medium/30 text-center transition-colors hover:border-gold"
+                className="w-full border-pink-medium/30 text-center transition-colors hover:border-gold md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
               >
                 <CardContent className="p-6">
                   <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-pink-bg">

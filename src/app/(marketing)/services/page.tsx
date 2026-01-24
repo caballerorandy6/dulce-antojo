@@ -42,7 +42,7 @@ export default function ServicesPage() {
               title={`${category.icon} ${category.nameEn}`}
               description={category.description}
             />
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="flex flex-wrap justify-center gap-6">
               {category.services.map((service) => (
                 <ServiceCard key={service.id} service={service} />
               ))}
@@ -83,7 +83,7 @@ function ServiceCard({ service }: { service: Service }) {
         : 'Package'
 
   return (
-    <Card className="overflow-hidden border-pink-medium/30 transition-shadow hover:shadow-brand">
+    <Card className="w-full overflow-hidden border-pink-medium/30 transition-shadow hover:shadow-brand md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
       <div className="h-48 bg-pink-soft" />
       <CardContent className="p-6">
         <div className="mb-2 flex items-center gap-2">

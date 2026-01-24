@@ -21,11 +21,11 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="flex flex-wrap justify-center gap-6">
           {testimonials.map((testimonial) => (
             <Card
               key={testimonial.id}
-              className="border-pink-medium/30 transition-colors hover:border-gold"
+              className="w-full border-pink-medium/30 transition-colors hover:border-gold md:w-[calc(33.333%-16px)]"
             >
               <CardContent className="p-6">
                 <div className="mb-4 flex">

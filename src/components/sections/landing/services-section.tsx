@@ -38,11 +38,11 @@ export function ServicesSection() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-wrap justify-center gap-6">
           {featuredServices.map((service) => (
             <Card
               key={service.id}
-              className="group overflow-hidden border-pink-medium/30 transition-all hover:border-gold hover:shadow-lg"
+              className="group w-full overflow-hidden border-pink-medium/30 transition-all hover:border-gold hover:shadow-lg md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
             >
               <div className="aspect-video bg-pink-soft" />
               <CardContent className="p-6">

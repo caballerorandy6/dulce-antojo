@@ -28,11 +28,11 @@ export default function GalleryPage() {
       {/* Gallery Grid Placeholder */}
       <section className="px-4 py-16">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="flex flex-wrap justify-center gap-4">
             {[...Array(9)].map((_, i) => (
               <div
                 key={i}
-                className="aspect-square rounded-2xl bg-pink-soft"
+                className="w-full aspect-square rounded-2xl bg-pink-soft md:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)]"
               />
             ))}
           </div>
