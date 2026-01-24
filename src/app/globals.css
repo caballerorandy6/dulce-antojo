@@ -226,15 +226,17 @@
 
 /* Scroll-based animations */
 @layer components {
-  /* Card animation */
+  /* Card animation - subtle fade and scale */
   @keyframes show {
     from {
-      opacity: 0;
-      scale: 90%;
+      opacity: 0.4;
+      scale: 97%;
+      transform: translateY(10px);
     }
     to {
       opacity: 1;
       scale: 100%;
+      transform: translateY(0);
     }
   }
 
@@ -244,6 +246,7 @@
     animation-timeline: --image;
     animation-fill-mode: both;
     animation-name: show;
+    animation-range: entry 10% cover 40%;
   }
 
   /* Heading animation - subtle slide up */

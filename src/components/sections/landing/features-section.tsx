@@ -1,27 +1,26 @@
-import { Clock, Users, Sparkles, Heart } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { FloatingStickers } from '@/components/shared/floating-stickers'
 
 const features = [
   {
-    icon: Clock,
-    title: '1-2 Hours Service',
-    description: 'Professional service for the duration of your event',
+    emoji: '⏰',
+    title: 'Full Event Coverage',
+    description: '1-2 hours of non-stop sweetness! We stay until every guest is happy.',
   },
   {
-    icon: Users,
-    title: 'Professional Attendant',
-    description: 'Our trained staff ensures a smooth experience',
+    emoji: '👨‍🍳',
+    title: 'Expert Sweet Makers',
+    description: 'Our friendly attendants create magic right before your eyes.',
   },
   {
-    icon: Sparkles,
-    title: 'Customizable Setup',
-    description: 'Match the cart to your event theme and colors',
+    emoji: '🎨',
+    title: 'Your Theme, Your Style',
+    description: 'Custom decorations to match your party colors and vibe perfectly.',
   },
   {
-    icon: Heart,
-    title: 'Made with Love',
-    description: 'Fresh ingredients and treats prepared on-site',
+    emoji: '💖',
+    title: 'Made Fresh with Love',
+    description: 'Every treat is prepared on-site with the freshest ingredients.',
   },
 ]
 
@@ -39,32 +38,29 @@ export function FeaturesSection() {
             Why Choose Us
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground animateText">
-            Every service includes these amazing benefits
+            Every booking comes with these sweet perks
           </p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-6">
-          {features.map((feature) => {
-            const Icon = feature.icon
-            return (
-              <Card
-                key={feature.title}
-                className="w-full border-pink-medium/30 text-center transition-colors hover:border-gold md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] animateProjectCard"
-              >
-                <CardContent className="p-6">
-                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-pink-bg">
-                    <Icon className="h-7 w-7 text-pink-accent" />
-                  </div>
-                  <h3 className="mb-2 text-lg font-semibold text-pink-text">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {feature.description}
-                  </p>
-                </CardContent>
-              </Card>
-            )
-          })}
+          {features.map((feature) => (
+            <Card
+              key={feature.title}
+              className="group w-full border-pink-medium/30 text-center transition-all duration-300 hover:border-gold hover:shadow-xl hover:-translate-y-2 md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] animateProjectCard"
+            >
+              <CardContent className="p-6">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-pink-bg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                  <span className="text-4xl">{feature.emoji}</span>
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-pink-text">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {feature.description}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>

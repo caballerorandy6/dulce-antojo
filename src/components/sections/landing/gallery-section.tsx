@@ -36,16 +36,22 @@ export function GallerySection() {
           {galleryItems.map((item) => (
             <div
               key={`first-${item.id}`}
-              className="shrink-0 px-2"
+              className="group shrink-0 px-2"
             >
-              <div className="relative h-64 w-72 md:h-80 md:w-96 overflow-hidden rounded-2xl bg-pink-medium/30 border border-pink-medium/30 shadow-lg transition-all duration-300 hover:shadow-xl hover:border-gold">
+              <div className="relative h-64 w-72 md:h-80 md:w-96 overflow-hidden rounded-2xl bg-pink-medium/30 border-2 border-pink-medium/40 shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:border-gold group-hover:-translate-y-1">
                 <Image
                   src={item.src}
                   alt={item.alt}
                   fill
-                  className="object-cover transition-transform duration-300 hover:scale-110"
+                  className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
                   sizes="(max-width: 768px) 288px, 384px"
                 />
+                {/* Pink overlay that fades on hover */}
+                <div className="absolute inset-0 bg-pink-accent/15 transition-opacity duration-300 group-hover:opacity-0" />
+                {/* Shine effect */}
+                <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                {/* Inner shadow for depth */}
+                <div className="absolute inset-0 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] rounded-2xl" />
               </div>
             </div>
           ))}
@@ -53,16 +59,22 @@ export function GallerySection() {
           {galleryItems.map((item) => (
             <div
               key={`second-${item.id}`}
-              className="shrink-0 px-2"
+              className="group shrink-0 px-2"
             >
-              <div className="relative h-64 w-72 md:h-80 md:w-96 overflow-hidden rounded-2xl bg-pink-medium/30 border border-pink-medium/30 shadow-lg transition-all duration-300 hover:shadow-xl hover:border-gold">
+              <div className="relative h-64 w-72 md:h-80 md:w-96 overflow-hidden rounded-2xl bg-pink-medium/30 border-2 border-pink-medium/40 shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:border-gold group-hover:-translate-y-1">
                 <Image
                   src={item.src}
                   alt={item.alt}
                   fill
-                  className="object-cover transition-transform duration-300 hover:scale-110"
+                  className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
                   sizes="(max-width: 768px) 288px, 384px"
                 />
+                {/* Pink overlay that fades on hover */}
+                <div className="absolute inset-0 bg-pink-accent/15 transition-opacity duration-300 group-hover:opacity-0" />
+                {/* Shine effect */}
+                <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                {/* Inner shadow for depth */}
+                <div className="absolute inset-0 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] rounded-2xl" />
               </div>
             </div>
           ))}

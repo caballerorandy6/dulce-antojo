@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -16,6 +17,16 @@ const categoryLabels: Record<string, string> = {
   dulce: 'Sweet',
   salado: 'Savory',
   paquete: 'Package',
+}
+
+const serviceImages: Record<string, string> = {
+  'mini-pancakes': '/images/landing/mini-pancakes.avif',
+  'paletas-locas': '/images/landing/paletas-locas.avif',
+  'churro-sundaes': '/images/landing/churro-sundaes.avif',
+  'sundaes': '/images/landing/sundaes.avif',
+  'corn-in-a-cup': '/images/landing/corn-in-a-cup.avif',
+  'tosti-elote': '/images/landing/tosti-elote-1.avif',
+  'mix-and-match': '/images/landing/mix-and-match.avif',
 }
 
 export function ServicesSection() {
@@ -42,9 +53,23 @@ export function ServicesSection() {
           {featuredServices.map((service) => (
             <Card
               key={service.id}
-              className="group w-full overflow-hidden border-pink-medium/30 transition-all hover:border-gold hover:shadow-lg md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] animateProjectCard"
+              className="group w-full overflow-hidden border-pink-medium/30 transition-all duration-300 hover:border-gold hover:shadow-xl hover:-translate-y-2 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] animateProjectCard"
             >
-              <div className="aspect-video bg-pink-soft" />
+              <div className="relative aspect-video overflow-hidden bg-pink-soft">
+                {serviceImages[service.id] && (
+                  <Image
+                    src={serviceImages[service.id]}
+                    alt={service.name}
+                    fill
+                    className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                )}
+                {/* Pink overlay that fades on hover */}
+                <div className="absolute inset-0 bg-pink-accent/20 transition-opacity duration-300 group-hover:opacity-0" />
+                {/* Shine effect */}
+                <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+              </div>
               <CardContent className="p-6">
                 <div className="mb-2 flex items-center gap-2">
                   <Badge variant="secondary" className="bg-pink-soft text-pink-text">
