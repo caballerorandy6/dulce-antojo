@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Instagram, Facebook } from 'lucide-react'
 import { businessInfo, navLinks } from '@/lib/constants'
+import { Lordicon } from '@/components/shared/lordicon'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -51,25 +51,31 @@ export function Footer() {
             <p className="mt-1 text-sm text-white/60">
               Service area: {businessInfo.location.serviceRadius}
             </p>
-            <div className="mt-4 flex items-center gap-4">
+            <div className="mt-4 flex items-center gap-3">
               <a
                 href={businessInfo.contact.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-white/80 transition-colors hover:text-gold-light"
                 aria-label="Follow us on Instagram"
               >
-                <Instagram className="h-5 w-5" />
+                <Lordicon
+                  src="/icons/instagram.json"
+                  trigger="hover"
+                  size={32}
+                />
               </a>
               {businessInfo.contact.facebookUrl && (
                 <a
                   href={businessInfo.contact.facebookUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-white/80 transition-colors hover:text-gold-light"
                   aria-label="Follow us on Facebook"
                 >
-                  <Facebook className="h-5 w-5" />
+                  <Lordicon
+                    src="/icons/facebook.json"
+                    trigger="hover"
+                    size={32}
+                  />
                 </a>
               )}
             </div>

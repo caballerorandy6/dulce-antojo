@@ -3,10 +3,11 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, Instagram, Facebook } from 'lucide-react'
+import { Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { businessInfo, navLinks } from '@/lib/constants'
+import { Lordicon } from '@/components/shared/lordicon'
 import { cn } from '@/lib/utils'
 
 const landingNavLinks = [
@@ -151,31 +152,31 @@ export function Header() {
                 ))}
               </>
             )}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1">
               <a
                 href={businessInfo.contact.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={cn(
-                  "transition-colors hover:text-gold",
-                  isLandingPage && !isScrolled ? "text-white/90" : "text-pink-text"
-                )}
                 aria-label="Follow us on Instagram"
               >
-                <Instagram className="h-5 w-5" aria-hidden="true" />
+                <Lordicon
+                  src="/icons/instagram.json"
+                  trigger="hover"
+                  size={40}
+                />
               </a>
               {businessInfo.contact.facebookUrl && (
                 <a
                   href={businessInfo.contact.facebookUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={cn(
-                    "transition-colors hover:text-gold",
-                    isLandingPage && !isScrolled ? "text-white/90" : "text-pink-text"
-                  )}
                   aria-label="Follow us on Facebook"
                 >
-                  <Facebook className="h-5 w-5" aria-hidden="true" />
+                  <Lordicon
+                    src="/icons/facebook.json"
+                    trigger="hover"
+                    size={40}
+                  />
                 </a>
               )}
             </div>
@@ -242,25 +243,31 @@ export function Header() {
                     ))}
                   </>
                 )}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
                   <a
                     href={businessInfo.contact.instagramUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-pink-text hover:text-gold transition-colors"
                     aria-label="Follow us on Instagram"
                   >
-                    <Instagram className="h-5 w-5" aria-hidden="true" />
+                    <Lordicon
+                      src="/icons/instagram.json"
+                      trigger="hover"
+                      size={44}
+                    />
                   </a>
                   {businessInfo.contact.facebookUrl && (
                     <a
                       href={businessInfo.contact.facebookUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-pink-text hover:text-gold transition-colors"
                       aria-label="Follow us on Facebook"
                     >
-                      <Facebook className="h-5 w-5" aria-hidden="true" />
+                      <Lordicon
+                        src="/icons/facebook.json"
+                        trigger="hover"
+                        size={44}
+                      />
                     </a>
                   )}
                 </div>

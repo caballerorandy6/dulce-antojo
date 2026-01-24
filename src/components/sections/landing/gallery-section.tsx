@@ -21,6 +21,8 @@ const galleryItems = [
   { id: 15, src: '/images/carousel/ramen-2.avif', alt: 'Mexican style instant ramen' },
   { id: 16, src: '/images/carousel/toppings-station-1.avif', alt: 'Toppings station with candy and fruits' },
   { id: 17, src: '/images/carousel/toppings-station-2.avif', alt: 'Mini pancakes toppings bar setup' },
+  { id: 18, src: '/images/carousel/sundaes-1.avif', alt: 'Ice cream sundae with drizzles and toppings' },
+  { id: 19, src: '/images/carousel/tosti-elote-2.avif', alt: 'Tosti-Elote with corn toppings and chips' },
 ]
 
 export function GallerySection() {

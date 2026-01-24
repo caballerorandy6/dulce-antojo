@@ -2,15 +2,15 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { FloatingStickers } from '@/components/shared/floating-stickers'
+import { Lordicon } from '@/components/shared/lordicon'
 import { services } from '@/lib/constants'
 
 const categoryIcons: Record<string, string> = {
-  dulce: '🍰',
-  salado: '🌽',
-  paquete: '🎁',
+  dulce: '/icons/sweet.json',
+  salado: '/icons/savory.json',
+  paquete: '/icons/package.json',
 }
 
 const categoryLabels: Record<string, string> = {
@@ -23,9 +23,9 @@ const serviceImages: Record<string, string> = {
   'mini-pancakes': '/images/landing/mini-pancakes.avif',
   'paletas-locas': '/images/landing/paletas-locas.avif',
   'churro-sundaes': '/images/landing/churro-sundaes.avif',
-  'sundaes': '/images/landing/sundaes.avif',
+  'sundaes': '/images/landing/sundaes-1.avif',
   'corn-in-a-cup': '/images/landing/corn-in-a-cup.avif',
-  'tosti-elote': '/images/landing/tosti-elote-1.avif',
+  'tosti-elote': '/images/landing/tosti-elote-2.avif',
   'mix-and-match': '/images/landing/mix-and-match.avif',
 }
 
@@ -53,7 +53,7 @@ export function ServicesSection() {
           {featuredServices.map((service) => (
             <Card
               key={service.id}
-              className="group w-full overflow-hidden border-pink-medium/30 transition-all duration-300 hover:border-gold hover:shadow-xl hover:-translate-y-2 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] animateProjectCard"
+              className="service-card group w-full overflow-hidden border-pink-medium/30 transition-all duration-300 hover:border-gold hover:shadow-xl hover:-translate-y-2 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] animateProjectCard"
             >
               <div className="relative aspect-video overflow-hidden bg-pink-soft">
                 {serviceImages[service.id] && (
@@ -71,10 +71,16 @@ export function ServicesSection() {
                 <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </div>
               <CardContent className="p-6">
-                <div className="mb-2 flex items-center gap-2">
-                  <Badge variant="secondary" className="bg-pink-soft text-pink-text">
-                    {categoryIcons[service.category]} {categoryLabels[service.category]}
-                  </Badge>
+                <div className="mb-3 flex items-center gap-2">
+                  <Lordicon
+                    src={categoryIcons[service.category]}
+                    trigger="hover"
+                    target=".service-card"
+                    size={48}
+                  />
+                  <span className="text-sm font-medium text-pink-text">
+                    {categoryLabels[service.category]}
+                  </span>
                 </div>
                 <h3 className="mb-2 text-xl font-semibold text-pink-text">
                   {service.name}

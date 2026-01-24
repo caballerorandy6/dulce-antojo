@@ -1,24 +1,25 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { FloatingStickers } from '@/components/shared/floating-stickers'
+import { Lordicon } from '@/components/shared/lordicon'
 
 const features = [
   {
-    emoji: '⏰',
+    icon: '/icons/clock-time.json',
     title: 'Full Event Coverage',
     description: '1-2 hours of non-stop sweetness! We stay until every guest is happy.',
   },
   {
-    emoji: '👨‍🍳',
-    title: 'Expert Sweet Makers',
-    description: 'Our friendly attendants create magic right before your eyes.',
+    icon: '/icons/confetti-new.json',
+    title: 'Party Experts',
+    description: 'Our friendly team brings the fun and creates magic at your event.',
   },
   {
-    emoji: '🎨',
+    icon: '/icons/magic-wand.json',
     title: 'Your Theme, Your Style',
     description: 'Custom decorations to match your party colors and vibe perfectly.',
   },
   {
-    emoji: '💖',
+    icon: '/icons/love-heart.json',
     title: 'Made Fresh with Love',
     description: 'Every treat is prepared on-site with the freshest ingredients.',
   },
@@ -46,11 +47,16 @@ export function FeaturesSection() {
           {features.map((feature) => (
             <Card
               key={feature.title}
-              className="group w-full border-pink-medium/30 text-center transition-all duration-300 hover:border-gold hover:shadow-xl hover:-translate-y-2 md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] animateProjectCard"
+              className="feature-card group w-full border-pink-medium/30 text-center transition-all duration-300 hover:border-gold hover:shadow-xl hover:-translate-y-2 md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] animateProjectCard"
             >
               <CardContent className="p-6">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-pink-bg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                  <span className="text-4xl">{feature.emoji}</span>
+                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-pink-bg">
+                  <Lordicon
+                    src={feature.icon}
+                    trigger="hover"
+                    target=".feature-card"
+                    size={56}
+                  />
                 </div>
                 <h3 className="mb-2 text-lg font-semibold text-pink-text">
                   {feature.title}
