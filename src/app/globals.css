@@ -276,8 +276,38 @@
   opacity: 0;
 }
 
+/* Floating Stickers Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--rotate));
+  }
+  50% {
+    transform: translateY(-8px) rotate(calc(var(--rotate) + 3deg));
+  }
+}
+
+@keyframes floatAlt {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--rotate));
+  }
+  50% {
+    transform: translateY(6px) rotate(calc(var(--rotate) - 2deg));
+  }
+}
+
 /* Custom utility classes for Dulce Antojo */
 @layer utilities {
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-float-alt {
+    animation: floatAlt 5s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: float 6s ease-in-out infinite;
+  }
   .text-gradient-pink {
     @apply bg-linear-to-r from-pink-accent to-pink-dark bg-clip-text text-transparent;
   }

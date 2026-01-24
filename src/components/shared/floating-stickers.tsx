@@ -16,20 +16,27 @@ const stickers = [
   '/images/landing/sticker-13.avif',
 ]
 
+// Animation classes for variety
+const animationClasses = [
+  'animate-float',
+  'animate-float-alt',
+  'animate-float-slow',
+]
+
 // Predefined positions for stickers
 const stickerConfigs = [
   // 0: Left top
-  { top: '15%', left: '2%', rotate: -12, size: 60, opacity: 0.85 },
-  // 1: Left middle
-  { top: '45%', left: '3%', rotate: 15, size: 55, opacity: 0.8 },
+  { top: '12%', left: '5%', rotate: -12, size: 58, opacity: 0.85, animIndex: 0 },
+  // 1: Left middle-low
+  { top: '55%', left: '4%', rotate: 15, size: 52, opacity: 0.8, animIndex: 1 },
   // 2: Right top
-  { top: '10%', right: '2%', rotate: 10, size: 58, opacity: 0.85 },
-  // 3: Right middle
-  { top: '50%', right: '3%', rotate: -14, size: 55, opacity: 0.8 },
-  // 4: Bottom center-left
-  { bottom: '5%', left: '25%', rotate: 8, size: 52, opacity: 0.85 },
-  // 5: Bottom center-right
-  { bottom: '8%', right: '25%', rotate: -10, size: 50, opacity: 0.8 },
+  { top: '8%', right: '5%', rotate: 10, size: 56, opacity: 0.85, animIndex: 2 },
+  // 3: Right middle-high
+  { top: '38%', right: '4%', rotate: -14, size: 54, opacity: 0.8, animIndex: 0 },
+  // 4: Bottom left corner
+  { bottom: '8%', left: '8%', rotate: 8, size: 50, opacity: 0.85, animIndex: 1 },
+  // 5: Bottom right corner
+  { bottom: '12%', right: '10%', rotate: -10, size: 48, opacity: 0.8, animIndex: 2 },
 ]
 
 interface FloatingStickersProps {
@@ -53,18 +60,20 @@ export function FloatingStickers({
         const config = stickerConfigs[posIdx]
         const sticker = stickers[stickerIdx % stickers.length]
 
+        const animationClass = animationClasses[config.animIndex]
+
         return (
           <div
             key={`sticker-${stickerIdx}-${posIdx}`}
-            className="absolute hidden md:block"
+            className={`absolute hidden md:block ${animationClass}`}
             style={{
               top: config.top,
               bottom: config.bottom,
               left: config.left,
               right: config.right,
-              transform: `rotate(${config.rotate}deg)`,
               opacity: config.opacity,
-            }}
+              '--rotate': `${config.rotate}deg`,
+            } as React.CSSProperties}
           >
             <Image
               src={sticker}
