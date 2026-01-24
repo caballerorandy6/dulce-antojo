@@ -3,17 +3,16 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, Instagram } from 'lucide-react'
+import { Menu, Instagram, Facebook } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { businessInfo, navLinks } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
 const landingNavLinks = [
-  { href: '#home', label: 'Home', id: 'home' },
+  { href: '#gallery', label: 'Gallery', id: 'gallery' },
   { href: '#services', label: 'Services', id: 'services' },
   { href: '#features', label: 'Features', id: 'features' },
-  { href: '#gallery', label: 'Gallery', id: 'gallery' },
   { href: '#testimonials', label: 'Testimonials', id: 'testimonials' },
   { href: '#faq', label: 'FAQ', id: 'faq' },
   { href: '#contact', label: 'Contact', id: 'contact' },
@@ -22,7 +21,7 @@ const landingNavLinks = [
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
+  const [activeSection, setActiveSection] = useState('gallery')
   const pathname = usePathname()
   const isLandingPage = pathname === '/'
 
@@ -93,7 +92,7 @@ export function Header() {
               href="#home"
               onClick={(e) => scrollToSection(e, '#home')}
               className={cn(
-                "font-(family-name:--font-cormorant) text-3xl font-semibold tracking-wide transition-colors",
+                "font-[--font-cormorant] text-3xl font-semibold tracking-[0.02em] transition-colors",
                 isScrolled ? "text-pink-text" : "text-white"
               )}
             >
@@ -102,7 +101,7 @@ export function Header() {
           ) : (
             <Link
               href="/"
-              className="font-(family-name:--font-cormorant) text-3xl font-semibold tracking-wide text-pink-text transition-colors hover:text-gold"
+              className="font-[--font-cormorant] text-3xl font-semibold tracking-[0.02em] text-pink-text transition-colors hover:text-gold"
             >
               {businessInfo.name}
             </Link>
@@ -152,18 +151,34 @@ export function Header() {
                 ))}
               </>
             )}
-            <a
-              href={businessInfo.contact.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                "transition-colors hover:text-gold",
-                isLandingPage && !isScrolled ? "text-white/90" : "text-pink-text"
+            <div className="flex items-center gap-3">
+              <a
+                href={businessInfo.contact.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  "transition-colors hover:text-gold",
+                  isLandingPage && !isScrolled ? "text-white/90" : "text-pink-text"
+                )}
+                aria-label="Follow us on Instagram"
+              >
+                <Instagram className="h-5 w-5" aria-hidden="true" />
+              </a>
+              {businessInfo.contact.facebookUrl && (
+                <a
+                  href={businessInfo.contact.facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    "transition-colors hover:text-gold",
+                    isLandingPage && !isScrolled ? "text-white/90" : "text-pink-text"
+                  )}
+                  aria-label="Follow us on Facebook"
+                >
+                  <Facebook className="h-5 w-5" aria-hidden="true" />
+                </a>
               )}
-              aria-label="Follow us on Instagram"
-            >
-              <Instagram className="h-5 w-5" aria-hidden="true" />
-            </a>
+            </div>
           </nav>
 
           {/* Mobile Menu */}
@@ -227,15 +242,28 @@ export function Header() {
                     ))}
                   </>
                 )}
-                <a
-                  href={businessInfo.contact.instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-pink-text hover:text-gold transition-colors"
-                >
-                  <Instagram className="h-5 w-5" aria-hidden="true" />
-                  Follow us
-                </a>
+                <div className="flex items-center gap-4">
+                  <a
+                    href={businessInfo.contact.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-pink-text hover:text-gold transition-colors"
+                    aria-label="Follow us on Instagram"
+                  >
+                    <Instagram className="h-5 w-5" aria-hidden="true" />
+                  </a>
+                  {businessInfo.contact.facebookUrl && (
+                    <a
+                      href={businessInfo.contact.facebookUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-pink-text hover:text-gold transition-colors"
+                      aria-label="Follow us on Facebook"
+                    >
+                      <Facebook className="h-5 w-5" aria-hidden="true" />
+                    </a>
+                  )}
+                </div>
               </nav>
             </SheetContent>
           </Sheet>

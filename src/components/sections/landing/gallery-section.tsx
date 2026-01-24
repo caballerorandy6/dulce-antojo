@@ -78,7 +78,7 @@ export function GallerySection() {
           className="border-pink-medium text-pink-text hover:bg-white hover:text-gold transition-colors"
         >
           <Link href="/gallery">
-            See More Photos
+            Discover Our Sweet Moments
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>

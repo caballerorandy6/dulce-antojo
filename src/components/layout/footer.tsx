@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Instagram } from 'lucide-react'
+import { Instagram, Facebook } from 'lucide-react'
 import { businessInfo, navLinks } from '@/lib/constants'
 
 export function Footer() {
@@ -51,15 +51,28 @@ export function Footer() {
             <p className="mt-1 text-sm text-white/60">
               Service area: {businessInfo.location.serviceRadius}
             </p>
-            <a
-              href={businessInfo.contact.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center text-white/80 transition-colors hover:text-gold-light"
-            >
-              <Instagram className="mr-2 h-5 w-5" />
-              {businessInfo.contact.instagram}
-            </a>
+            <div className="mt-4 flex items-center gap-4">
+              <a
+                href={businessInfo.contact.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-white/80 transition-colors hover:text-gold-light"
+                aria-label="Follow us on Instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+              {businessInfo.contact.facebookUrl && (
+                <a
+                  href={businessInfo.contact.facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-white/80 transition-colors hover:text-gold-light"
+                  aria-label="Follow us on Facebook"
+                >
+                  <Facebook className="h-5 w-5" />
+                </a>
+              )}
+            </div>
           </div>
         </div>
 

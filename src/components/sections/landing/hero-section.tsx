@@ -31,7 +31,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-[85vh] overflow-hidden"
+      className="relative min-h-[75vh] overflow-hidden"
     >
       {/* Video Background */}
       <div className="absolute inset-0">
@@ -51,7 +51,7 @@ export function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex min-h-[85vh] flex-col items-center justify-between px-4 py-20 md:py-24">
+      <div className="relative z-10 flex min-h-[75vh] flex-col items-center justify-between px-4 py-20 md:py-24">
         {/* Top spacer */}
         <div className="shrink-0" />
 
@@ -64,7 +64,7 @@ export function HeroSection() {
               alt={`${businessInfo.name} - Mini Pancakes & More`}
               width={500}
               height={200}
-              className="h-44 w-auto md:h-56 lg:h-64"
+              className="h-48 w-auto md:h-60 lg:h-72"
               priority
             />
           </div>

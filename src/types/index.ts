@@ -15,6 +15,8 @@ export interface BusinessInfo {
   contact: {
     instagram: string
     instagramUrl: string
+    facebook?: string
+    facebookUrl?: string
     email?: string
     phone?: string
   }

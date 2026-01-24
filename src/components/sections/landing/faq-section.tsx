@@ -1,16 +1,16 @@
-'use client'
-
-import { useState } from 'react'
 import Link from 'next/link'
-import { ChevronDown, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
 import { FloatingStickers } from '@/components/shared/floating-stickers'
 import { faqs } from '@/lib/constants'
-import { cn } from '@/lib/utils'
 
 export function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
-
   const displayedFaqs = faqs.slice(0, 5)
 
   return (
@@ -30,38 +30,22 @@ export function FAQSection() {
           </p>
         </div>
 
-        <div className="space-y-4">
+        <Accordion type="single" collapsible className="space-y-4">
           {displayedFaqs.map((faq, index) => (
-            <div
+            <AccordionItem
               key={index}
-              className="rounded-xl border border-pink-medium/30 bg-white transition-colors hover:border-gold"
+              value={`faq-${index}`}
+              className="rounded-xl border border-pink-medium/30 bg-white px-4 transition-colors hover:border-gold data-[state=open]:border-gold"
             >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="flex w-full items-center justify-between p-4 text-left"
-                aria-expanded={openIndex === index}
-                aria-controls={`faq-answer-${index}`}
-              >
-                <span className="font-medium text-pink-text">{faq.question}</span>
-                <ChevronDown
-                  className={cn(
-                    'h-5 w-5 text-pink-accent transition-transform',
-                    openIndex === index && 'rotate-180'
-                  )}
-                  aria-hidden="true"
-                />
-              </button>
-              {openIndex === index && (
-                <div
-                  id={`faq-answer-${index}`}
-                  className="border-t border-pink-medium/30 p-4"
-                >
-                  <p className="text-muted-foreground">{faq.answer}</p>
-                </div>
-              )}
-            </div>
+              <AccordionTrigger className="text-pink-text hover:no-underline [&>svg]:text-pink-accent">
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
+        </Accordion>
 
         <div className="mt-8 text-center">
           <Button

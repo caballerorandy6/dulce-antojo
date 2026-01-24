@@ -1,5 +1,7 @@
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
+import { StickyPhoneButton } from '@/components/shared/sticky-phone-button'
+import { ScrollToTop } from '@/components/shared/scroll-to-top'
 
 export default function MarketingLayout({
   children,
@@ -11,6 +13,8 @@ export default function MarketingLayout({
       <Header />
       {children}
       <Footer />
+      <StickyPhoneButton />
+      <ScrollToTop />
     </>
   )
 }

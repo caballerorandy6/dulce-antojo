@@ -27,6 +27,9 @@ export const businessInfo: BusinessInfo = {
   contact: {
     instagram: '@dulceantojo.houstontx',
     instagramUrl: 'https://instagram.com/dulceantojo.houstontx',
+    facebook: 'Dulce Antojo',
+    facebookUrl: 'https://www.facebook.com/share/1bmvrxAySa/?mibextid=wwXIfr',
+    phone: '+18326792011',
   },
 
   allServicesInclude: [
@@ -471,9 +474,8 @@ export const seoKeywords = [
 
 // Navigation links
 export const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/services', label: 'Services' },
   { href: '/gallery', label: 'Gallery' },
+  { href: '/services', label: 'Services' },
   { href: '/about', label: 'About' },
   { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
