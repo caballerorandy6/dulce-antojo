@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { Heart, Star, Users } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { FloatingStickers } from '@/components/shared/floating-stickers'
 import { businessInfo } from '@/lib/constants'
 
 export const metadata: Metadata = {
@@ -30,10 +31,10 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-pink-dark/20" />
 
         <div className="relative mx-auto max-w-6xl text-center">
-          <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl drop-shadow-md">
+          <h1 className="animateHeading mb-4 text-4xl font-bold text-white md:text-5xl drop-shadow-md">
             About {businessInfo.name}
           </h1>
-          <p className="mx-auto max-w-2xl text-xl text-white/95 drop-shadow-sm">
+          <p className="animateText mx-auto max-w-2xl text-xl text-white/95 drop-shadow-sm">
             {businessInfo.tagline}
           </p>
         </div>
@@ -43,14 +44,14 @@ export default function AboutPage() {
       <section className="px-4 py-16">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-6 text-3xl font-bold text-pink-text">
+            <h2 className="animateHeading mb-6 text-3xl font-bold text-pink-text">
               Our Story
             </h2>
-            <p className="mb-4 text-lg text-muted-foreground">
+            <p className="animateText mb-4 text-lg text-muted-foreground">
               {businessInfo.name} was born from a love of bringing people
               together through delicious treats and memorable experiences.
             </p>
-            <p className="text-lg text-muted-foreground">
+            <p className="animateText text-lg text-muted-foreground">
               Based in Houston, TX, we specialize in Mexican-inspired desserts
               and snacks that add a special touch to any event. From sweet mini
               pancakes to savory elote cups, our carts bring joy to weddings,
@@ -63,11 +64,11 @@ export default function AboutPage() {
       {/* Values */}
       <section className="bg-pink-soft px-4 py-16">
         <div className="mx-auto max-w-6xl">
-          <h2 className="mb-12 text-center text-3xl font-bold text-pink-text">
+          <h2 className="animateHeading mb-12 text-center text-3xl font-bold text-pink-text">
             What We Stand For
           </h2>
           <div className="grid gap-6 md:grid-cols-3">
-            <Card className="border-pink-medium/30">
+            <Card className="animateProjectCard border-pink-medium/30">
               <CardContent className="p-6 text-center">
                 <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-pink-bg">
                   <Heart className="h-8 w-8 text-mauve" />
@@ -82,7 +83,7 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            <Card className="border-pink-medium/30">
+            <Card className="animateProjectCard border-pink-medium/30">
               <CardContent className="p-6 text-center">
                 <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-pink-bg">
                   <Star className="h-8 w-8 text-gold-accent" />
@@ -97,7 +98,7 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            <Card className="border-pink-medium/30">
+            <Card className="animateProjectCard border-pink-medium/30">
               <CardContent className="p-6 text-center">
                 <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-pink-bg">
                   <Users className="h-8 w-8 text-purple" />
@@ -118,14 +119,14 @@ export default function AboutPage() {
       {/* Service Info */}
       <section className="px-4 py-16">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="mb-6 text-3xl font-bold text-pink-text">
+          <h2 className="animateHeading mb-6 text-3xl font-bold text-pink-text">
             Every Service Includes
           </h2>
           <div className="grid gap-4 md:grid-cols-3">
             {businessInfo.allServicesInclude.map((item, index) => (
               <div
                 key={index}
-                className="rounded-xl bg-pink-soft p-6 border border-pink-medium/30"
+                className="animateProjectCard rounded-xl bg-pink-soft p-6 border border-pink-medium/30"
               >
                 <p className="font-medium text-pink-text">{item}</p>
               </div>
@@ -135,12 +136,16 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-pink-accent px-4 py-16">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white">
+      <section className="relative overflow-hidden bg-pink-accent px-4 py-16">
+        <FloatingStickers
+          stickerIndices={[1, 4, 7, 10]}
+          positionIndices={[0, 2, 4, 5]}
+        />
+        <div className="relative mx-auto max-w-4xl text-center">
+          <h2 className="animateHeading mb-4 text-3xl font-bold text-white">
             Let&apos;s Work Together
           </h2>
-          <p className="mb-8 text-white/90">
+          <p className="animateText mb-8 text-white/90">
             Ready to add something sweet to your next event?
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">

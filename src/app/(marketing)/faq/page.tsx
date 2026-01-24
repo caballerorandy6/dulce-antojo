@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { FAQSection } from '@/components/sections/faq-section'
+import { FloatingStickers } from '@/components/shared/floating-stickers'
 import { faqs } from '@/lib/constants'
 
 export const metadata: Metadata = {
@@ -29,10 +30,10 @@ export default function FAQPage() {
         <div className="absolute inset-0 bg-pink-dark/20" />
 
         <div className="relative mx-auto max-w-6xl text-center">
-          <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl drop-shadow-md">
+          <h1 className="animateHeading mb-4 text-4xl font-bold text-white md:text-5xl drop-shadow-md">
             Frequently Asked Questions
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-white/95 drop-shadow-sm">
+          <p className="animateText mx-auto max-w-2xl text-lg text-white/95 drop-shadow-sm">
             Find answers to common questions about our services, booking
             process, and event details.
           </p>
@@ -43,12 +44,16 @@ export default function FAQPage() {
       <FAQSection faqs={faqs} title="" />
 
       {/* CTA */}
-      <section className="bg-pink-accent px-4 py-16">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white">
+      <section className="relative overflow-hidden bg-pink-accent px-4 py-16">
+        <FloatingStickers
+          stickerIndices={[3, 6, 9, 12]}
+          positionIndices={[0, 2, 4, 5]}
+        />
+        <div className="relative mx-auto max-w-4xl text-center">
+          <h2 className="animateHeading mb-4 text-3xl font-bold text-white">
             Still Have Questions?
           </h2>
-          <p className="mb-8 text-white/90">
+          <p className="animateText mb-8 text-white/90">
             Contact us directly and we&apos;ll be happy to help.
           </p>
           <Button

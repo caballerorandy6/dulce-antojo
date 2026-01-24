@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { Instagram } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { GalleryFilter } from '@/components/gallery/gallery-filter'
+import { FloatingStickers } from '@/components/shared/floating-stickers'
 import { businessInfo } from '@/lib/constants'
 
 export const metadata: Metadata = {
@@ -30,10 +31,10 @@ export default function GalleryPage() {
         <div className="absolute inset-0 bg-pink-dark/20" />
 
         <div className="relative mx-auto max-w-6xl text-center">
-          <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl drop-shadow-md">
+          <h1 className="animateHeading mb-4 text-4xl font-bold text-white md:text-5xl drop-shadow-md">
             Our Gallery
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-white/95 drop-shadow-sm">
+          <p className="animateText mx-auto max-w-2xl text-lg text-white/95 drop-shadow-sm">
             See our dessert carts bringing joy to events across Houston.
           </p>
         </div>
@@ -49,10 +50,10 @@ export default function GalleryPage() {
       {/* Instagram CTA */}
       <section className="bg-pink-soft px-4 py-16">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="mb-4 text-3xl font-bold text-pink-text">
+          <h2 className="animateHeading mb-4 text-3xl font-bold text-pink-text">
             See More on Instagram
           </h2>
-          <p className="mb-8 text-muted-foreground">
+          <p className="animateText mb-8 text-muted-foreground">
             Follow us for the latest photos, videos, and behind-the-scenes
             content from our events.
           </p>
@@ -74,12 +75,16 @@ export default function GalleryPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-pink-accent px-4 py-16">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white">
+      <section className="relative overflow-hidden bg-pink-accent px-4 py-16">
+        <FloatingStickers
+          stickerIndices={[0, 3, 6, 9]}
+          positionIndices={[0, 2, 4, 5]}
+        />
+        <div className="relative mx-auto max-w-4xl text-center">
+          <h2 className="animateHeading mb-4 text-3xl font-bold text-white">
             Want Us at Your Event?
           </h2>
-          <p className="mb-8 text-white/90">
+          <p className="animateText mb-8 text-white/90">
             Let&apos;s create beautiful memories together.
           </p>
           <Button

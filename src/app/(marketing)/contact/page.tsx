@@ -29,10 +29,10 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-pink-dark/20" />
 
         <div className="relative mx-auto max-w-6xl text-center">
-          <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl drop-shadow-md">
+          <h1 className="animateHeading mb-4 text-4xl font-bold text-white md:text-5xl drop-shadow-md">
             Get a Quote
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-white/95 drop-shadow-sm">
+          <p className="animateText mx-auto max-w-2xl text-lg text-white/95 drop-shadow-sm">
             Fill out the form below and we&apos;ll get back to you within 24
             hours with a custom quote for your event.
           </p>
@@ -45,7 +45,7 @@ export default function ContactPage() {
           <div className="grid gap-8 lg:grid-cols-3">
             {/* Contact Info */}
             <div className="space-y-6">
-              <Card className="border-pink-medium/30">
+              <Card className="animateProjectCard border-pink-medium/30">
                 <CardContent className="p-6">
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-pink-soft">
                     <MapPin className="h-6 w-6 text-pink-accent" />
@@ -62,7 +62,7 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-pink-medium/30">
+              <Card className="animateProjectCard border-pink-medium/30">
                 <CardContent className="p-6">
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-pink-soft">
                     <Clock className="h-6 w-6 text-pink-accent" />
@@ -79,7 +79,7 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-pink-medium/30">
+              <Card className="animateProjectCard border-pink-medium/30">
                 <CardContent className="p-6">
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-pink-soft">
                     <Instagram className="h-6 w-6 text-pink-accent" />

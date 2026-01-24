@@ -52,7 +52,7 @@ export function GalleryFilter() {
         {filteredItems.map((item) => (
           <div
             key={item.id}
-            className="group relative w-full aspect-square overflow-hidden rounded-2xl bg-pink-soft md:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)]"
+            className="animateProjectCard group relative w-full aspect-square overflow-hidden rounded-2xl bg-pink-soft md:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)]"
           >
             {/* Placeholder - will be replaced with Image component */}
             <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-pink-soft to-pink-medium/30">

@@ -70,7 +70,7 @@ function ServiceCard({ service }: { service: Service }) {
         : 'Package'
 
   return (
-    <Card className="w-full overflow-hidden border-pink-medium/30 transition-shadow hover:shadow-brand md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+    <Card className="animateProjectCard w-full overflow-hidden border-pink-medium/30 transition-shadow hover:shadow-brand md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
       <div className="h-48 bg-pink-soft" />
       <CardContent className="p-6">
         <div className="mb-2 flex items-center gap-2">

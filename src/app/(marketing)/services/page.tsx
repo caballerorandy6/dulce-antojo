@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { ServicesFilter } from '@/components/services/services-filter'
+import { FloatingStickers } from '@/components/shared/floating-stickers'
 
 export const metadata: Metadata = {
   title: 'Services',
@@ -28,10 +29,10 @@ export default function ServicesPage() {
         <div className="absolute inset-0 bg-pink-dark/20" />
 
         <div className="relative mx-auto max-w-6xl text-center">
-          <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl drop-shadow-md">
+          <h1 className="animateHeading mb-4 text-4xl font-bold text-white md:text-5xl drop-shadow-md">
             Our Services
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-white/95 drop-shadow-sm">
+          <p className="animateText mx-auto max-w-2xl text-lg text-white/95 drop-shadow-sm">
             From sweet mini pancakes to savory Mexican snacks, we have the
             perfect cart for your event.
           </p>
@@ -46,12 +47,16 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-pink-accent px-4 py-16">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white">
+      <section className="relative overflow-hidden bg-pink-accent px-4 py-16">
+        <FloatingStickers
+          stickerIndices={[2, 5, 8, 11]}
+          positionIndices={[0, 2, 4, 5]}
+        />
+        <div className="relative mx-auto max-w-4xl text-center">
+          <h2 className="animateHeading mb-4 text-3xl font-bold text-white">
             Can&apos;t Decide?
           </h2>
-          <p className="mb-8 text-white/90">
+          <p className="animateText mb-8 text-white/90">
             Contact us and we&apos;ll help you choose the perfect service for
             your event.
           </p>

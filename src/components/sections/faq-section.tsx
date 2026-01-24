@@ -19,7 +19,7 @@ export function FAQSection({ faqs, title = 'Frequently Asked Questions' }: FAQSe
         )}
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <Card key={index} className="border-pink-medium/30">
+            <Card key={index} className="animateProjectCard border-pink-medium/30">
               <CardContent className="p-6">
                 <h3 className="mb-2 text-lg font-semibold text-pink-text">
                   {faq.question}
