@@ -18,10 +18,10 @@ export default function ServicesPage() {
       <section className="relative overflow-hidden px-4 pt-28 pb-16 md:pt-40 md:pb-24">
         {/* Background Image */}
         <Image
-          src="/images/services/services-1.avif"
+          src="/images/services/cart-our-services.avif"
           alt="Dulce Antojo dessert cart services"
           fill
-          className="object-cover blur-[0.5px] brightness-90"
+          className="object-cover object-bottom blur-[0.5px] brightness-90"
           priority
         />
         {/* Overlay: dark base + subtle pink tint */}

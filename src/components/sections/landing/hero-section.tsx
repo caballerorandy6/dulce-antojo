@@ -76,7 +76,7 @@ export function HeroSection() {
 
           {/* Social Proof */}
           <div className="mb-4 flex items-center justify-center gap-2 text-white/90 animate-on-load animate-fade-in animation-delay-300">
-            <span className="text-gold text-sm md:text-base">★★★★★</span>
+            <span className="text-[#FFD700] text-sm md:text-base drop-shadow-[0_0_8px_rgba(255,215,0,0.6)]">★★★★★</span>
             <span className="text-xs md:text-sm">100+ Happy Events</span>
           </div>
         </div>
@@ -86,7 +86,7 @@ export function HeroSection() {
           <Button
             size="lg"
             onClick={scrollToContact}
-            className="bg-gold hover:bg-gold-dark text-white min-w-[160px] animate-pulse-subtle"
+            className="bg-[#FFD700] hover:bg-[#FFC107] text-pink-dark font-semibold min-w-[180px] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
           >
             Get a Quote
           </Button>
@@ -94,7 +94,7 @@ export function HeroSection() {
             variant="outline"
             size="lg"
             onClick={scrollToServices}
-            className="border-2 border-white bg-white/10 text-white hover:bg-white hover:text-pink-text backdrop-blur-sm transition-all min-w-[160px]"
+            className="border-2 border-white bg-white/10 text-white hover:bg-white hover:text-pink-dark backdrop-blur-sm min-w-[180px] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
           >
             View Services
           </Button>

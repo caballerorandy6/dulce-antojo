@@ -79,7 +79,7 @@ export function Header() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isScrolled
-          ? 'bg-white/95 backdrop-blur-sm shadow-md'
+          ? 'bg-pink-bg/95 backdrop-blur-sm shadow-md border-b border-pink-medium/30'
           : isLandingPage
             ? 'bg-transparent'
             : 'bg-pink-bg/95 backdrop-blur-sm'
@@ -102,7 +102,7 @@ export function Header() {
           ) : (
             <Link
               href="/"
-              className="font-[--font-cormorant] text-3xl font-semibold tracking-[0.02em] text-pink-text transition-colors hover:text-gold"
+              className="font-[--font-cormorant] text-3xl font-semibold tracking-[0.02em] text-pink-text transition-colors hover:text-[#E6A817]"
             >
               {businessInfo.name}
             </Link>
@@ -121,10 +121,10 @@ export function Header() {
                     className={cn(
                       'text-sm font-medium transition-colors',
                       activeSection === link.id
-                        ? 'text-gold'
+                        ? 'text-[#E6A817]'
                         : isScrolled
-                          ? 'text-pink-text hover:text-gold'
-                          : 'text-white/90 hover:text-gold'
+                          ? 'text-pink-text hover:text-[#E6A817]'
+                          : 'text-white/90 hover:text-[#E6A817]'
                     )}
                     aria-current={activeSection === link.id ? 'page' : undefined}
                   >
@@ -142,8 +142,8 @@ export function Header() {
                     className={cn(
                       'text-sm font-medium transition-colors',
                       pathname === link.href
-                        ? 'text-gold'
-                        : 'text-pink-text hover:text-gold'
+                        ? 'text-[#E6A817]'
+                        : 'text-pink-text hover:text-[#E6A817]'
                     )}
                     aria-current={pathname === link.href ? 'page' : undefined}
                   >
@@ -213,8 +213,8 @@ export function Header() {
                         className={cn(
                           'text-lg font-medium transition-colors',
                           activeSection === link.id
-                            ? 'text-gold'
-                            : 'text-pink-text hover:text-gold'
+                            ? 'text-[#E6A817]'
+                            : 'text-pink-text hover:text-[#E6A817]'
                         )}
                         aria-current={activeSection === link.id ? 'page' : undefined}
                       >
@@ -233,8 +233,8 @@ export function Header() {
                         className={cn(
                           'text-lg font-medium transition-colors',
                           pathname === link.href
-                            ? 'text-gold'
-                            : 'text-pink-text hover:text-gold'
+                            ? 'text-[#E6A817]'
+                            : 'text-pink-text hover:text-[#E6A817]'
                         )}
                         aria-current={pathname === link.href ? 'page' : undefined}
                       >

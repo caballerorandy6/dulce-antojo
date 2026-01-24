@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   Select,
   SelectContent,
@@ -14,6 +15,22 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { services, categories } from '@/lib/constants'
 import type { Service } from '@/types'
+
+const serviceImages: Record<string, string> = {
+  'mini-pancakes': '/images/landing/mini-pancakes.avif',
+  'paletas-locas': '/images/landing/paletas-locas.avif',
+  'churro-sundaes': '/images/landing/churro-sundaes.avif',
+  'sundaes': '/images/landing/sundaes-1.avif',
+  'corn-in-a-cup': '/images/landing/corn-in-a-cup.avif',
+  'tosti-elote': '/images/landing/tosti-elote-2.avif',
+  'mix-and-match': '/images/landing/mix-and-match.avif',
+  'ramen-maruchan': '/images/carousel/ramen-2.avif',
+  'paleta-cart-rental': '/images/carousel/paletas-cart-1.avif',
+  'sorbet': '/images/carousel/mango-loco-1.avif',
+  'churros': '/images/services/churros.avif',
+  'fresa-cups': '/images/carousel/fresa-cup-1.avif',
+  'snack-cup': '/images/carousel/snack-cup-1.avif',
+}
 
 export function ServicesFilter() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
@@ -70,32 +87,50 @@ function ServiceCard({ service }: { service: Service }) {
         : 'Package'
 
   return (
-    <Card className="animateProjectCard w-full overflow-hidden border-pink-medium/30 transition-shadow hover:shadow-brand md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
-      <div className="h-48 bg-pink-soft" />
-      <CardContent className="p-6">
+    <Card className="animateProjectCard group relative w-full h-80 overflow-hidden border-pink-medium/30 transition-all duration-300 hover:border-gold hover:shadow-xl hover:-translate-y-2 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+      {/* Background Image */}
+      {serviceImages[service.id] ? (
+        <Image
+          src={serviceImages[service.id]}
+          alt={service.name}
+          fill
+          className="object-cover transition-all duration-500 group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-pink-soft" />
+      )}
+
+      {/* Gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
+
+      {/* Shine effect */}
+      <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+
+      {/* Content */}
+      <CardContent className="absolute inset-0 flex flex-col justify-end p-6">
         <div className="mb-2 flex items-center gap-2">
-          <Badge
-            variant="secondary"
-            className="bg-pink-accent/20 text-pink-text"
-          >
+          <Badge className="bg-white/90 text-pink-text hover:bg-white">
             {categoryLabel}
           </Badge>
           {service.featured && (
             <Badge className="bg-gold-accent text-white">Popular</Badge>
           )}
         </div>
-        <h3 className="mb-2 text-xl font-semibold text-pink-text">
+        <h3 className="mb-1 text-xl font-semibold text-white drop-shadow-md">
           {service.name}
         </h3>
-        <p className="mb-4 text-sm text-muted-foreground">
+        <p className="mb-4 text-sm text-white/90 drop-shadow-sm">
           {service.shortDescription}
         </p>
         <Button
           asChild
-          variant="outline"
-          className="w-full border-pink-medium text-pink-text hover:bg-pink-soft"
+          className="w-full bg-pink-accent/90 text-white backdrop-blur-sm hover:bg-pink-accent hover:shadow-lg transition-all duration-300 cursor-pointer"
         >
-          <Link href={`/services/${service.slug}`}>View Details</Link>
+          <Link href={`/services/${service.slug}`} className="flex items-center justify-center gap-2">
+            View Details
+            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </Link>
         </Button>
       </CardContent>
     </Card>

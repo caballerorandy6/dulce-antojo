@@ -26,7 +26,7 @@ const serviceImages: Record<string, string> = {
   'sundaes': '/images/landing/sundaes-1.avif',
   'corn-in-a-cup': '/images/landing/corn-in-a-cup.avif',
   'tosti-elote': '/images/landing/tosti-elote-2.avif',
-  'mix-and-match': '/images/landing/mix-and-match.avif',
+  'mix-and-match': '/images/landing/mix-and-match-1.avif',
 }
 
 export function ServicesSection() {
@@ -53,47 +53,52 @@ export function ServicesSection() {
           {featuredServices.map((service) => (
             <Card
               key={service.id}
-              className="service-card group w-full overflow-hidden border-pink-medium/30 transition-all duration-300 hover:border-gold hover:shadow-xl hover:-translate-y-2 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] animateProjectCard"
+              className="service-card group relative w-full h-80 overflow-hidden border-pink-medium/30 transition-all duration-300 hover:border-gold hover:shadow-xl hover:-translate-y-2 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] animateProjectCard"
             >
-              <div className="relative aspect-video overflow-hidden bg-pink-soft">
-                {serviceImages[service.id] && (
-                  <Image
-                    src={serviceImages[service.id]}
-                    alt={service.name}
-                    fill
-                    className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                )}
-                {/* Pink overlay that fades on hover */}
-                <div className="absolute inset-0 bg-pink-accent/20 transition-opacity duration-300 group-hover:opacity-0" />
-                {/* Shine effect */}
-                <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-              </div>
-              <CardContent className="p-6">
-                <div className="mb-3 flex items-center gap-2">
+              {/* Background Image */}
+              {serviceImages[service.id] ? (
+                <Image
+                  src={serviceImages[service.id]}
+                  alt={service.name}
+                  fill
+                  className="object-cover transition-all duration-500 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-pink-soft" />
+              )}
+
+              {/* Gradient overlay for text readability */}
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
+
+              {/* Shine effect */}
+              <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+
+              {/* Content */}
+              <CardContent className="absolute inset-0 flex flex-col justify-end p-6">
+                <div className="mb-2 flex items-center gap-2">
                   <Lordicon
                     src={categoryIcons[service.category]}
                     trigger="hover"
                     target=".service-card"
-                    size={48}
+                    size={36}
                   />
-                  <span className="text-sm font-medium text-pink-text">
+                  <span className="text-sm font-medium text-white/90">
                     {categoryLabels[service.category]}
                   </span>
                 </div>
-                <h3 className="mb-2 text-xl font-semibold text-pink-text">
+                <h3 className="mb-1 text-xl font-semibold text-white drop-shadow-md">
                   {service.name}
                 </h3>
-                <p className="mb-4 text-sm text-muted-foreground">
+                <p className="mb-4 text-sm text-white/90 drop-shadow-sm">
                   {service.shortDescription}
                 </p>
                 <Link
                   href={`/services/${service.slug}`}
-                  className="inline-flex items-center text-sm font-medium text-pink-accent hover:text-gold transition-colors"
+                  className="flex items-center justify-center gap-2 w-full text-sm font-medium text-white bg-pink-accent/90 backdrop-blur-sm px-4 py-2 rounded-md hover:bg-pink-accent transition-all cursor-pointer"
                 >
                   Learn More
-                  <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </CardContent>
             </Card>
