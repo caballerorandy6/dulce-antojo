@@ -1,12 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { SectionHeader } from '@/components/shared/section-header'
-import { services, categories } from '@/lib/constants'
-import type { Service } from '@/types'
+import { ServicesFilter } from '@/components/services/services-filter'
 
 export const metadata: Metadata = {
   title: 'Services',
@@ -15,11 +11,6 @@ export const metadata: Metadata = {
 }
 
 export default function ServicesPage() {
-  const servicesByCategory = categories.map((category) => ({
-    ...category,
-    services: services.filter((s) => s.category === category.id),
-  }))
-
   return (
     <div className="bg-pink-bg">
       {/* Hero */}
@@ -47,22 +38,12 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services by Category */}
-      {servicesByCategory.map((category) => (
-        <section key={category.id} className="px-4 py-16">
-          <div className="mx-auto max-w-6xl">
-            <SectionHeader
-              title={`${category.icon} ${category.nameEn}`}
-              description={category.description}
-            />
-            <div className="flex flex-wrap justify-center gap-6">
-              {category.services.map((service) => (
-                <ServiceCard key={service.id} service={service} />
-              ))}
-            </div>
-          </div>
-        </section>
-      ))}
+      {/* Services with Filter */}
+      <section className="px-4 py-16">
+        <div className="mx-auto max-w-6xl">
+          <ServicesFilter />
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="bg-pink-accent px-4 py-16">
@@ -84,46 +65,5 @@ export default function ServicesPage() {
         </div>
       </section>
     </div>
-  )
-}
-
-function ServiceCard({ service }: { service: Service }) {
-  const categoryLabel =
-    service.category === 'dulce'
-      ? 'Sweet'
-      : service.category === 'salado'
-        ? 'Savory'
-        : 'Package'
-
-  return (
-    <Card className="w-full overflow-hidden border-pink-medium/30 transition-shadow hover:shadow-brand md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
-      <div className="h-48 bg-pink-soft" />
-      <CardContent className="p-6">
-        <div className="mb-2 flex items-center gap-2">
-          <Badge
-            variant="secondary"
-            className="bg-pink-accent/20 text-pink-text"
-          >
-            {categoryLabel}
-          </Badge>
-          {service.featured && (
-            <Badge className="bg-gold-accent text-white">Popular</Badge>
-          )}
-        </div>
-        <h3 className="mb-2 text-xl font-semibold text-pink-text">
-          {service.name}
-        </h3>
-        <p className="mb-4 text-sm text-muted-foreground">
-          {service.shortDescription}
-        </p>
-        <Button
-          asChild
-          variant="outline"
-          className="w-full border-pink-medium text-pink-text hover:bg-pink-soft"
-        >
-          <Link href={`/services/${service.slug}`}>View Details</Link>
-        </Button>
-      </CardContent>
-    </Card>
   )
 }
