@@ -1,26 +1,306 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
+
+/* ========================================
+   DULCE ANTOJO - Custom Theme Colors
+   Vibrant pink palette - eye-catching & sweet
+   ======================================== */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Font families */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Base colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Dulce Antojo Brand Colors - Vibrant Pinks */
+  --color-pink-bg: #FFE4EC;
+  --color-pink-soft: #FFD6E0;
+  --color-pink-medium: #FF9EBA;
+  --color-pink-accent: #FF6B95;
+  --color-pink-text: #E84A7A;
+  --color-pink-dark: #D63965;
+
+  /* Legacy aliases */
+  --color-pink-primary: #FF6B95;
+  --color-pink-light: #FFE4EC;
+
+  /* Accent colors - Coral/Magenta instead of teal */
+  --color-coral: #FF7B6B;
+  --color-coral-dark: #E85A4A;
+  --color-magenta: #E84A7A;
+  --color-magenta-dark: #C73562;
+
+  /* Keep teal for compatibility but brighter */
+  --color-teal-primary: #E84A7A;
+  --color-teal-dark: #D63965;
+  --color-teal-light: #FF6B95;
+
+  /* Neutrals */
+  --color-text-dark: #3D3D3D;
+  --color-text-muted: #6B6B6B;
+
+  /* Gold accent - elegant decorative */
+  --color-gold: #C9A86C;
+  --color-gold-accent: #C9A86C;
+  --color-gold-light: #D4B87A;
+  --color-gold-dark: #B8956A;
+
+  /* Purple accent */
+  --color-purple: #A855F7;
+  --color-purple-dark: #9333EA;
+
+  /* Mauve (icons/decorative) */
+  --color-mauve: #C77DFF;
+
+  /* Page background */
+  --color-cream-bg: #FFE4EC;
+
+  /* shadcn/ui semantic colors */
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Chart colors */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar colors */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Border radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Base radius */
+  --radius: 0.75rem;
+
+  /* Light mode - Dulce Antojo Vibrant Theme */
+  --background: #FFE4EC;
+  --foreground: #3D3D3D;
+
+  --card: #FFFFFF;
+  --card-foreground: #3D3D3D;
+
+  --popover: #FFFFFF;
+  --popover-foreground: #3D3D3D;
+
+  /* Primary = Vibrant Pink */
+  --primary: #FF6B95;
+  --primary-foreground: #FFFFFF;
+
+  /* Secondary = Light Pink */
+  --secondary: #FFD6E0;
+  --secondary-foreground: #E84A7A;
+
+  --muted: #FFD6E0;
+  --muted-foreground: #6B6B6B;
+
+  /* Accent = Gold */
+  --accent: #C9A86C;
+  --accent-foreground: #FFFFFF;
+
+  --destructive: #E57373;
+
+  --border: #FF9EBA;
+  --input: #FFD6E0;
+  --ring: #FF6B95;
+
+  /* Chart colors using brand palette */
+  --chart-1: #FF6B95;
+  --chart-2: #C9A86C;
+  --chart-3: #C77DFF;
+  --chart-4: #FF9EBA;
+  --chart-5: #A855F7;
+
+  /* Sidebar */
+  --sidebar: #FFD6E0;
+  --sidebar-foreground: #3D3D3D;
+  --sidebar-primary: #FF6B95;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #FFE4EC;
+  --sidebar-accent-foreground: #3D3D3D;
+  --sidebar-border: #FF9EBA;
+  --sidebar-ring: #FF6B95;
+
+  /* Success state */
+  --success: #4ADE80;
+}
+
+.dark {
+  --background: #1A1A1A;
+  --foreground: #F5F5F5;
+
+  --card: #2A2A2A;
+  --card-foreground: #F5F5F5;
+
+  --popover: #2A2A2A;
+  --popover-foreground: #F5F5F5;
+
+  --primary: #FF6B95;
+  --primary-foreground: #1A1A1A;
+
+  --secondary: #3A3A3A;
+  --secondary-foreground: #F5F5F5;
+
+  --muted: #3A3A3A;
+  --muted-foreground: #A0A0A0;
+
+  --accent: #C9A86C;
+  --accent-foreground: #1A1A1A;
+
+  --destructive: #E57373;
+
+  --border: #3A3A3A;
+  --input: #3A3A3A;
+  --ring: #FF6B95;
+
+  --chart-1: #FF6B95;
+  --chart-2: #C9A86C;
+  --chart-3: #C77DFF;
+  --chart-4: #FF9EBA;
+  --chart-5: #A855F7;
+
+  --sidebar: #2A2A2A;
+  --sidebar-foreground: #F5F5F5;
+  --sidebar-primary: #FF6B95;
+  --sidebar-primary-foreground: #1A1A1A;
+  --sidebar-accent: #3A3A3A;
+  --sidebar-accent-foreground: #F5F5F5;
+  --sidebar-border: #3A3A3A;
+  --sidebar-ring: #FF6B95;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  a, button, [role="button"] {
+    @apply cursor-pointer;
+  }
+  h1, h2 {
+    font-family: var(--font-great-vibes), cursive;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Hero Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.8s ease-out forwards;
+}
+
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+.animation-delay-600 { animation-delay: 600ms; }
+
+/* Start invisible for animated elements */
+.animate-on-load {
+  opacity: 0;
+}
+
+/* Custom utility classes for Dulce Antojo */
+@layer utilities {
+  .text-gradient-pink {
+    @apply bg-linear-to-r from-pink-accent to-pink-dark bg-clip-text text-transparent;
+  }
+
+  .bg-gradient-brand {
+    @apply bg-linear-to-br from-pink-bg via-pink-soft to-pink-medium/30;
+  }
+
+  .shadow-brand {
+    box-shadow: 0 4px 20px rgba(255, 107, 149, 0.3);
+  }
+
+  .border-brand {
+    @apply border-pink-medium;
+  }
+
+  /* Service title style - vibrant pink */
+  .text-service-title {
+    @apply text-pink-text font-bold;
+  }
+
+  /* Button hover glow */
+  .btn-glow {
+    box-shadow: 0 0 20px rgba(255, 107, 149, 0.5);
+  }
 }
