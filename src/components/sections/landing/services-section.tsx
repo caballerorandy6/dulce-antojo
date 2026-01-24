@@ -30,10 +30,10 @@ export function ServicesSection() {
       <FloatingStickers stickerIndices={[0, 3, 6]} positionIndices={[0, 2, 3]} />
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-pink-text md:text-4xl">
+          <h2 className="mb-4 text-3xl font-bold text-pink-text md:text-4xl animateHeading">
             Our Services
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+          <p className="mx-auto max-w-2xl text-lg text-muted-foreground animateText">
             Delicious treats for every occasion. From sweet mini pancakes to savory elote cups.
           </p>
         </div>
@@ -42,7 +42,7 @@ export function ServicesSection() {
           {featuredServices.map((service) => (
             <Card
               key={service.id}
-              className="group w-full overflow-hidden border-pink-medium/30 transition-all hover:border-gold hover:shadow-lg md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+              className="group w-full overflow-hidden border-pink-medium/30 transition-all hover:border-gold hover:shadow-lg md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] animateProjectCard"
             >
               <div className="aspect-video bg-pink-soft" />
               <CardContent className="p-6">

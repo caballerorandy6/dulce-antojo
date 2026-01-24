@@ -22,10 +22,10 @@ export function FAQSection() {
       <FloatingStickers stickerIndices={[3, 6, 12]} positionIndices={[0, 1, 3]} />
       <div className="relative mx-auto max-w-3xl">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-pink-text md:text-4xl">
+          <h2 className="mb-4 text-3xl font-bold text-pink-text md:text-4xl animateHeading">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground animateText">
             Quick answers to common questions
           </p>
         </div>

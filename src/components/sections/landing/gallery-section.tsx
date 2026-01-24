@@ -35,10 +35,10 @@ export function GallerySection() {
 
       {/* Header */}
       <div className="mx-auto max-w-6xl px-4 mb-12 text-center">
-        <h2 className="mb-4 text-3xl font-bold text-pink-text md:text-4xl">
+        <h2 className="mb-4 text-3xl font-bold text-pink-text md:text-4xl animateHeading">
           Our Gallery
         </h2>
-        <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+        <p className="mx-auto max-w-2xl text-lg text-muted-foreground animateText">
           See our dessert carts bringing joy to events across Houston
         </p>
       </div>

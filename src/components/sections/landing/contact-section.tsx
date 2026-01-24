@@ -13,10 +13,10 @@ export function ContactSection() {
       <FloatingStickers stickerIndices={[4, 7, 10]} positionIndices={[1, 3, 5]} />
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-pink-text md:text-4xl">
+          <h2 className="mb-4 text-3xl font-bold text-pink-text md:text-4xl animateHeading">
             Get a Quote
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+          <p className="mx-auto max-w-2xl text-lg text-muted-foreground animateText">
             Tell us about your event and we&apos;ll get back to you with a custom quote
           </p>
         </div>

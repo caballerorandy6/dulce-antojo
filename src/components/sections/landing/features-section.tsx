@@ -35,10 +35,10 @@ export function FeaturesSection() {
       <FloatingStickers stickerIndices={[1, 4, 7]} positionIndices={[0, 1, 2]} />
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-pink-text md:text-4xl">
+          <h2 className="mb-4 text-3xl font-bold text-pink-text md:text-4xl animateHeading">
             Why Choose Us
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+          <p className="mx-auto max-w-2xl text-lg text-muted-foreground animateText">
             Every service includes these amazing benefits
           </p>
         </div>
@@ -49,7 +49,7 @@ export function FeaturesSection() {
             return (
               <Card
                 key={feature.title}
-                className="w-full border-pink-medium/30 text-center transition-colors hover:border-gold md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
+                className="w-full border-pink-medium/30 text-center transition-colors hover:border-gold md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] animateProjectCard"
               >
                 <CardContent className="p-6">
                   <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-pink-bg">
