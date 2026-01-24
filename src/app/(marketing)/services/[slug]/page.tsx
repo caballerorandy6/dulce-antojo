@@ -1,11 +1,28 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, Check } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { services } from '@/lib/constants'
+
+const serviceImages: Record<string, string> = {
+  'mini-pancakes': '/images/landing/mini-pancakes.avif',
+  'paletas-locas': '/images/landing/paletas-locas.avif',
+  'churro-sundaes': '/images/landing/churro-sundaes.avif',
+  'sundaes': '/images/landing/sundaes-1.avif',
+  'corn-in-a-cup': '/images/landing/corn-in-a-cup.avif',
+  'tosti-elote': '/images/landing/tosti-elote-2.avif',
+  'mix-and-match': '/images/landing/mix-and-match-1.avif',
+  'ramen-maruchan': '/images/carousel/ramen-2.avif',
+  'paleta-cart-rental': '/images/carousel/paletas-cart-1.avif',
+  'sorbet': '/images/carousel/mango-loco-1.avif',
+  'churros': '/images/services/churros.avif',
+  'fresa-cups': '/images/carousel/fresa-cup-1.avif',
+  'snack-cup': '/images/carousel/snack-cup-1.avif',
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -49,7 +66,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   return (
     <div className="bg-pink-bg">
       {/* Back Link */}
-      <div className="mx-auto max-w-6xl px-4 pt-8">
+      <div className="mx-auto max-w-6xl px-4 pt-24">
         <Link
           href="/services"
           className="inline-flex items-center text-sm text-muted-foreground hover:text-pink-accent"
@@ -64,7 +81,19 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-8 lg:grid-cols-2">
             {/* Image */}
-            <div className="h-64 rounded-2xl bg-pink-soft lg:h-96" />
+            <div className="relative h-64 overflow-hidden rounded-2xl bg-pink-soft lg:h-96">
+              {serviceImages[service.id] ? (
+                <Image
+                  src={serviceImages[service.id]}
+                  alt={service.name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-pink-soft" />
+              )}
+            </div>
 
             {/* Info */}
             <div>

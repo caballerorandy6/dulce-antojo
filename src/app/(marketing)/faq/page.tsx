@@ -16,7 +16,7 @@ export default function FAQPage() {
   return (
     <div className="bg-pink-bg">
       {/* Hero */}
-      <section className="relative overflow-hidden px-4 pt-28 pb-16 md:pt-40 md:pb-24">
+      <section className="relative overflow-hidden px-4 pt-24 pb-16 md:pt-32 md:pb-24">
         {/* Background Image */}
         <Image
           src="/images/faq/faq-1.avif"
