@@ -93,7 +93,7 @@ export function Header() {
               href="#home"
               onClick={(e) => scrollToSection(e, '#home')}
               className={cn(
-                "font-(family-name:--font-great-vibes) text-4xl transition-colors",
+                "font-(family-name:--font-cormorant) text-3xl font-semibold tracking-wide transition-colors",
                 isScrolled ? "text-pink-text" : "text-white"
               )}
             >
@@ -102,7 +102,7 @@ export function Header() {
           ) : (
             <Link
               href="/"
-              className="font-(family-name:--font-great-vibes) text-4xl text-pink-text transition-colors hover:text-gold"
+              className="font-(family-name:--font-cormorant) text-3xl font-semibold tracking-wide text-pink-text transition-colors hover:text-gold"
             >
               {businessInfo.name}
             </Link>

@@ -218,7 +218,9 @@
     @apply cursor-pointer;
   }
   h1, h2 {
-    font-family: var(--font-great-vibes), cursive;
+    font-family: var(--font-cormorant), serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
   }
 }
 

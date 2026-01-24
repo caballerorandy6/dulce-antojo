@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { FloatingStickers } from '@/components/shared/floating-stickers'
 
 const galleryItems = [
   { id: 1, src: '/images/carousel/mini-pankakes-1.avif', alt: 'Mini pancakes with strawberries and chocolate drizzle' },
@@ -28,21 +27,8 @@ export function GallerySection() {
   return (
     <section
       id="gallery"
-      className="relative bg-pink-soft py-16 md:py-24"
+      className="relative bg-pink-soft py-10 md:py-16"
     >
-      {/* Stickers - only top and bottom to avoid carousel */}
-      <FloatingStickers stickerIndices={[9, 10, 11]} positionIndices={[6, 7, 8]} />
-
-      {/* Header */}
-      <div className="mx-auto max-w-6xl px-4 mb-12 text-center">
-        <h2 className="mb-4 text-3xl font-bold text-pink-text md:text-4xl animateHeading">
-          Our Gallery
-        </h2>
-        <p className="mx-auto max-w-2xl text-lg text-muted-foreground animateText">
-          See our dessert carts bringing joy to events across Houston
-        </p>
-      </div>
-
       {/* Infinite Marquee Carousel */}
       <div className="w-full overflow-hidden">
         <div className="flex animate-marquee w-fit">

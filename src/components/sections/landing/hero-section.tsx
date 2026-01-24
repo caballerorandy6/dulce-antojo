@@ -2,8 +2,6 @@
 
 import { useRef, useEffect } from 'react'
 import Image from 'next/image'
-import { MapPin } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { businessInfo } from '@/lib/constants'
 
@@ -33,7 +31,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden"
+      className="relative min-h-[85vh] overflow-hidden"
     >
       {/* Video Background */}
       <div className="absolute inset-0">
@@ -48,59 +46,43 @@ export function HeroSection() {
         >
           <source src="/images/hero/hero-video.webm" type="video/webm" />
         </video>
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-linear-to-b from-pink-text/85 via-pink-text/65 to-pink-bg/90" />
+        {/* Overlay for better text readability + gradient transition to carousel */}
+        <div className="absolute inset-0 bg-linear-to-b from-pink-text/85 via-pink-text/65 to-pink-soft" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex min-h-screen flex-col items-center justify-between px-4 py-24 md:py-32">
+      <div className="relative z-10 flex min-h-[85vh] flex-col items-center justify-between px-4 py-20 md:py-24">
         {/* Top spacer */}
         <div className="shrink-0" />
 
         {/* Main Content - Center */}
         <div className="flex flex-col items-center text-center">
           {/* Logo */}
-          <div className="mb-6 md:mb-8 animate-on-load animate-scale-in">
+          <div className="mb-4 md:mb-6 animate-on-load animate-scale-in">
             <Image
               src="/images/nav/logo.avif"
               alt={`${businessInfo.name} - Mini Pancakes & More`}
-              width={600}
-              height={240}
-              className="h-48 w-auto md:h-64 lg:h-80"
+              width={500}
+              height={200}
+              className="h-44 w-auto md:h-56 lg:h-64"
               priority
             />
           </div>
 
-          {/* Location Badge */}
-          <div className="mb-5 md:mb-6 animate-on-load animate-fade-in-up animation-delay-200">
-            <Badge className="bg-gold/80 text-white hover:bg-gold backdrop-blur-sm border-gold px-4 py-1.5 text-sm">
-              <MapPin className="h-3.5 w-3.5 mr-1.5" />
-              {businessInfo.location.city}, {businessInfo.location.state}
-            </Badge>
-          </div>
-
           {/* Tagline */}
-          <div className="mb-6 md:mb-8 animate-on-load animate-fade-in-up animation-delay-300">
-            <span className="text-xl text-gold-light md:text-2xl lg:text-3xl font-semibold tracking-wide px-5 py-2 bg-black/30 backdrop-blur-sm rounded-full">
-              {businessInfo.tagline}
-            </span>
-          </div>
-
-          {/* Description */}
-          <p className="mx-auto mb-4 max-w-xl text-base text-white md:text-lg lg:max-w-2xl drop-shadow-md animate-on-load animate-fade-in-up animation-delay-400">
-            {businessInfo.description}. Perfect for weddings, quinceañeras,
-            birthdays, and corporate events.
+          <p className="mb-4 text-lg text-white md:text-xl drop-shadow-md animate-on-load animate-fade-in-up animation-delay-200">
+            The sweetest part of your event
           </p>
 
           {/* Social Proof */}
-          <div className="mb-6 md:mb-8 flex items-center justify-center gap-2 text-white/90 animate-on-load animate-fade-in animation-delay-500">
+          <div className="mb-4 flex items-center justify-center gap-2 text-white/90 animate-on-load animate-fade-in animation-delay-300">
             <span className="text-gold text-sm md:text-base">★★★★★</span>
-            <span className="text-xs md:text-sm">100+ Happy Events in Houston</span>
+            <span className="text-xs md:text-sm">100+ Happy Events</span>
           </div>
         </div>
 
         {/* CTAs - Bottom */}
-        <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4 animate-on-load animate-fade-in-up animation-delay-600">
+        <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4 animate-on-load animate-fade-in-up animation-delay-400">
           <Button
             size="lg"
             onClick={scrollToContact}
