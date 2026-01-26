@@ -29,7 +29,7 @@ export function GallerySection() {
   return (
     <section
       id="gallery"
-      className="relative bg-pink-soft py-10 md:py-16"
+      className="relative bg-pink-soft py-10 md:py-16 pb-20 md:pb-24"
     >
       {/* Infinite Marquee Carousel */}
       <div className="w-full overflow-hidden">
@@ -97,6 +97,9 @@ export function GallerySection() {
           </Link>
         </Button>
       </div>
+
+      {/* Gradient fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-b from-transparent to-pink-bg/90 pointer-events-none" />
     </section>
   )
 }

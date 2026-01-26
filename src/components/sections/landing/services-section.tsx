@@ -35,7 +35,7 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative bg-pink-bg/90 px-4 py-16 md:py-24"
+      className="relative bg-pink-bg/90 px-4 py-16 md:py-24 pb-24 md:pb-32"
     >
       {/* Pattern: 1 left, 2 right */}
       <FloatingStickers stickerIndices={[0, 3, 6]} positionIndices={[0, 2, 3]} />
@@ -125,6 +125,9 @@ export function ServicesSection() {
           </Button>
         </div>
       </div>
+
+      {/* Gradient fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-b from-transparent to-pink-medium/20 pointer-events-none" />
     </section>
   )
 }

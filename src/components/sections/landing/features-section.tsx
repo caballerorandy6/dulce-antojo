@@ -30,7 +30,7 @@ export function FeaturesSection() {
   return (
     <section
       id="features"
-      className="relative bg-pink-medium/20 px-4 py-16 md:py-24"
+      className="relative bg-pink-medium/20 px-4 py-16 md:py-24 pb-24 md:pb-32"
     >
       {/* Pattern: 2 left, 1 right */}
       <FloatingStickers stickerIndices={[1, 4, 7]} positionIndices={[0, 1, 2]} />
@@ -76,6 +76,9 @@ export function FeaturesSection() {
           ))}
         </div>
       </div>
+
+      {/* Gradient fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-b from-transparent to-cream-bg pointer-events-none" />
     </section>
   )
 }

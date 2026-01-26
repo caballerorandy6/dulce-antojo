@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
@@ -16,15 +17,21 @@ export function FAQSection() {
   return (
     <section
       id="faq"
-      className="relative bg-pink-bg/80 px-4 py-16 md:py-24"
+      className="relative bg-pink-soft px-4 py-16 md:py-24 pb-24 md:pb-32"
     >
       {/* Pattern: 2 left, 1 right */}
       <FloatingStickers stickerIndices={[3, 6, 12]} positionIndices={[0, 1, 3]} />
       <div className="relative mx-auto max-w-3xl">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-pink-text md:text-4xl animateHeading">
-            Frequently Asked Questions
-          </h2>
+          <div className="mb-6 flex justify-center animateHeading">
+            <Image
+              src="/images/pages/faq-2.avif"
+              alt="Frequently Asked Questions"
+              width={500}
+              height={140}
+              className="h-20 w-auto md:h-28 lg:h-32"
+            />
+          </div>
           <p className="text-lg text-muted-foreground animateText">
             Quick answers to common questions
           </p>
@@ -60,6 +67,9 @@ export function FAQSection() {
           </Button>
         </div>
       </div>
+
+      {/* Gradient fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-b from-transparent to-pink-bg pointer-events-none" />
     </section>
   )
 }

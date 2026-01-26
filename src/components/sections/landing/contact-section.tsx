@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Instagram, MapPin } from 'lucide-react'
 import { ContactForm } from '@/components/forms/contact-form'
 import { FloatingStickers } from '@/components/shared/floating-stickers'
@@ -13,9 +14,15 @@ export function ContactSection() {
       <FloatingStickers stickerIndices={[4, 7, 10]} positionIndices={[1, 3, 5]} />
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-pink-text md:text-4xl animateHeading">
-            Get a Quote
-          </h2>
+          <div className="mb-6 flex justify-center animateHeading">
+            <Image
+              src="/images/pages/get-a-quote.avif"
+              alt="Get a Quote"
+              width={500}
+              height={140}
+              className="h-20 w-auto md:h-28 lg:h-32"
+            />
+          </div>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground animateText">
             Tell us about your event and we&apos;ll get back to you with a custom quote
           </p>
@@ -77,6 +84,7 @@ export function ContactSection() {
           </div>
         </div>
       </div>
+
     </section>
   )
 }

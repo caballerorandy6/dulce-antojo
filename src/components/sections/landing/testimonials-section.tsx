@@ -8,7 +8,7 @@ export function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="relative bg-pink-soft/70 px-4 py-16 md:py-24"
+      className="relative bg-cream-bg px-4 py-16 md:py-24 pb-24 md:pb-32"
     >
       {/* Pattern: 1 left, 1 right, 1 bottom */}
       <FloatingStickers stickerIndices={[2, 5, 8]} positionIndices={[0, 2, 4]} />
@@ -59,6 +59,9 @@ export function TestimonialsSection() {
           ))}
         </div>
       </div>
+
+      {/* Gradient fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-b from-transparent to-pink-soft pointer-events-none" />
     </section>
   )
 }

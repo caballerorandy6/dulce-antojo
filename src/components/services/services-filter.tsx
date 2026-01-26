@@ -18,12 +18,12 @@ import type { Service } from '@/types'
 
 const serviceImages: Record<string, string> = {
   'mini-pancakes': '/images/services/mini-pancakes.avif',
-  'paletas-locas': '/images/services/paletas-locas.avif',
+  'paletas-locas': '/images/services/paleta.avif',
   'churro-sundaes': '/images/services/churro-sundaes.avif',
-  'sundaes': '/images/services/sundaes-1.avif',
-  'corn-in-a-cup': '/images/services/corn-in-a-cup.avif',
+  'sundaes': '/images/services/sundae.avif',
+  'corn-in-a-cup': '/images/services/corn-in-a-cup-1.avif',
   'tosti-elote': '/images/services/tosti-elote-2.avif',
-  'mix-and-match': '/images/services/mix-and-match-1.avif',
+  'mix-and-match': '/images/services/mix-and-match-3.avif',
   'ramen-maruchan': '/images/services/ramen-2.avif',
   'paleta-cart-rental': '/images/services/paletas-cart-1.avif',
   'sorbet': '/images/services/mango-loco-1.avif',

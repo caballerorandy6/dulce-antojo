@@ -35,8 +35,8 @@ export function CTASection() {
         >
           <source src="/images/videos/video-5.webm" type="video/webm" />
         </video>
-        {/* Overlay - Rosa oscuro que combina con la app */}
-        <div className="absolute inset-0 bg-pink-dark/75" />
+        {/* Gradient overlay - smooth transition from contact section */}
+        <div className="absolute inset-0 bg-linear-to-b from-pink-bg via-pink-accent/50 to-pink-dark/70" />
       </div>
 
       {/* Content */}
