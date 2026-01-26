@@ -41,27 +41,29 @@ export default function GalleryPage() {
       </section>
 
       {/* Gallery with Filter */}
-      <section className="px-4 py-16">
+      <section className="relative px-4 py-16 pb-24">
         <div className="mx-auto max-w-6xl">
           <GalleryFilter />
         </div>
+        {/* Gradient fade to CTA section */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-b from-transparent to-pink-soft pointer-events-none" />
       </section>
 
       {/* Combined CTA Section */}
-      <section className="relative overflow-hidden bg-pink-soft px-4 py-16">
+      <section className="relative overflow-hidden bg-pink-soft px-4 py-16 pt-8">
         <FloatingStickers
           stickerIndices={[0, 3, 6, 9]}
           positionIndices={[0, 2, 4, 5]}
         />
         <div className="relative mx-auto max-w-5xl">
           <div className="grid gap-8 md:grid-cols-2">
-            {/* Instagram Card */}
-            <div className="instagram-card rounded-2xl bg-white p-8 text-center shadow-lg border border-pink-medium/20 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            {/* Social Media Card */}
+            <div className="social-card rounded-2xl bg-white p-8 text-center shadow-lg border border-pink-medium/20 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center">
                 <Lordicon
-                  src="/icons/instagram.json"
+                  src="/icons/love-heart.json"
                   trigger="hover"
-                  target=".instagram-card"
+                  target=".social-card"
                   size={64}
                 />
               </div>
@@ -71,20 +73,48 @@ export default function GalleryPage() {
               <p className="mb-6 text-muted-foreground">
                 Behind-the-scenes content, latest events, and sweet moments.
               </p>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-pink-accent text-pink-accent hover:bg-pink-accent hover:text-white transition-colors"
-              >
-                <a
-                  href={businessInfo.contact.instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="w-full sm:w-auto border-pink-accent text-pink-accent hover:bg-pink-accent hover:text-white transition-colors"
                 >
-                  {businessInfo.contact.instagram}
-                </a>
-              </Button>
+                  <a
+                    href={businessInfo.contact.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2"
+                  >
+                    <Lordicon
+                      src="/icons/instagram.json"
+                      trigger="hover"
+                      size={24}
+                    />
+                    Instagram
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="w-full sm:w-auto border-pink-accent text-pink-accent hover:bg-pink-accent hover:text-white transition-colors"
+                >
+                  <a
+                    href={businessInfo.contact.facebookUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2"
+                  >
+                    <Lordicon
+                      src="/icons/facebook.json"
+                      trigger="hover"
+                      size={24}
+                    />
+                    Facebook
+                  </a>
+                </Button>
+              </div>
             </div>
 
             {/* Quote Card */}
