@@ -19,7 +19,7 @@ export default function FAQPage() {
       <section className="relative overflow-hidden px-4 pt-24 pb-16 md:pt-32 md:pb-24">
         {/* Background Image */}
         <Image
-          src="/images/faq/faq-1.avif"
+          src="/images/pages/faq.avif"
           alt="Frequently asked questions about Dulce Antojo"
           fill
           className="object-cover blur-[0.5px] brightness-90"

@@ -2,26 +2,97 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { ArrowLeft, Check } from 'lucide-react'
+import { ArrowLeft, Check, Sparkles } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { ServiceGallery } from '@/components/services/service-gallery'
+import { Lordicon } from '@/components/shared/lordicon'
 import { services } from '@/lib/constants'
 
 const serviceImages: Record<string, string> = {
-  'mini-pancakes': '/images/landing/mini-pancakes.avif',
-  'paletas-locas': '/images/landing/paletas-locas.avif',
-  'churro-sundaes': '/images/landing/churro-sundaes.avif',
-  'sundaes': '/images/landing/sundaes-1.avif',
-  'corn-in-a-cup': '/images/landing/corn-in-a-cup.avif',
-  'tosti-elote': '/images/landing/tosti-elote-2.avif',
-  'mix-and-match': '/images/landing/mix-and-match-1.avif',
-  'ramen-maruchan': '/images/carousel/ramen-2.avif',
-  'paleta-cart-rental': '/images/carousel/paletas-cart-1.avif',
-  'sorbet': '/images/carousel/mango-loco-1.avif',
+  'mini-pancakes': '/images/services/mini-pancakes.avif',
+  'paletas-locas': '/images/services/paletas-locas.avif',
+  'churro-sundaes': '/images/services/churro-sundaes.avif',
+  'sundaes': '/images/services/sundaes-1.avif',
+  'corn-in-a-cup': '/images/services/corn-in-a-cup.avif',
+  'tosti-elote': '/images/services/tosti-elote-2.avif',
+  'mix-and-match': '/images/services/mix-and-match-1.avif',
+  'ramen-maruchan': '/images/services/ramen-2.avif',
+  'paleta-cart-rental': '/images/services/paletas-cart-1.avif',
+  'sorbet': '/images/services/mango-loco-1.avif',
   'churros': '/images/services/churros.avif',
-  'fresa-cups': '/images/carousel/fresa-cup-1.avif',
-  'snack-cup': '/images/carousel/snack-cup-1.avif',
+  'fresa-cups': '/images/services/fresa-cup-1.avif',
+  'snack-cup': '/images/services/snack-cup-1.avif',
+}
+
+// Gallery images for each service (max 3 per service)
+const serviceGalleryImages: Record<string, string[]> = {
+  'mini-pancakes': [
+    '/images/services/mini-pancakes.avif',
+    '/images/services/mini-pankakes-1.avif',
+    '/images/services/mini-pankakes-2.avif',
+  ],
+  'paletas-locas': [
+    '/images/services/paletas-locas.avif',
+    '/images/services/paleta-1.avif',
+    '/images/services/paleta-2.avif',
+  ],
+  'churro-sundaes': [
+    '/images/services/churro-sundaes.avif',
+    '/images/services/churro-sundae-1.avif',
+    '/images/services/churro-sundae-2.avif',
+  ],
+  'sundaes': [
+    '/images/services/sundaes-1.avif',
+    '/images/services/sundaes-1.avif',
+    '/images/services/sundaes-1.avif', // TODO: Add more sundae images
+  ],
+  'corn-in-a-cup': [
+    '/images/services/corn-in-a-cup.avif',
+    '/images/services/elote-cup-1.avif',
+    '/images/services/elote-cup-2.avif',
+  ],
+  'tosti-elote': [
+    '/images/services/tosti-elote-2.avif',
+    '/images/services/elote-cup-2.avif',
+    '/images/services/elote-1.avif',
+  ],
+  'mix-and-match': [
+    '/images/services/mix-and-match-1.avif',
+    '/images/services/cart-4.avif',
+    '/images/hero/cart-18.avif',
+  ],
+  'ramen-maruchan': [
+    '/images/services/ramen-2.avif',
+    '/images/services/ramen-1.avif',
+    '/images/services/ramen-3.avif',
+  ],
+  'paleta-cart-rental': [
+    '/images/services/paletas-cart-1.avif',
+    '/images/services/paletas-cart-2.avif',
+    '/images/services/cart-4.avif',
+  ],
+  'sorbet': [
+    '/images/services/mango-loco-1.avif',
+    '/images/services/mango-loco-1.avif', // TODO: Add more sorbet images
+    '/images/services/mango-loco-1.avif',
+  ],
+  'churros': [
+    '/images/services/churros.avif',
+    '/images/services/churro-sundae-1.avif',
+    '/images/services/churro-sundae-2.avif',
+  ],
+  'fresa-cups': [
+    '/images/services/fresa-cup-1.avif',
+    '/images/services/fresa-cup-2.avif',
+    '/images/services/fresa-cup-3.avif',
+  ],
+  'snack-cup': [
+    '/images/services/snack-cup-1.avif',
+    '/images/services/snack-cup-2.avif',
+    '/images/services/snack-cup-3.avif',
+  ],
 }
 
 interface PageProps {
@@ -81,18 +152,21 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-8 lg:grid-cols-2">
             {/* Image */}
-            <div className="relative h-64 overflow-hidden rounded-2xl bg-pink-soft lg:h-96">
+            <div className="animateProjectCard group relative h-64 overflow-hidden rounded-2xl bg-pink-soft lg:h-96 border border-pink-medium/30 transition-all duration-300 hover:border-gold hover:shadow-xl">
               {serviceImages[service.id] ? (
                 <Image
                   src={serviceImages[service.id]}
                   alt={service.name}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                   sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
                 />
               ) : (
                 <div className="absolute inset-0 bg-pink-soft" />
               )}
+              {/* Shine effect */}
+              <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             </div>
 
             {/* Info */}
@@ -124,6 +198,14 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               >
                 <Link href="/contact">Request Quote</Link>
               </Button>
+
+              {/* Mini Gallery */}
+              {serviceGalleryImages[service.id] && (
+                <ServiceGallery
+                  images={serviceGalleryImages[service.id]}
+                  serviceName={service.name}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -132,13 +214,25 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       {/* What's Included */}
       <section className="bg-pink-soft px-4 py-16">
         <div className="mx-auto max-w-6xl">
-          <h2 className="mb-8 text-center text-2xl font-bold text-pink-text md:text-3xl">
-            What&apos;s Included
-          </h2>
+          <div className="animateHeading mb-12 text-center">
+            <span className="mb-2 inline-block text-sm font-medium uppercase tracking-wider text-pink-accent">
+              Everything you get
+            </span>
+            <h2 className="text-2xl font-bold text-pink-text md:text-3xl">
+              What&apos;s Included
+            </h2>
+          </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {/* Bento Grid Layout */}
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {/* Main Card - Featured/Larger */}
             {service.includes.main && (
-              <IncludeCard title="Main" content={service.includes.main} />
+              <IncludeCard
+                title="Main"
+                content={service.includes.main}
+                icon="main"
+                featured
+              />
             )}
 
             {service.includes.drizzles && (
@@ -146,10 +240,11 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 title="Drizzles"
                 content={
                   service.includes.drizzles.quantity
-                    ? `${service.includes.drizzles.quantity} options`
+                    ? `Choose ${service.includes.drizzles.quantity}`
                     : 'Multiple options'
                 }
                 options={service.includes.drizzles.options}
+                icon="drizzles"
               />
             )}
 
@@ -158,26 +253,29 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 title="Toppings"
                 content={
                   service.includes.toppings.quantity
-                    ? `${service.includes.toppings.quantity} toppings`
+                    ? `Pick ${service.includes.toppings.quantity}`
                     : 'Various toppings'
                 }
                 options={service.includes.toppings.options}
+                icon="toppings"
               />
             )}
 
             {service.includes.flavors && (
               <IncludeCard
                 title="Flavors"
-                content={`${service.includes.flavors.quantity} flavors available`}
+                content={`${service.includes.flavors.quantity} available`}
                 options={service.includes.flavors.options}
+                icon="flavors"
               />
             )}
 
             {service.includes.chips && (
               <IncludeCard
                 title="Chips"
-                content={`${service.includes.chips.quantity} chip options`}
+                content={`${service.includes.chips.quantity} options`}
                 options={service.includes.chips.options}
+                icon="chips"
               />
             )}
           </div>
@@ -216,37 +314,95 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   )
 }
 
+const iconMap = {
+  main: '/icons/main-plate.json',
+  drizzles: '/icons/drizzle-honey.json',
+  toppings: '/icons/toppings-cherry.json',
+  flavors: '/icons/flavors-icecream.json',
+  chips: '/icons/chips-cookie.json',
+}
+
+const gradientMap = {
+  main: 'from-pink-accent/20 via-pink-soft to-white',
+  drizzles: 'from-purple/10 via-pink-soft/50 to-white',
+  toppings: 'from-coral/10 via-pink-soft/50 to-white',
+  flavors: 'from-gold-accent/10 via-pink-soft/50 to-white',
+  chips: 'from-pink-medium/20 via-pink-soft/50 to-white',
+}
+
 function IncludeCard({
   title,
   content,
   options,
+  icon = 'main',
+  featured = false,
 }: {
   title: string
   content: string
   options?: string[]
+  icon?: keyof typeof iconMap
+  featured?: boolean
 }) {
+  const iconSrc = iconMap[icon]
+  const gradient = gradientMap[icon]
+
   return (
-    <Card className="border-pink-medium/30">
-      <CardContent className="p-6">
-        <h3 className="mb-2 font-semibold text-pink-text">{title}</h3>
-        <p className="mb-3 text-muted-foreground">{content}</p>
+    <Card
+      className={`animateProjectCard group relative overflow-hidden border-pink-medium/30 transition-all duration-300 hover:border-gold hover:shadow-xl hover:-translate-y-2 ${
+        featured ? 'md:row-span-2 bg-linear-to-br ' + gradient : 'bg-white'
+      }`}
+    >
+      {/* Shine effect */}
+      <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+
+      {/* Decorative corner accent */}
+      <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-pink-accent/10 transition-transform duration-500 group-hover:scale-150" />
+
+      <CardContent className={`relative ${featured ? 'p-8' : 'p-6'}`}>
+        {/* Lordicon animated icon */}
+        <div className={`mb-4 inline-flex items-center justify-center rounded-2xl bg-linear-to-br from-pink-accent to-pink-dark shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 ${featured ? 'p-3' : 'p-2'}`}>
+          <Lordicon
+            src={iconSrc}
+            trigger="hover"
+            size={featured ? 48 : 36}
+          />
+        </div>
+
+        <h3 className={`mb-2 font-bold text-pink-text ${featured ? 'text-2xl' : 'text-lg'}`}>
+          {title}
+        </h3>
+        <p className={`text-muted-foreground ${featured ? 'text-lg mb-6' : 'mb-4'}`}>
+          {content}
+        </p>
+
+        {/* Options as badges */}
         {options && options.length > 0 && (
-          <ul className="space-y-1">
-            {options.slice(0, 4).map((option) => (
-              <li
+          <div className="flex flex-wrap gap-2">
+            {options.slice(0, featured ? 6 : 4).map((option) => (
+              <span
                 key={option}
-                className="flex items-center text-sm text-muted-foreground"
+                className="inline-flex items-center gap-1 rounded-full bg-pink-bg px-3 py-1 text-sm font-medium text-pink-text transition-colors duration-200 hover:bg-pink-accent hover:text-white cursor-default"
               >
-                <Check className="mr-2 h-3 w-3 text-pink-accent" />
+                <Check className="h-3 w-3" />
                 {option}
-              </li>
+              </span>
             ))}
-            {options.length > 4 && (
-              <li className="text-sm text-muted-foreground">
-                +{options.length - 4} more...
-              </li>
+            {options.length > (featured ? 6 : 4) && (
+              <span className="inline-flex items-center rounded-full bg-pink-accent/10 px-3 py-1 text-sm font-medium text-pink-accent">
+                +{options.length - (featured ? 6 : 4)} more
+              </span>
             )}
-          </ul>
+          </div>
+        )}
+
+        {/* Featured badge */}
+        {featured && (
+          <div className="absolute right-4 top-4">
+            <span className="inline-flex items-center gap-1 rounded-full bg-gold-accent px-3 py-1 text-xs font-semibold text-white shadow-md">
+              <Sparkles className="h-3 w-3" />
+              Included
+            </span>
+          </div>
         )}
       </CardContent>
     </Card>

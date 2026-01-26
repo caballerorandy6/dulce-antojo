@@ -18,7 +18,7 @@ export default function ContactPage() {
       <section className="relative overflow-hidden px-4 pt-24 pb-16 md:pt-32 md:pb-24">
         {/* Background Image */}
         <Image
-          src="/images/contact/contact-1.avif"
+          src="/images/pages/contact.avif"
           alt="Contact Dulce Antojo for your event"
           fill
           className="object-cover blur-[0.5px] brightness-90"

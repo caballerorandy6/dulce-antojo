@@ -33,7 +33,7 @@ export function CTASection() {
           playsInline
           className="h-full w-full object-cover"
         >
-          <source src="/images/landing/video-5.webm" type="video/webm" />
+          <source src="/images/videos/video-5.webm" type="video/webm" />
         </video>
         {/* Overlay - Rosa oscuro que combina con la app */}
         <div className="absolute inset-0 bg-pink-dark/75" />

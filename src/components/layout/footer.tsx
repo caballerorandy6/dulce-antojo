@@ -13,7 +13,7 @@ export function Footer() {
           {/* Brand */}
           <div>
             <Image
-              src="/images/nav/logo.avif"
+              src="/images/brand/logo.avif"
               alt={`${businessInfo.name} - Mini Pancakes & More`}
               width={400}
               height={160}

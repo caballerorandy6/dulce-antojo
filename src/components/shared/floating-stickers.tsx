@@ -1,19 +1,19 @@
 import Image from 'next/image'
 
 const stickers = [
-  '/images/landing/sticker-1.avif',
-  '/images/landing/sticker-2.avif',
-  '/images/landing/sticker-3.avif',
-  '/images/landing/sticker-4.avif',
-  '/images/landing/sticker-5.avif',
-  '/images/landing/sticker-6.avif',
-  '/images/landing/sticker-7.avif',
-  '/images/landing/sticker-8.avif',
-  '/images/landing/sticker-9.avif',
-  '/images/landing/sticker-10.avif',
-  '/images/landing/sticker-11.avif',
-  '/images/landing/sticker-12.avif',
-  '/images/landing/sticker-13.avif',
+  '/images/stickers/sticker-1.avif',
+  '/images/stickers/sticker-2.avif',
+  '/images/stickers/sticker-3.avif',
+  '/images/stickers/sticker-4.avif',
+  '/images/stickers/sticker-5.avif',
+  '/images/stickers/sticker-6.avif',
+  '/images/stickers/sticker-7.avif',
+  '/images/stickers/sticker-8.avif',
+  '/images/stickers/sticker-9.avif',
+  '/images/stickers/sticker-10.avif',
+  '/images/stickers/sticker-11.avif',
+  '/images/stickers/sticker-12.avif',
+  '/images/stickers/sticker-13.avif',
 ]
 
 // Animation classes for variety

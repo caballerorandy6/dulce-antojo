@@ -18,7 +18,7 @@ export default function ServicesPage() {
       <section className="relative overflow-hidden px-4 pt-24 pb-16 md:pt-32 md:pb-24">
         {/* Background Image */}
         <Image
-          src="/images/services/cart-our-services.avif"
+          src="/images/pages/services.avif"
           alt="Dulce Antojo dessert cart services"
           fill
           className="object-cover object-bottom blur-[0.5px] brightness-90"

@@ -17,19 +17,19 @@ import { services, categories } from '@/lib/constants'
 import type { Service } from '@/types'
 
 const serviceImages: Record<string, string> = {
-  'mini-pancakes': '/images/landing/mini-pancakes.avif',
-  'paletas-locas': '/images/landing/paletas-locas.avif',
-  'churro-sundaes': '/images/landing/churro-sundaes.avif',
-  'sundaes': '/images/landing/sundaes-1.avif',
-  'corn-in-a-cup': '/images/landing/corn-in-a-cup.avif',
-  'tosti-elote': '/images/landing/tosti-elote-2.avif',
-  'mix-and-match': '/images/landing/mix-and-match.avif',
-  'ramen-maruchan': '/images/carousel/ramen-2.avif',
-  'paleta-cart-rental': '/images/carousel/paletas-cart-1.avif',
-  'sorbet': '/images/carousel/mango-loco-1.avif',
+  'mini-pancakes': '/images/services/mini-pancakes.avif',
+  'paletas-locas': '/images/services/paletas-locas.avif',
+  'churro-sundaes': '/images/services/churro-sundaes.avif',
+  'sundaes': '/images/services/sundaes-1.avif',
+  'corn-in-a-cup': '/images/services/corn-in-a-cup.avif',
+  'tosti-elote': '/images/services/tosti-elote-2.avif',
+  'mix-and-match': '/images/services/mix-and-match-1.avif',
+  'ramen-maruchan': '/images/services/ramen-2.avif',
+  'paleta-cart-rental': '/images/services/paletas-cart-1.avif',
+  'sorbet': '/images/services/mango-loco-1.avif',
   'churros': '/images/services/churros.avif',
-  'fresa-cups': '/images/carousel/fresa-cup-1.avif',
-  'snack-cup': '/images/carousel/snack-cup-1.avif',
+  'fresa-cups': '/images/services/fresa-cup-1.avif',
+  'snack-cup': '/images/services/snack-cup-1.avif',
 }
 
 export function ServicesFilter() {

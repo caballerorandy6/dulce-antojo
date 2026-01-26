@@ -7,7 +7,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative bg-pink-soft px-4 py-16 md:py-24"
+      className="relative bg-pink-bg px-4 py-16 md:py-24"
     >
       {/* Pattern: 1 left, 1 right, 1 bottom */}
       <FloatingStickers stickerIndices={[4, 7, 10]} positionIndices={[1, 3, 5]} />

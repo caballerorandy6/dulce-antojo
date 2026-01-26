@@ -20,13 +20,13 @@ const categoryLabels: Record<string, string> = {
 }
 
 const serviceImages: Record<string, string> = {
-  'mini-pancakes': '/images/landing/mini-pancakes.avif',
-  'paletas-locas': '/images/landing/paletas-locas.avif',
-  'churro-sundaes': '/images/landing/churro-sundaes.avif',
-  'sundaes': '/images/landing/sundaes-1.avif',
-  'corn-in-a-cup': '/images/landing/corn-in-a-cup.avif',
-  'tosti-elote': '/images/landing/tosti-elote-2.avif',
-  'mix-and-match': '/images/landing/mix-and-match-1.avif',
+  'mini-pancakes': '/images/services/mini-pancakes.avif',
+  'paletas-locas': '/images/services/paletas-locas.avif',
+  'churro-sundaes': '/images/services/churro-sundaes.avif',
+  'sundaes': '/images/services/sundaes-1.avif',
+  'corn-in-a-cup': '/images/services/corn-in-a-cup.avif',
+  'tosti-elote': '/images/services/tosti-elote-2.avif',
+  'mix-and-match': '/images/services/mix-and-match-1.avif',
 }
 
 export function ServicesSection() {
@@ -35,15 +35,21 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative px-4 py-16 md:py-24"
+      className="relative bg-pink-bg/90 px-4 py-16 md:py-24"
     >
       {/* Pattern: 1 left, 2 right */}
       <FloatingStickers stickerIndices={[0, 3, 6]} positionIndices={[0, 2, 3]} />
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-pink-text md:text-4xl animateHeading">
-            Our Services
-          </h2>
+          <div className="mb-6 flex justify-center animateHeading">
+            <Image
+              src="/images/pages/our-services.avif"
+              alt="Our Services"
+              width={500}
+              height={140}
+              className="h-20 w-auto md:h-28 lg:h-32"
+            />
+          </div>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground animateText">
             Delicious treats for every occasion. From sweet mini pancakes to savory elote cups.
           </p>

@@ -16,7 +16,7 @@ export function FAQSection() {
   return (
     <section
       id="faq"
-      className="relative px-4 py-16 md:py-24"
+      className="relative bg-pink-bg/80 px-4 py-16 md:py-24"
     >
       {/* Pattern: 2 left, 1 right */}
       <FloatingStickers stickerIndices={[3, 6, 12]} positionIndices={[0, 1, 3]} />

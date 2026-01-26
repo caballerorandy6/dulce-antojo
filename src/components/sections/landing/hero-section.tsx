@@ -60,7 +60,7 @@ export function HeroSection() {
           {/* Logo */}
           <div className="mb-4 md:mb-6 animate-on-load animate-scale-in">
             <Image
-              src="/images/nav/logo.avif"
+              src="/images/brand/logo.avif"
               alt={`${businessInfo.name} - Mini Pancakes & More`}
               width={500}
               height={200}

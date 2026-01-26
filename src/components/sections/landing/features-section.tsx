@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Card, CardContent } from '@/components/ui/card'
 import { FloatingStickers } from '@/components/shared/floating-stickers'
 import { Lordicon } from '@/components/shared/lordicon'
@@ -29,15 +30,21 @@ export function FeaturesSection() {
   return (
     <section
       id="features"
-      className="relative bg-pink-soft px-4 py-16 md:py-24"
+      className="relative bg-pink-medium/20 px-4 py-16 md:py-24"
     >
       {/* Pattern: 2 left, 1 right */}
       <FloatingStickers stickerIndices={[1, 4, 7]} positionIndices={[0, 1, 2]} />
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-pink-text md:text-4xl animateHeading">
-            Why Choose Us
-          </h2>
+          <div className="mb-6 flex justify-center animateHeading">
+            <Image
+              src="/images/pages/why-choose-us.PNG"
+              alt="Why Choose Us"
+              width={500}
+              height={140}
+              className="h-20 w-auto md:h-28 lg:h-32"
+            />
+          </div>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground animateText">
             Every booking comes with these sweet perks
           </p>
