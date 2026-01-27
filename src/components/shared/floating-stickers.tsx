@@ -86,7 +86,8 @@ export function FloatingStickers({
               alt=""
               width={config.size}
               height={config.size}
-              className="select-none w-10 h-10 md:w-12 md:h-12 lg:w-auto lg:h-auto"
+              className="select-none"
+              style={{ width: 'auto', height: 'auto' }}
               aria-hidden="true"
             />
           </div>

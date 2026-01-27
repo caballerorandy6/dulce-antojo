@@ -44,7 +44,7 @@ export function HeroSection() {
           poster="/images/hero/cart-18.avif"
           className="h-full w-full object-cover"
         >
-          <source src="/images/hero/hero-video.webm" type="video/webm" />
+          <source src="/images/videos/hero-video.webm" type="video/webm" />
         </video>
         {/* Overlay for better text readability + gradient transition to carousel */}
         <div className="absolute inset-0 bg-linear-to-b from-pink-text/85 via-pink-text/65 to-pink-soft" />
@@ -64,7 +64,8 @@ export function HeroSection() {
               alt={`${businessInfo.name} - Mini Pancakes & More`}
               width={500}
               height={200}
-              className="h-48 w-auto md:h-60 lg:h-72"
+              className="h-48 md:h-60 lg:h-72"
+              style={{ width: 'auto' }}
               priority
             />
           </div>

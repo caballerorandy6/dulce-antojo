@@ -17,7 +17,8 @@ export function Footer() {
               alt={`${businessInfo.name} - Mini Pancakes & More`}
               width={400}
               height={160}
-              className="mb-4 h-40 w-auto"
+              className="mb-4 h-40"
+              style={{ width: 'auto' }}
             />
             <p className="text-white/80">{businessInfo.tagline}</p>
             <p className="mt-2 text-sm text-white/60">
