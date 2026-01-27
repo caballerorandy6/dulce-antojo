@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { Instagram, MapPin, Clock } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { ContactForm } from '@/components/forms/contact-form'
+import { Lordicon } from '@/components/shared/lordicon'
+import { SocialCTA } from '@/components/shared/social-cta'
 import { businessInfo } from '@/lib/constants'
 
 export const metadata: Metadata = {
@@ -40,15 +41,20 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Content */}
-      <section className="px-4 py-16">
+      <section className="relative px-4 py-16 pb-24">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-8 lg:grid-cols-3">
             {/* Contact Info */}
             <div className="space-y-6">
-              <Card className="animateProjectCard border-pink-medium/30">
+              <Card className="info-card-location animateProjectCard border-pink-medium/30 transition-all duration-300 hover:border-gold hover:shadow-lg">
                 <CardContent className="p-6">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-pink-soft">
-                    <MapPin className="h-6 w-6 text-pink-accent" />
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center">
+                    <Lordicon
+                      src="/icons/cart.json"
+                      trigger="hover"
+                      target=".info-card-location"
+                      size={48}
+                    />
                   </div>
                   <h3 className="mb-2 font-semibold text-pink-text">
                     Service Area
@@ -62,10 +68,15 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
 
-              <Card className="animateProjectCard border-pink-medium/30">
+              <Card className="info-card-time animateProjectCard border-pink-medium/30 transition-all duration-300 hover:border-gold hover:shadow-lg">
                 <CardContent className="p-6">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-pink-soft">
-                    <Clock className="h-6 w-6 text-pink-accent" />
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center">
+                    <Lordicon
+                      src="/icons/clock-time.json"
+                      trigger="hover"
+                      target=".info-card-time"
+                      size={48}
+                    />
                   </div>
                   <h3 className="mb-2 font-semibold text-pink-text">
                     Response Time
@@ -79,25 +90,51 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
 
-              <Card className="animateProjectCard border-pink-medium/30">
+              <Card className="info-card-social animateProjectCard border-pink-medium/30 transition-all duration-300 hover:border-gold hover:shadow-lg">
                 <CardContent className="p-6">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-pink-soft">
-                    <Instagram className="h-6 w-6 text-pink-accent" />
-                  </div>
-                  <h3 className="mb-2 font-semibold text-pink-text">
-                    Follow Us
+                  <h3 className="mb-4 font-semibold text-pink-text">
+                    Get in Touch
                   </h3>
-                  <a
-                    href={businessInfo.contact.instagramUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-pink-accent hover:text-pink-dark"
-                  >
-                    {businessInfo.contact.instagram}
-                  </a>
-                  <p className="text-sm text-muted-foreground">
-                    DM us for quick questions
-                  </p>
+                  <div className="space-y-3">
+                    <a
+                      href={`tel:${businessInfo.contact.phone}`}
+                      className="flex items-center gap-3 text-muted-foreground hover:text-pink-accent transition-colors"
+                    >
+                      <Lordicon
+                        src="/icons/phone.json"
+                        trigger="hover"
+                        colors={{ primary: '#FF6B95', secondary: '#FF6B95' }}
+                        size={32}
+                      />
+                      <span>{businessInfo.contact.phone}</span>
+                    </a>
+                    <a
+                      href={businessInfo.contact.instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-muted-foreground hover:text-pink-accent transition-colors"
+                    >
+                      <Lordicon
+                        src="/icons/instagram.json"
+                        trigger="hover"
+                        size={32}
+                      />
+                      <span>{businessInfo.contact.instagram}</span>
+                    </a>
+                    <a
+                      href={businessInfo.contact.facebookUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-muted-foreground hover:text-pink-accent transition-colors"
+                    >
+                      <Lordicon
+                        src="/icons/facebook.json"
+                        trigger="hover"
+                        size={32}
+                      />
+                      <span>{businessInfo.contact.facebook}</span>
+                    </a>
+                  </div>
                 </CardContent>
               </Card>
             </div>
@@ -108,7 +145,14 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
+        {/* Gradient fade to CTA section */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-b from-transparent to-pink-soft pointer-events-none" />
       </section>
+
+      <SocialCTA
+        quoteTitle="Prefer Social Media?"
+        quoteDescription="Follow us for updates and DM us anytime!"
+      />
     </div>
   )
 }
