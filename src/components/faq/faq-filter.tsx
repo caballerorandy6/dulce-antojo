@@ -47,7 +47,7 @@ export function FAQFilter() {
       {/* Filter */}
       <div className="mb-8 flex justify-center">
         <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-          <SelectTrigger className="w-[280px] border-pink-medium/50 bg-white">
+          <SelectTrigger className="w-[280px] border-pink-medium/50 bg-white" aria-label="Filter questions by category">
             <SelectValue placeholder="Filter by category" />
           </SelectTrigger>
           <SelectContent>

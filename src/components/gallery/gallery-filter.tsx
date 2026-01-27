@@ -125,7 +125,7 @@ export function GalleryFilter() {
       {/* Filter */}
       <div className="mb-8 flex justify-center">
         <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-          <SelectTrigger className="w-[280px] border-pink-medium/50 bg-white">
+          <SelectTrigger className="w-[280px] border-pink-medium/50 bg-white" aria-label="Filter gallery by category">
             <SelectValue placeholder="Filter by category" />
           </SelectTrigger>
           <SelectContent>
@@ -157,10 +157,12 @@ export function GalleryFilter() {
               {/* Category Grid */}
               <div className="flex flex-wrap justify-center gap-4">
                 {items.map((item) => (
-                  <div
+                  <button
+                    type="button"
                     key={item.id}
                     onClick={() => setSelectedImage(item)}
-                    className="animateProjectCard group relative w-full aspect-square overflow-hidden rounded-2xl bg-pink-soft md:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)] cursor-pointer border border-pink-medium/30 transition-all duration-300 hover:border-gold hover:shadow-xl hover:-translate-y-2"
+                    aria-label={`View ${item.serviceName}: ${item.alt}`}
+                    className="animateProjectCard group relative w-full aspect-square overflow-hidden rounded-2xl bg-pink-soft md:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)] cursor-pointer border border-pink-medium/30 transition-all duration-300 hover:border-gold hover:shadow-xl hover:-translate-y-2 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2"
                   >
                     <Image
                       src={item.src}
@@ -177,7 +179,7 @@ export function GalleryFilter() {
                         {item.serviceName}
                       </span>
                     </div>
-                  </div>
+                  </button>
                 ))}
               </div>
             </section>

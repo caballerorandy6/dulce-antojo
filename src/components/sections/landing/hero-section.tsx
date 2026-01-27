@@ -38,6 +38,7 @@ export function HeroSection() {
           poster="/images/hero/cart-18.avif"
           className="h-full w-full object-cover"
           onLoadedMetadata={handleVideoLoad}
+          aria-hidden="true"
         >
           <source src="/images/videos/hero-video.webm" type="video/webm" />
         </video>
@@ -72,7 +73,8 @@ export function HeroSection() {
 
           {/* Social Proof */}
           <div className="mb-4 flex items-center justify-center gap-2 text-white/90 animate-on-load animate-fade-in animation-delay-300">
-            <span className="text-[#FFD700] text-sm md:text-base drop-shadow-[0_0_8px_rgba(255,215,0,0.6)]">★★★★★</span>
+            <span className="text-[#FFD700] text-sm md:text-base drop-shadow-[0_0_8px_rgba(255,215,0,0.6)]" aria-hidden="true">★★★★★</span>
+            <span className="sr-only">5 out of 5 stars rating</span>
             <span className="text-xs md:text-sm">100+ Happy Events</span>
           </div>
         </div>

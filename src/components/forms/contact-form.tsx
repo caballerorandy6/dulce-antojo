@@ -112,11 +112,13 @@ export function ContactForm() {
               <Input
                 id="name"
                 placeholder="Your name"
+                aria-describedby={errors.name ? 'name-error' : undefined}
+                aria-invalid={errors.name ? true : undefined}
                 {...register('name')}
                 className={errors.name ? 'border-destructive' : ''}
               />
               {errors.name && (
-                <p className="text-sm text-destructive">{errors.name.message}</p>
+                <p id="name-error" role="alert" className="text-sm text-destructive">{errors.name.message}</p>
               )}
             </div>
             <div className="space-y-2">
@@ -125,11 +127,13 @@ export function ContactForm() {
                 id="email"
                 type="email"
                 placeholder="your@email.com"
+                aria-describedby={errors.email ? 'email-error' : undefined}
+                aria-invalid={errors.email ? true : undefined}
                 {...register('email')}
                 className={errors.email ? 'border-destructive' : ''}
               />
               {errors.email && (
-                <p className="text-sm text-destructive">{errors.email.message}</p>
+                <p id="email-error" role="alert" className="text-sm text-destructive">{errors.email.message}</p>
               )}
             </div>
           </div>
@@ -142,17 +146,25 @@ export function ContactForm() {
                 id="phone"
                 type="tel"
                 placeholder="(555) 123-4567"
+                aria-describedby={errors.phone ? 'phone-error' : undefined}
+                aria-invalid={errors.phone ? true : undefined}
                 {...register('phone')}
                 className={errors.phone ? 'border-destructive' : ''}
               />
               {errors.phone && (
-                <p className="text-sm text-destructive">{errors.phone.message}</p>
+                <p id="phone-error" role="alert" className="text-sm text-destructive">{errors.phone.message}</p>
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="eventType">Event Type *</Label>
+              <Label htmlFor="eventType" id="eventType-label">Event Type *</Label>
               <Select onValueChange={(value) => setValue('eventType', value, { shouldValidate: true })}>
-                <SelectTrigger className={errors.eventType ? 'border-destructive' : ''}>
+                <SelectTrigger
+                  id="eventType"
+                  aria-labelledby="eventType-label"
+                  aria-describedby={errors.eventType ? 'eventType-error' : undefined}
+                  aria-invalid={errors.eventType ? true : undefined}
+                  className={errors.eventType ? 'border-destructive' : ''}
+                >
                   <SelectValue placeholder="Select event type" />
                 </SelectTrigger>
                 <SelectContent>
@@ -164,7 +176,7 @@ export function ContactForm() {
                 </SelectContent>
               </Select>
               {errors.eventType && (
-                <p className="text-sm text-destructive">{errors.eventType.message}</p>
+                <p id="eventType-error" role="alert" className="text-sm text-destructive">{errors.eventType.message}</p>
               )}
             </div>
           </div>
@@ -177,11 +189,13 @@ export function ContactForm() {
                 id="eventDate"
                 type="date"
                 min={new Date().toISOString().split('T')[0]}
+                aria-describedby={errors.eventDate ? 'eventDate-error' : undefined}
+                aria-invalid={errors.eventDate ? true : undefined}
                 {...register('eventDate')}
                 className={errors.eventDate ? 'border-destructive' : ''}
               />
               {errors.eventDate && (
-                <p className="text-sm text-destructive">{errors.eventDate.message}</p>
+                <p id="eventDate-error" role="alert" className="text-sm text-destructive">{errors.eventDate.message}</p>
               )}
             </div>
             <div className="space-y-2">
@@ -190,19 +204,21 @@ export function ContactForm() {
                 id="guestCount"
                 type="number"
                 placeholder="50"
+                aria-describedby={errors.guestCount ? 'guestCount-error' : undefined}
+                aria-invalid={errors.guestCount ? true : undefined}
                 {...register('guestCount')}
                 className={errors.guestCount ? 'border-destructive' : ''}
               />
               {errors.guestCount && (
-                <p className="text-sm text-destructive">{errors.guestCount.message}</p>
+                <p id="guestCount-error" role="alert" className="text-sm text-destructive">{errors.guestCount.message}</p>
               )}
             </div>
           </div>
 
           {/* Services Selection */}
-          <div className="space-y-2">
-            <Label>Services of Interest *</Label>
-            <div className="grid gap-2 md:grid-cols-2">
+          <fieldset className="space-y-2">
+            <legend className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Services of Interest *</legend>
+            <div className="grid gap-2 md:grid-cols-2" role="group" aria-describedby={errors.services ? 'services-error' : undefined}>
               {services.map((service) => (
                 <label
                   key={service.id}
@@ -217,15 +233,16 @@ export function ContactForm() {
                     checked={selectedServices.includes(service.id)}
                     onChange={() => toggleService(service.id)}
                     className="sr-only"
+                    aria-checked={selectedServices.includes(service.id)}
                   />
                   <span className="text-sm">{service.name}</span>
                 </label>
               ))}
             </div>
             {errors.services && (
-              <p className="text-sm text-destructive">{errors.services.message}</p>
+              <p id="services-error" role="alert" className="text-sm text-destructive">{errors.services.message}</p>
             )}
-          </div>
+          </fieldset>
 
           {/* Message */}
           <div className="space-y-2">
@@ -249,12 +266,12 @@ export function ContactForm() {
 
           {/* Status Messages */}
           {submitStatus === 'success' && (
-            <p className="text-center text-sm text-green-600">
+            <p role="status" aria-live="polite" className="text-center text-sm text-green-600">
               Thank you! We&apos;ll get back to you soon.
             </p>
           )}
           {submitStatus === 'error' && (
-            <p className="text-center text-sm text-destructive">
+            <p role="alert" aria-live="assertive" className="text-center text-sm text-destructive">
               Something went wrong. Please try again.
             </p>
           )}

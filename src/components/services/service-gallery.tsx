@@ -40,7 +40,8 @@ export function ServiceGallery({ images, serviceName }: ServiceGalleryProps) {
             <button
               key={index}
               onClick={() => setSelectedImage(img)}
-              className="animateProjectCard relative aspect-square overflow-hidden rounded-xl bg-pink-soft cursor-pointer group border border-pink-medium/30 transition-all duration-300 hover:border-gold hover:shadow-lg hover:-translate-y-1"
+              aria-label={`View ${serviceName} photo ${index + 1}`}
+              className="animateProjectCard relative aspect-square overflow-hidden rounded-xl bg-pink-soft cursor-pointer group border border-pink-medium/30 transition-all duration-300 hover:border-gold hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2"
             >
               <Image
                 src={img}
