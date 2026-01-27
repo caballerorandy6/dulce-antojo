@@ -60,7 +60,7 @@ export function FloatingStickers({
   className = '',
 }: FloatingStickersProps) {
   return (
-    <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
+    <div className={`pointer-events-none absolute inset-0 overflow-hidden hide-mobile-landscape ${className}`}>
       {stickerIndices.map((stickerIdx, i) => {
         const posIdx = positionIndices[i] ?? i % stickerConfigs.length
         const config = stickerConfigs[posIdx]

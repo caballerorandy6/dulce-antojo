@@ -453,3 +453,10 @@
     box-shadow: 0 0 20px rgba(255, 107, 149, 0.5);
   }
 }
+
+/* Hide decorative elements in mobile landscape */
+@media (orientation: landscape) and (max-height: 500px) {
+  .hide-mobile-landscape {
+    display: none !important;
+  }
+}
