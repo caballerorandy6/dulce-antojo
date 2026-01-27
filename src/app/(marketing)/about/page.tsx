@@ -5,9 +5,9 @@ import { SocialCTA } from '@/components/shared/social-cta'
 import { businessInfo } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'About Us',
+  title: 'About Us - Houston Event Catering',
   description:
-    'Meet Aracely, founder of Dulce Antojo. Learn about our story and mission to bring sweet experiences to Houston events.',
+    'Meet Aracely, founder of Dulce Antojo. Learn about our story and mission to bring sweet dessert cart experiences to Houston events.',
 }
 
 export default function AboutPage() {

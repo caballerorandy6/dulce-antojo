@@ -4,9 +4,9 @@ import { ServicesFilter } from '@/components/services/services-filter'
 import { SocialCTA } from '@/components/shared/social-cta'
 
 export const metadata: Metadata = {
-  title: 'Services',
+  title: 'Dessert & Snack Cart Services for Events',
   description:
-    'Explore our dessert and snack cart services for events in Houston, TX. Mini pancakes, paletas, churros, elote, and more.',
+    'Explore our dessert and snack cart services for events in Houston, TX. Mini pancakes, paletas, churros, elote, and more. Book your event today!',
 }
 
 export default function ServicesPage() {

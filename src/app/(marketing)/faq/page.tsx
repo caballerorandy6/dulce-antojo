@@ -6,9 +6,9 @@ import { JsonLdFaq } from '@/components/seo/json-ld-faq'
 import { faqs } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'FAQ',
+  title: 'FAQ - Event Catering Questions',
   description:
-    'Frequently asked questions about Dulce Antojo dessert cart services in Houston, TX. Booking, pricing, and service information.',
+    'Frequently asked questions about Dulce Antojo dessert cart services in Houston, TX. Booking, pricing, and event catering information.',
 }
 
 export default function FAQPage() {

@@ -7,9 +7,9 @@ import { SocialCTA } from '@/components/shared/social-cta'
 import { businessInfo } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Contact',
+  title: 'Get a Quote - Book Your Event Cart',
   description:
-    'Get a free quote for your event. Contact Dulce Antojo for dessert and snack cart services in Houston, TX.',
+    'Get a free quote for your event in Houston, TX. Contact Dulce Antojo for mini pancakes, churros, paletas, and snack cart catering.',
 }
 
 export default function ContactPage() {

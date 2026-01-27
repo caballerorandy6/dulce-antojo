@@ -4,9 +4,9 @@ import { GalleryFilter } from '@/components/gallery/gallery-filter'
 import { SocialCTA } from '@/components/shared/social-cta'
 
 export const metadata: Metadata = {
-  title: 'Gallery',
+  title: 'Event Gallery - Mini Pancakes, Churros & More',
   description:
-    'See our dessert carts in action at events in Houston, TX. Photos from weddings, quinceañeras, and parties.',
+    'See our dessert carts in action at events in Houston, TX. Photos from weddings, quinceañeras, birthdays, and corporate parties.',
 }
 
 export default function GalleryPage() {
