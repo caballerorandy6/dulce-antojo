@@ -17,7 +17,7 @@ export function StickyPhoneButton() {
         <TooltipTrigger asChild>
           <a
             href={`tel:${phoneNumber}`}
-            className="flex h-14 w-14 items-center justify-center rounded-full bg-pink-accent shadow-lg transition-all duration-300 hover:scale-110 hover:bg-pink-dark hover:shadow-xl md:h-16 md:w-16 animate-pulse-subtle"
+            className="flex h-14 w-14 items-center justify-center rounded-full bg-pink-accent shadow-lg transition-all duration-300 hover:scale-110 hover:bg-pink-dark hover:shadow-xl md:h-16 md:w-16"
             aria-label="Call us"
           >
             {/* Pulse ring animation */}

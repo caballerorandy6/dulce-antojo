@@ -42,7 +42,7 @@ export function ScrollToTop() {
             className="flex h-12 w-12 items-center justify-center rounded-full bg-pink-dark/90 shadow-lg transition-all duration-300 hover:bg-pink-accent hover:shadow-xl md:h-14 md:w-14"
             aria-label="Back to top"
           >
-            <ChevronUp className="h-6 w-6 text-white md:h-7 md:w-7 animate-bounce" />
+            <ChevronUp className="h-6 w-6 text-white md:h-7 md:w-7" />
           </button>
         </TooltipTrigger>
         <TooltipContent side="right" sideOffset={8}>
