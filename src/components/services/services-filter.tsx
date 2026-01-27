@@ -13,29 +13,13 @@ import {
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { services, categories } from '@/lib/constants'
+import { services, categories, serviceImages } from '@/lib/constants'
 import type { Service } from '@/types'
 
 const categoryLabels = {
   dulce: { title: 'Sweet Treats' },
   salado: { title: 'Savory Snacks' },
   paquete: { title: 'Packages' },
-}
-
-const serviceImages: Record<string, string> = {
-  'mini-pancakes': '/images/services/mini-pancakes.avif',
-  'paletas-locas': '/images/services/paleta.avif',
-  'churro-sundaes': '/images/services/churro-sundaes.avif',
-  'sundaes': '/images/services/sundae.avif',
-  'corn-in-a-cup': '/images/services/corn-in-a-cup-1.avif',
-  'tosti-elote': '/images/services/tosti-elote-2.avif',
-  'mix-and-match': '/images/services/mix-and-match-3.avif',
-  'ramen-maruchan': '/images/services/ramen-2.avif',
-  'paleta-cart-rental': '/images/services/paletas-cart-1.avif',
-  'sorbet': '/images/services/mango-loco-1.avif',
-  'churros': '/images/services/churros.avif',
-  'fresa-cups': '/images/services/fresa-cup-1.avif',
-  'snack-cup': '/images/services/snack-cup-1.avif',
 }
 
 export function ServicesFilter() {

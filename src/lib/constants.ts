@@ -491,3 +491,89 @@ export const navLinks = [
   { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
 ]
+
+// Service images - single source of truth
+export const serviceImages: Record<string, string> = {
+  'mini-pancakes': '/images/services/mini-pancakes.avif',
+  'paletas-locas': '/images/services/paleta.avif',
+  'churro-sundaes': '/images/services/churro-sundaes.avif',
+  'sundaes': '/images/services/sundae.avif',
+  'corn-in-a-cup': '/images/services/corn-in-a-cup-1.avif',
+  'tosti-elote': '/images/services/tosti-elote-2.avif',
+  'mix-and-match': '/images/services/mix-and-match-3.avif',
+  'ramen-maruchan': '/images/services/ramen-2.avif',
+  'paleta-cart-rental': '/images/services/paletas-cart-1.avif',
+  'sorbet': '/images/services/mango-loco-1.avif',
+  'churros': '/images/services/churros.avif',
+  'fresa-cups': '/images/services/fresa-cup-1.avif',
+  'snack-cup': '/images/services/snack-cup-1.avif',
+}
+
+// Service gallery images (max 3 per service)
+export const serviceGalleryImages: Record<string, string[]> = {
+  'mini-pancakes': [
+    '/images/services/mini-pancakes.avif',
+    '/images/services/mini-pankakes-1.avif',
+    '/images/services/mini-pankakes-2.avif',
+  ],
+  'paletas-locas': [
+    '/images/services/paletas-locas.avif',
+    '/images/services/paleta-1.avif',
+    '/images/services/paleta-2.avif',
+  ],
+  'churro-sundaes': [
+    '/images/services/churro-sundae-3.avif',
+    '/images/services/churro-sundae-4.avif',
+    '/images/services/churro-sundae-5.avif',
+  ],
+  'sundaes': [
+    '/images/services/sundae.avif',
+    '/images/services/sundaes-1.avif',
+    '/images/services/sundaes-1.avif',
+  ],
+  'corn-in-a-cup': [
+    '/images/services/corn-in-a-cup-1.avif',
+    '/images/services/elote-cup-1.avif',
+    '/images/services/elote-cup-2.avif',
+  ],
+  'tosti-elote': [
+    '/images/services/tosti-elote-2.avif',
+    '/images/services/tosti-elote.avif',
+    '/images/services/tosti-elote.avif',
+  ],
+  'mix-and-match': [
+    '/images/services/mix-and-match-1.avif',
+    '/images/services/mix-and-match-2.avif',
+    '/images/services/mix-and-match-3.avif',
+  ],
+  'ramen-maruchan': [
+    '/images/services/ramen-2.avif',
+    '/images/services/ramen-1.avif',
+    '/images/services/ramen-3.avif',
+  ],
+  'paleta-cart-rental': [
+    '/images/services/paletas-cart-1.avif',
+    '/images/services/paletas-cart-2.avif',
+    '/images/services/cart-4.avif',
+  ],
+  'sorbet': [
+    '/images/services/sorbet-1.avif',
+    '/images/services/sorbet-2.avif',
+    '/images/services/sorbet-3.avif',
+  ],
+  'churros': [
+    '/images/services/churros-1.avif',
+    '/images/services/churros-2.avif',
+    '/images/services/churros-3.avif',
+  ],
+  'fresa-cups': [
+    '/images/services/fresa-cup-4.avif',
+    '/images/services/fresa-cup-5.avif',
+    '/images/services/fresa-cup-6.avif',
+  ],
+  'snack-cup': [
+    '/images/services/snack-cup-1.avif',
+    '/images/services/snack-cup-2.avif',
+    '/images/services/snack-cup-3.avif',
+  ],
+}

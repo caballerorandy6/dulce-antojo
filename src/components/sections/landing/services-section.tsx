@@ -4,22 +4,12 @@ import { ArrowRight } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { FloatingStickers } from '@/components/shared/floating-stickers'
-import { services } from '@/lib/constants'
+import { services, serviceImages } from '@/lib/constants'
 
 const categoryLabels: Record<string, string> = {
   dulce: 'Sweet',
   salado: 'Savory',
   paquete: 'Package',
-}
-
-const serviceImages: Record<string, string> = {
-  'mini-pancakes': '/images/services/mini-pancakes.avif',
-  'paletas-locas': '/images/services/paleta-loca.avif',
-  'churro-sundaes': '/images/services/churro-sundaes.avif',
-  'sundaes': '/images/services/sundae.avif',
-  'corn-in-a-cup': '/images/services/corn-in-a-cup-1.avif',
-  'tosti-elote': '/images/services/tosti-elote-2.avif',
-  'mix-and-match': '/images/services/mix-and-match-3.avif',
 }
 
 export function ServicesSection() {
