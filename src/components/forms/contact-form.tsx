@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import confetti from 'canvas-confetti'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -19,7 +18,8 @@ import { Card, CardContent } from '@/components/ui/card'
 import { contactFormSchema, type ContactFormData } from '@/lib/validations'
 import { eventTypes, services } from '@/lib/constants'
 
-const triggerConfetti = () => {
+const triggerConfetti = async () => {
+  const confetti = (await import('canvas-confetti')).default
   const colors = ['#FF6B95', '#FFD6E0', '#C9A86C', '#FF9EBA', '#D4B87A']
 
   confetti({

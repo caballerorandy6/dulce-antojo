@@ -1,18 +1,13 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { businessInfo } from '@/lib/constants'
 
 export function HeroSection() {
-  const videoRef = useRef<HTMLVideoElement>(null)
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.4
-    }
-  }, [])
+  const handleVideoLoad = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    e.currentTarget.playbackRate = 0.4
+  }
 
   const scrollToContact = () => {
     const element = document.getElementById('contact')
@@ -36,13 +31,13 @@ export function HeroSection() {
       {/* Video Background */}
       <div className="absolute inset-0">
         <video
-          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
           poster="/images/hero/cart-18.avif"
           className="h-full w-full object-cover"
+          onLoadedMetadata={handleVideoLoad}
         >
           <source src="/images/videos/hero-video.webm" type="video/webm" />
         </video>

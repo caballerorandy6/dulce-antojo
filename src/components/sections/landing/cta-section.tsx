@@ -1,18 +1,13 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
 import { Instagram } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { businessInfo } from '@/lib/constants'
 
 export function CTASection() {
-  const videoRef = useRef<HTMLVideoElement>(null)
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.3
-    }
-  }, [])
+  const handleVideoLoad = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    e.currentTarget.playbackRate = 0.3
+  }
 
   const scrollToContact = () => {
     const element = document.getElementById('contact')
@@ -26,12 +21,12 @@ export function CTASection() {
       {/* Video Background */}
       <div className="absolute inset-0">
         <video
-          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
           className="h-full w-full object-cover"
+          onLoadedMetadata={handleVideoLoad}
         >
           <source src="/images/videos/video-5.webm" type="video/webm" />
         </video>
