@@ -1,16 +1,13 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import Image from 'next/image'
-import { Heart, Star, Users } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { FloatingStickers } from '@/components/shared/floating-stickers'
+import { SocialCTA } from '@/components/shared/social-cta'
 import { businessInfo } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Learn about Dulce Antojo, your local dessert and snack cart service in Houston, TX. Our story and mission.',
+    'Meet Aracely, founder of Dulce Antojo. Learn about our story and mission to bring sweet experiences to Houston events.',
 }
 
 export default function AboutPage() {
@@ -26,7 +23,7 @@ export default function AboutPage() {
           className="object-cover blur-[0.5px] brightness-90"
           priority
         />
-        {/* Overlay: dark base + subtle pink tint */}
+        {/* Overlay */}
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 bg-pink-dark/20" />
 
@@ -34,139 +31,76 @@ export default function AboutPage() {
           <h1 className="animateHeading mb-4 text-4xl font-bold text-white md:text-5xl drop-shadow-md">
             About {businessInfo.name}
           </h1>
-          <p className="animateText mx-auto max-w-2xl text-xl text-white/95 drop-shadow-sm">
-            {businessInfo.tagline}
+          <p className="animateText mx-auto max-w-2xl text-lg text-white/95 drop-shadow-sm">
+            Creating sweet memories, one event at a time
           </p>
         </div>
       </section>
 
-      {/* Story */}
-      <section className="px-4 py-16">
+      {/* Meet the Founder */}
+      <section className="relative px-4 py-16 pb-24 md:py-24">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-12 text-center">
-            <h2 className="animateHeading mb-6 text-3xl font-bold text-pink-text">
-              Our Story
-            </h2>
-            <p className="animateText mb-4 text-lg text-muted-foreground">
-              {businessInfo.name} was born from a love of bringing people
-              together through delicious treats and memorable experiences.
-            </p>
-            <p className="animateText text-lg text-muted-foreground">
-              Based in Houston, TX, we specialize in Mexican-inspired desserts
-              and snacks that add a special touch to any event. From sweet mini
-              pancakes to savory elote cups, our carts bring joy to weddings,
-              quinceañeras, corporate events, and everything in between.
-            </p>
+          {/* Header */}
+          <div className="mb-8 flex items-center gap-3">
+            <h2 className="text-2xl font-bold text-pink-text">Meet the Founder</h2>
+            <div className="h-px flex-1 bg-pink-medium/30" />
           </div>
-        </div>
-      </section>
 
-      {/* Values */}
-      <section className="bg-pink-soft px-4 py-16">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="animateHeading mb-12 text-center text-3xl font-bold text-pink-text">
-            What We Stand For
-          </h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            <Card className="animateProjectCard border-pink-medium/30">
-              <CardContent className="p-6 text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-pink-bg">
-                  <Heart className="h-8 w-8 text-mauve" />
-                </div>
-                <h3 className="mb-2 text-xl font-semibold text-pink-text">
-                  Made with Love
-                </h3>
-                <p className="text-muted-foreground">
-                  Every treat is prepared with care and passion to make your
-                  event special.
+          {/* Content */}
+          <Card className="animateProjectCard border-pink-medium/30 bg-white">
+            <CardContent className="p-8 md:p-10">
+              <h3 className="mb-6 text-2xl font-bold text-pink-text md:text-3xl">
+                Hi, I&apos;m Aracely
+              </h3>
+
+              <div className="space-y-4 text-lg leading-relaxed text-muted-foreground">
+                <p>
+                  I&apos;m the founder of{' '}
+                  <span className="font-semibold text-pink-text">
+                    Dulce Antojo – Mini Pancakes & More
+                  </span>
+                  . What started as a passion for desserts, creativity, and bringing
+                  people together has grown into a full-service mobile snack cart
+                  business dedicated to creating unforgettable experiences.
                 </p>
-              </CardContent>
-            </Card>
 
-            <Card className="animateProjectCard border-pink-medium/30">
-              <CardContent className="p-6 text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-pink-bg">
-                  <Star className="h-8 w-8 text-gold-accent" />
-                </div>
-                <h3 className="mb-2 text-xl font-semibold text-pink-text">
-                  Quality First
-                </h3>
-                <p className="text-muted-foreground">
-                  We use fresh ingredients and maintain the highest standards
-                  for every service.
+                <p>
+                  At Dulce Antojo, we specialize in beautifully curated snack bars
+                  including mini pancakes, elotes, paletas, churros, snack cups,
+                  mangonadas, and more—each thoughtfully designed to match your
+                  event&apos;s theme, colors, and vision.
                 </p>
-              </CardContent>
-            </Card>
 
-            <Card className="animateProjectCard border-pink-medium/30">
-              <CardContent className="p-6 text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-pink-bg">
-                  <Users className="h-8 w-8 text-purple" />
-                </div>
-                <h3 className="mb-2 text-xl font-semibold text-pink-text">
-                  Community Focus
-                </h3>
-                <p className="text-muted-foreground">
-                  Proud to serve the Houston community and be part of your
-                  celebrations.
+                <p>
+                  From intimate gatherings to large celebrations, every detail is
+                  carefully planned to deliver both flavor and presentation.
                 </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Info */}
-      <section className="px-4 py-16">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="animateHeading mb-6 text-3xl font-bold text-pink-text">
-            Every Service Includes
-          </h2>
-          <div className="grid gap-4 md:grid-cols-3">
-            {businessInfo.allServicesInclude.map((item, index) => (
-              <div
-                key={index}
-                className="animateProjectCard rounded-xl bg-pink-soft p-6 border border-pink-medium/30"
-              >
-                <p className="font-medium text-pink-text">{item}</p>
               </div>
-            ))}
-          </div>
+
+              {/* Quote */}
+              <blockquote className="mt-8 border-l-4 border-gold pl-6">
+                <p className="text-lg italic text-pink-text">
+                  &ldquo;I believe every event deserves a sweet touch and a memorable
+                  experience. My goal is to not only serve amazing treats, but to
+                  create moments your guests will talk about long after the event is
+                  over.&rdquo;
+                </p>
+                <footer className="mt-3 text-sm font-semibold text-muted-foreground">
+                  — Aracely, Founder
+                </footer>
+              </blockquote>
+            </CardContent>
+          </Card>
         </div>
+
+        {/* Gradient fade to CTA section */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-b from-transparent to-pink-soft pointer-events-none" />
       </section>
 
-      {/* CTA */}
-      <section className="relative overflow-hidden bg-pink-accent px-4 py-16">
-        <FloatingStickers
-          stickerIndices={[1, 4, 7, 10]}
-          positionIndices={[0, 2, 4, 5]}
-        />
-        <div className="relative mx-auto max-w-4xl text-center">
-          <h2 className="animateHeading mb-4 text-3xl font-bold text-white">
-            Let&apos;s Work Together
-          </h2>
-          <p className="animateText mb-8 text-white/90">
-            Ready to add something sweet to your next event?
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button
-              asChild
-              size="lg"
-              className="bg-white text-pink-accent hover:bg-pink-soft"
-            >
-              <Link href="/contact">Get a Quote</Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-white text-white hover:bg-white/10"
-            >
-              <Link href="/services">View Services</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <SocialCTA
+        quoteTitle="Ready to Work Together?"
+        quoteDescription="Let's create something sweet for your next event!"
+      />
     </div>
   )
 }
