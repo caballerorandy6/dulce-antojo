@@ -111,7 +111,8 @@ export function ContactForm() {
               <Label htmlFor="name">Name *</Label>
               <Input
                 id="name"
-                placeholder="Your name"
+                placeholder="Your name…"
+                autoComplete="name"
                 aria-describedby={errors.name ? 'name-error' : undefined}
                 aria-invalid={errors.name ? true : undefined}
                 {...register('name')}
@@ -127,6 +128,7 @@ export function ContactForm() {
                 id="email"
                 type="email"
                 placeholder="your@email.com"
+                autoComplete="email"
                 aria-describedby={errors.email ? 'email-error' : undefined}
                 aria-invalid={errors.email ? true : undefined}
                 {...register('email')}
@@ -146,6 +148,7 @@ export function ContactForm() {
                 id="phone"
                 type="tel"
                 placeholder="(555) 123-4567"
+                autoComplete="tel"
                 aria-describedby={errors.phone ? 'phone-error' : undefined}
                 aria-invalid={errors.phone ? true : undefined}
                 {...register('phone')}
@@ -203,7 +206,7 @@ export function ContactForm() {
               <Input
                 id="guestCount"
                 type="number"
-                placeholder="50"
+                placeholder="50…"
                 aria-describedby={errors.guestCount ? 'guestCount-error' : undefined}
                 aria-invalid={errors.guestCount ? true : undefined}
                 {...register('guestCount')}
@@ -249,7 +252,7 @@ export function ContactForm() {
             <Label htmlFor="message">Additional Details</Label>
             <Textarea
               id="message"
-              placeholder="Tell us about your event..."
+              placeholder="Tell us about your event…"
               rows={4}
               {...register('message')}
             />
