@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { FAQFilter } from '@/components/faq/faq-filter'
 import { SocialCTA } from '@/components/shared/social-cta'
+import { JsonLdFaq } from '@/components/seo/json-ld-faq'
+import { faqs } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'FAQ',
@@ -12,6 +14,7 @@ export const metadata: Metadata = {
 export default function FAQPage() {
   return (
     <div className="bg-pink-bg">
+      <JsonLdFaq faqs={faqs} />
       {/* Hero */}
       <section className="relative overflow-hidden px-4 pt-24 pb-16 md:pt-32 md:pb-24">
         {/* Background Image */}

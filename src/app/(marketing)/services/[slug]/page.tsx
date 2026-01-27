@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { ServiceGallery } from '@/components/services/service-gallery'
 import { Lordicon } from '@/components/shared/lordicon'
+import { JsonLdService } from '@/components/seo/json-ld-service'
 import { services } from '@/lib/constants'
 
 const serviceImages: Record<string, string> = {
@@ -136,6 +137,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
   return (
     <div className="bg-pink-bg">
+      <JsonLdService service={service} />
       {/* Back Link */}
       <div className="mx-auto max-w-6xl px-4 pt-24">
         <Link
