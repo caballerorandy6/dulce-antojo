@@ -1,10 +1,7 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-import { FAQSection } from '@/components/sections/faq-section'
-import { FloatingStickers } from '@/components/shared/floating-stickers'
-import { faqs } from '@/lib/constants'
+import { FAQFilter } from '@/components/faq/faq-filter'
+import { SocialCTA } from '@/components/shared/social-cta'
 
 export const metadata: Metadata = {
   title: 'FAQ',
@@ -41,30 +38,18 @@ export default function FAQPage() {
       </section>
 
       {/* FAQ Content */}
-      <FAQSection faqs={faqs} title="" />
-
-      {/* CTA */}
-      <section className="relative overflow-hidden bg-pink-accent px-4 py-16">
-        <FloatingStickers
-          stickerIndices={[3, 6, 9, 12]}
-          positionIndices={[0, 2, 4, 5]}
-        />
-        <div className="relative mx-auto max-w-4xl text-center">
-          <h2 className="animateHeading mb-4 text-3xl font-bold text-white">
-            Still Have Questions?
-          </h2>
-          <p className="animateText mb-8 text-white/90">
-            Contact us directly and we&apos;ll be happy to help.
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-white text-pink-accent hover:bg-pink-soft"
-          >
-            <Link href="/contact">Contact Us</Link>
-          </Button>
+      <section className="relative px-4 py-16 pb-24">
+        <div className="mx-auto max-w-4xl">
+          <FAQFilter />
         </div>
+        {/* Gradient fade to CTA section */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-b from-transparent to-pink-soft pointer-events-none" />
       </section>
+
+      <SocialCTA
+        quoteTitle="Still Have Questions?"
+        quoteDescription="Contact us directly and we'll be happy to help."
+      />
     </div>
   )
 }

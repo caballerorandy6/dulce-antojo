@@ -375,37 +375,48 @@ export const eventTypes: EventType[] = [
 ]
 
 export const faqs: FAQ[] = [
+  // Booking & Reservations
   {
     question: 'How far in advance do I need to book?',
     answer: 'We recommend booking at least 2-3 weeks in advance to ensure availability, especially during peak event season.',
-  },
-  {
-    question: 'What is the minimum number of guests?',
-    answer: 'The minimum varies by service. Contact us to learn the specific details of each option.',
-  },
-  {
-    question: 'What does the service include?',
-    answer: 'All our services include 1-2 hours of service, a professional attendant, and customizable add-ons for your event.',
-  },
-  {
-    question: 'Can you customize the cart for my event?',
-    answer: 'Yes! We offer customization so the cart matches your event theme.',
-  },
-  {
-    question: 'What areas do you cover?',
-    answer: 'We serve Houston, TX and surrounding areas within approximately 50 miles.',
+    category: 'booking',
   },
   {
     question: 'How can I make a reservation?',
     answer: 'You can contact us through Instagram (@dulceantojo.houstontx) or fill out the quote form on our website.',
+    category: 'booking',
+  },
+  // Service Details
+  {
+    question: 'What does the service include?',
+    answer: 'All our services include 1-2 hours of service, a professional attendant, and customizable add-ons for your event.',
+    category: 'service',
   },
   {
-    question: 'Do you offer options for dietary restrictions?',
-    answer: 'Contact us to discuss specific options. We will do our best to accommodate your needs.',
+    question: 'What is the minimum number of guests?',
+    answer: 'The minimum varies by service. Contact us to learn the specific details of each option.',
+    category: 'service',
+  },
+  {
+    question: 'Can you customize the cart for my event?',
+    answer: 'Yes! We offer customization so the cart matches your event theme.',
+    category: 'service',
   },
   {
     question: 'Can I combine different services?',
     answer: 'Of course! Our Mix & Match package allows you to combine two different services at a special price.',
+    category: 'service',
+  },
+  {
+    question: 'Do you offer options for dietary restrictions?',
+    answer: 'Contact us to discuss specific options. We will do our best to accommodate your needs.',
+    category: 'service',
+  },
+  // Coverage & Location
+  {
+    question: 'What areas do you cover?',
+    answer: 'We serve Houston, TX and surrounding areas within approximately 50 miles.',
+    category: 'coverage',
   },
 ]
 

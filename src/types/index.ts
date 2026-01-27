@@ -108,6 +108,7 @@ export interface EventType {
 export interface FAQ {
   question: string
   answer: string
+  category: 'booking' | 'service' | 'coverage'
 }
 
 export interface Testimonial {
