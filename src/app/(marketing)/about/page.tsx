@@ -17,10 +17,10 @@ export default function AboutPage() {
       <section className="relative overflow-hidden px-4 pt-24 pb-16 md:pt-32 md:pb-24">
         {/* Background Image */}
         <Image
-          src="/images/pages/about.avif"
-          alt="About Dulce Antojo dessert cart service"
+          src="/images/services/about-me.avif"
+          alt="Aracely, founder of Dulce Antojo"
           fill
-          className="object-cover blur-[0.5px] brightness-90"
+          className="object-cover"
           priority
         />
         {/* Overlay */}
@@ -49,46 +49,38 @@ export default function AboutPage() {
           {/* Content */}
           <Card className="animateProjectCard border-pink-medium/30 bg-white">
             <CardContent className="p-8 md:p-10">
-              <h3 className="mb-6 text-2xl font-bold text-pink-text md:text-3xl">
-                Hi, I&apos;m Aracely
-              </h3>
-
-              <div className="space-y-4 text-lg leading-relaxed text-muted-foreground">
+              <div className="space-y-6 text-base leading-relaxed text-gray-700 md:text-lg">
                 <p>
-                  I&apos;m the founder of{' '}
+                  Hi, I&apos;m Aracely, the founder of{' '}
                   <span className="font-semibold text-pink-text">
-                    Dulce Antojo – Mini Pancakes & More
+                    Dulce Antojo – Mini Pancakes &amp; More
                   </span>
-                  . What started as a passion for desserts, creativity, and bringing
-                  people together has grown into a full-service mobile snack cart
-                  business dedicated to creating unforgettable experiences.
+                  . What started as a mom of 3 beautiful little girls who love pancakes
+                  &amp; my passion for baking desserts, creativity, and bringing people
+                  together has grown into a full-service mobile snack cart business
+                  dedicated to creating unforgettable experiences.
                 </p>
 
                 <p>
                   At Dulce Antojo, we specialize in beautifully curated snack bars
                   including mini pancakes, elotes, paletas, churros, snack cups,
                   mangonadas, and more—each thoughtfully designed to match your
-                  event&apos;s theme, colors, and vision.
+                  event&apos;s theme, colors, and vision. From intimate gatherings to
+                  large celebrations, every detail is carefully planned to deliver both
+                  flavor and presentation.
                 </p>
 
-                <p>
-                  From intimate gatherings to large celebrations, every detail is
-                  carefully planned to deliver both flavor and presentation.
-                </p>
-              </div>
-
-              {/* Quote */}
-              <blockquote className="mt-8 border-l-4 border-gold pl-6">
-                <p className="text-lg italic text-pink-text">
-                  &ldquo;I believe every event deserves a sweet touch and a memorable
+                <p className="border-l-4 border-gold pl-5 italic text-pink-text">
+                  I believe every event deserves a sweet touch and a memorable
                   experience. My goal is to not only serve amazing treats, but to
                   create moments your guests will talk about long after the event is
-                  over.&rdquo;
+                  over.
                 </p>
-                <footer className="mt-3 text-sm font-semibold text-muted-foreground">
+
+                <p className="pt-2 font-semibold text-pink-accent">
                   — Aracely, Founder
-                </footer>
-              </blockquote>
+                </p>
+              </div>
             </CardContent>
           </Card>
         </div>
