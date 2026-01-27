@@ -1,21 +1,8 @@
-'use client'
-
 import { Instagram } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { businessInfo } from '@/lib/constants'
 
 export function CTASection() {
-  const handleVideoLoad = (e: React.SyntheticEvent<HTMLVideoElement>) => {
-    e.currentTarget.playbackRate = 0.3
-  }
-
-  const scrollToContact = () => {
-    const element = document.getElementById('contact')
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
     <section className="relative overflow-hidden px-4 py-16 md:py-24">
       {/* Video Background */}
@@ -26,7 +13,7 @@ export function CTASection() {
           muted
           playsInline
           className="h-full w-full object-cover"
-          onLoadedMetadata={handleVideoLoad}
+          aria-hidden="true"
         >
           <source src="/images/videos/video-5.webm" type="video/webm" />
         </video>
@@ -44,11 +31,11 @@ export function CTASection() {
         </p>
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button
+            asChild
             size="lg"
-            onClick={scrollToContact}
-            className="bg-white text-pink-accent hover:bg-pink-soft animate-pulse-subtle"
+            className="bg-white text-pink-accent hover:bg-pink-soft"
           >
-            Get a Quote
+            <a href="#contact">Get a Quote</a>
           </Button>
           <Button
             asChild
