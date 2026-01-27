@@ -17,7 +17,6 @@ import {
   DialogClose,
 } from '@/components/ui/dialog'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
-import { Lordicon } from '@/components/shared/lordicon'
 
 interface GalleryItem {
   id: string
@@ -95,10 +94,10 @@ const galleryImages: GalleryItem[] = [
 ]
 
 const categoryLabels = {
-  dulce: { title: 'Sweet Treats', icon: '/icons/sweet.json' },
-  salado: { title: 'Savory Snacks', icon: '/icons/savory.json' },
-  paquete: { title: 'Packages', icon: '/icons/package.json' },
-  cart: { title: 'Our Carts', icon: '/icons/cart.json' },
+  dulce: { title: 'Sweet Treats' },
+  salado: { title: 'Savory Snacks' },
+  paquete: { title: 'Packages' },
+  cart: { title: 'Our Carts' },
 }
 
 export function GalleryFilter() {
@@ -145,18 +144,12 @@ export function GalleryFilter() {
           const items = groupedImages[category]
           if (!items || items.length === 0) return null
 
-          const { title, icon } = categoryLabels[category as keyof typeof categoryLabels]
+          const { title } = categoryLabels[category as keyof typeof categoryLabels]
 
           return (
-            <section key={category} className={`category-${category}`}>
+            <section key={category}>
               {/* Category Header */}
               <div className="mb-6 flex items-center gap-3">
-                <Lordicon
-                  src={icon}
-                  trigger="hover"
-                  target={`.category-${category}`}
-                  size={40}
-                />
                 <h2 className="text-2xl font-bold text-pink-text">{title}</h2>
                 <div className="h-px flex-1 bg-pink-medium/30" />
               </div>
@@ -240,11 +233,6 @@ export function GalleryFilter() {
               {/* Decorative corner accent */}
               <div className="absolute left-4 top-4">
                 <span className="inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
-                  <Lordicon
-                    src={categoryLabels[selectedImage.category as keyof typeof categoryLabels]?.icon}
-                    trigger="loop"
-                    size={20}
-                  />
                   {categoryLabels[selectedImage.category as keyof typeof categoryLabels]?.title}
                 </span>
               </div>

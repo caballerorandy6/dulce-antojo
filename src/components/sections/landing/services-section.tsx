@@ -4,14 +4,7 @@ import { ArrowRight } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { FloatingStickers } from '@/components/shared/floating-stickers'
-import { Lordicon } from '@/components/shared/lordicon'
 import { services } from '@/lib/constants'
-
-const categoryIcons: Record<string, string> = {
-  dulce: '/icons/sweet.json',
-  salado: '/icons/savory.json',
-  paquete: '/icons/package.json',
-}
 
 const categoryLabels: Record<string, string> = {
   dulce: 'Sweet',
@@ -21,12 +14,12 @@ const categoryLabels: Record<string, string> = {
 
 const serviceImages: Record<string, string> = {
   'mini-pancakes': '/images/services/mini-pancakes.avif',
-  'paletas-locas': '/images/services/paletas-locas.avif',
+  'paletas-locas': '/images/services/paleta-loca.avif',
   'churro-sundaes': '/images/services/churro-sundaes.avif',
-  'sundaes': '/images/services/sundaes-1.avif',
-  'corn-in-a-cup': '/images/services/corn-in-a-cup.avif',
+  'sundaes': '/images/services/sundae.avif',
+  'corn-in-a-cup': '/images/services/corn-in-a-cup-1.avif',
   'tosti-elote': '/images/services/tosti-elote-2.avif',
-  'mix-and-match': '/images/services/mix-and-match-1.avif',
+  'mix-and-match': '/images/services/mix-and-match-3.avif',
 }
 
 export function ServicesSection() {
@@ -82,17 +75,9 @@ export function ServicesSection() {
 
               {/* Content */}
               <CardContent className="absolute inset-0 flex flex-col justify-end p-6">
-                <div className="mb-2 flex items-center gap-2">
-                  <Lordicon
-                    src={categoryIcons[service.category]}
-                    trigger="hover"
-                    target=".service-card"
-                    size={36}
-                  />
-                  <span className="text-sm font-medium text-white/90">
-                    {categoryLabels[service.category]}
-                  </span>
-                </div>
+                <span className="mb-2 text-sm font-medium text-white/90">
+                  {categoryLabels[service.category]}
+                </span>
                 <h3 className="mb-1 text-xl font-semibold text-white drop-shadow-md">
                   {service.name}
                 </h3>

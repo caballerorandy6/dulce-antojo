@@ -86,7 +86,7 @@ export function HeroSection() {
           <Button
             size="lg"
             onClick={scrollToContact}
-            className="bg-[#FFD700] hover:bg-[#FFC107] text-pink-dark font-semibold min-w-[180px] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
+            className="bg-pink-accent hover:bg-pink-dark text-white font-semibold min-w-[180px] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
           >
             Get a Quote
           </Button>

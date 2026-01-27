@@ -13,14 +13,13 @@ import {
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Lordicon } from '@/components/shared/lordicon'
 import { services, categories } from '@/lib/constants'
 import type { Service } from '@/types'
 
 const categoryLabels = {
-  dulce: { title: 'Sweet Treats', icon: '/icons/sweet.json' },
-  salado: { title: 'Savory Snacks', icon: '/icons/savory.json' },
-  paquete: { title: 'Packages', icon: '/icons/package.json' },
+  dulce: { title: 'Sweet Treats' },
+  salado: { title: 'Savory Snacks' },
+  paquete: { title: 'Packages' },
 }
 
 const serviceImages: Record<string, string> = {
@@ -83,18 +82,12 @@ export function ServicesFilter() {
           const items = groupedServices[category]
           if (!items || items.length === 0) return null
 
-          const { title, icon } = categoryLabels[category as keyof typeof categoryLabels]
+          const { title } = categoryLabels[category as keyof typeof categoryLabels]
 
           return (
-            <section key={category} className={`category-${category}`}>
+            <section key={category}>
               {/* Category Header */}
               <div className="mb-6 flex items-center gap-3">
-                <Lordicon
-                  src={icon}
-                  trigger="hover"
-                  target={`.category-${category}`}
-                  size={40}
-                />
                 <h2 className="text-2xl font-bold text-pink-text">{title}</h2>
                 <div className="h-px flex-1 bg-pink-medium/30" />
               </div>
