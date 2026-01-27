@@ -84,7 +84,18 @@ export function Footer() {
         </div>
 
         <div className="mt-8 border-t border-white/20 pt-8 text-center text-sm text-white/60">
-          &copy; {currentYear} {businessInfo.name}. All rights reserved.
+          <p>&copy; {currentYear} {businessInfo.name}. All rights reserved.</p>
+          <p className="mt-2">
+            Built by{' '}
+            <a
+              href="https://rcweb.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gold-light hover:text-white transition-colors"
+            >
+              RC Web Solutions LLC
+            </a>
+          </p>
         </div>
       </div>
     </footer>
