@@ -26,23 +26,23 @@ const animationClasses = [
 // Predefined positions for stickers
 const stickerConfigs = [
   // 0: Left top
-  { top: '12%', left: '5%', rotate: -12, size: 58, opacity: 0.85, animIndex: 0 },
+  { top: '12%', left: '5%', rotate: -12, size: 48, opacity: 0.85, animIndex: 0 },
   // 1: Left middle-low
-  { top: '55%', left: '4%', rotate: 15, size: 52, opacity: 0.8, animIndex: 1 },
+  { top: '55%', left: '4%', rotate: 15, size: 44, opacity: 0.8, animIndex: 1 },
   // 2: Right top
-  { top: '8%', right: '5%', rotate: 10, size: 56, opacity: 0.85, animIndex: 2 },
+  { top: '8%', right: '5%', rotate: 10, size: 46, opacity: 0.85, animIndex: 2 },
   // 3: Right middle-high
-  { top: '38%', right: '4%', rotate: -14, size: 54, opacity: 0.8, animIndex: 0 },
+  { top: '38%', right: '4%', rotate: -14, size: 45, opacity: 0.8, animIndex: 0 },
   // 4: Bottom left corner
-  { bottom: '8%', left: '8%', rotate: 8, size: 50, opacity: 0.85, animIndex: 1 },
+  { bottom: '8%', left: '8%', rotate: 8, size: 42, opacity: 0.85, animIndex: 1 },
   // 5: Bottom right corner
-  { bottom: '12%', right: '10%', rotate: -10, size: 48, opacity: 0.8, animIndex: 2 },
+  { bottom: '12%', right: '10%', rotate: -10, size: 40, opacity: 0.8, animIndex: 2 },
   // 6: Top left (for carousel sections)
-  { top: '3%', left: '6%', rotate: -8, size: 45, opacity: 0.8, animIndex: 0 },
+  { top: '3%', left: '6%', rotate: -8, size: 38, opacity: 0.8, animIndex: 0 },
   // 7: Top right (for carousel sections)
-  { top: '2%', right: '8%', rotate: 12, size: 42, opacity: 0.8, animIndex: 1 },
+  { top: '2%', right: '8%', rotate: 12, size: 36, opacity: 0.8, animIndex: 1 },
   // 8: Bottom left (for carousel sections)
-  { bottom: '4%', left: '5%', rotate: 10, size: 44, opacity: 0.8, animIndex: 2 },
+  { bottom: '4%', left: '5%', rotate: 10, size: 37, opacity: 0.8, animIndex: 2 },
 ]
 
 interface FloatingStickersProps {
@@ -87,7 +87,7 @@ export function FloatingStickers({
               width={config.size}
               height={config.size}
               className="select-none"
-              style={{ width: 'auto', height: 'auto' }}
+              style={{ width: `${config.size}px`, height: `${config.size}px` }}
               aria-hidden="true"
             />
           </div>
