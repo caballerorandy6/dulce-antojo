@@ -13,8 +13,15 @@ import {
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Lordicon } from '@/components/shared/lordicon'
 import { services, categories } from '@/lib/constants'
 import type { Service } from '@/types'
+
+const categoryLabels = {
+  dulce: { title: 'Sweet Treats', icon: '/icons/sweet.json' },
+  salado: { title: 'Savory Snacks', icon: '/icons/savory.json' },
+  paquete: { title: 'Packages', icon: '/icons/package.json' },
+}
 
 const serviceImages: Record<string, string> = {
   'mini-pancakes': '/images/services/mini-pancakes.avif',
@@ -40,6 +47,17 @@ export function ServicesFilter() {
       ? services
       : services.filter((service) => service.category === selectedCategory)
 
+  // Group services by category for organized display
+  const groupedServices = filteredServices.reduce((acc, service) => {
+    if (!acc[service.category]) {
+      acc[service.category] = []
+    }
+    acc[service.category].push(service)
+    return acc
+  }, {} as Record<string, Service[]>)
+
+  const categoryOrder = ['dulce', 'salado', 'paquete']
+
   return (
     <div>
       {/* Filter */}
@@ -59,11 +77,37 @@ export function ServicesFilter() {
         </Select>
       </div>
 
-      {/* Services Grid */}
-      <div className="flex flex-wrap justify-center gap-6">
-        {filteredServices.map((service) => (
-          <ServiceCard key={service.id} service={service} />
-        ))}
+      {/* Services by Categories */}
+      <div className="space-y-12">
+        {categoryOrder.map((category) => {
+          const items = groupedServices[category]
+          if (!items || items.length === 0) return null
+
+          const { title, icon } = categoryLabels[category as keyof typeof categoryLabels]
+
+          return (
+            <section key={category} className={`category-${category}`}>
+              {/* Category Header */}
+              <div className="mb-6 flex items-center gap-3">
+                <Lordicon
+                  src={icon}
+                  trigger="hover"
+                  target={`.category-${category}`}
+                  size={40}
+                />
+                <h2 className="text-2xl font-bold text-pink-text">{title}</h2>
+                <div className="h-px flex-1 bg-pink-medium/30" />
+              </div>
+
+              {/* Category Grid */}
+              <div className="flex flex-wrap justify-center gap-6">
+                {items.map((service) => (
+                  <ServiceCard key={service.id} service={service} />
+                ))}
+              </div>
+            </section>
+          )
+        })}
       </div>
 
       {/* Empty state */}

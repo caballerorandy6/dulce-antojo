@@ -1,9 +1,7 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import Image from 'next/image'
-import { Button } from '@/components/ui/button'
 import { ServicesFilter } from '@/components/services/services-filter'
-import { FloatingStickers } from '@/components/shared/floating-stickers'
+import { SocialCTA } from '@/components/shared/social-cta'
 
 export const metadata: Metadata = {
   title: 'Services',
@@ -40,35 +38,18 @@ export default function ServicesPage() {
       </section>
 
       {/* Services with Filter */}
-      <section className="px-4 py-16">
+      <section className="relative px-4 py-16 pb-24">
         <div className="mx-auto max-w-6xl">
           <ServicesFilter />
         </div>
+        {/* Gradient fade to CTA section */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-b from-transparent to-pink-soft pointer-events-none" />
       </section>
 
-      {/* CTA */}
-      <section className="relative overflow-hidden bg-pink-accent px-4 py-16">
-        <FloatingStickers
-          stickerIndices={[2, 5, 8, 11]}
-          positionIndices={[0, 2, 4, 5]}
-        />
-        <div className="relative mx-auto max-w-4xl text-center">
-          <h2 className="animateHeading mb-4 text-3xl font-bold text-white">
-            Can&apos;t Decide?
-          </h2>
-          <p className="animateText mb-8 text-white/90">
-            Contact us and we&apos;ll help you choose the perfect service for
-            your event.
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-white text-pink-accent hover:bg-pink-soft"
-          >
-            <Link href="/contact">Get a Free Quote</Link>
-          </Button>
-        </div>
-      </section>
+      <SocialCTA
+        quoteTitle="Can't Decide?"
+        quoteDescription="Contact us and we'll help you choose the perfect service."
+      />
     </div>
   )
 }
