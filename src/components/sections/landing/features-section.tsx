@@ -38,7 +38,7 @@ export function FeaturesSection() {
         <div className="mb-12 text-center">
           <div className="mb-6 flex justify-center animateHeading">
             <Image
-              src="/images/pages/why-choose-us.PNG"
+              src="/images/pages/why-choose-us.avif"
               alt="Why Choose Us"
               width={500}
               height={140}
