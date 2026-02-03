@@ -22,7 +22,7 @@
   --color-pink-soft: #FFD6E0;
   --color-pink-medium: #FF9EBA;
   --color-pink-accent: #FF6B95;
-  --color-pink-text: #CC3E68;
+  --color-pink-text: #B83058;
   --color-pink-dark: #D63965;
 
   /* Legacy aliases */
@@ -128,7 +128,7 @@
   --secondary-foreground: #E84A7A;
 
   --muted: #FFD6E0;
-  --muted-foreground: #6B6B6B;
+  --muted-foreground: #5F5F5F;
 
   /* Accent = Gold */
   --accent: #C9A86C;

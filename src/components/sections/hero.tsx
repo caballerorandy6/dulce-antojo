@@ -32,7 +32,7 @@ export function Hero() {
             asChild
             variant="outline"
             size="lg"
-            className="border-pink-medium text-pink-text hover:bg-pink-soft"
+            className="bg-white border-pink-medium text-pink-text hover:bg-pink-soft"
           >
             <Link href="/services">View Services</Link>
           </Button>

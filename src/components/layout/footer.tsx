@@ -21,7 +21,7 @@ export function Footer() {
               style={{ width: 'auto' }}
             />
             <p className="text-white">{businessInfo.tagline}</p>
-            <p className="mt-2 text-sm text-white/90">
+            <p className="mt-2 text-sm text-white">
               {businessInfo.description}
             </p>
           </div>
@@ -49,7 +49,7 @@ export function Footer() {
             <p className="text-white">
               {businessInfo.location.city}, {businessInfo.location.state}
             </p>
-            <p className="mt-1 text-sm text-white/90">
+            <p className="mt-1 text-sm text-white">
               Service area: {businessInfo.location.serviceRadius}
             </p>
             <div className="mt-4 flex items-center gap-3">
@@ -83,7 +83,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-white/20 pt-8 text-center text-sm text-white/90">
+        <div className="mt-8 border-t border-white/20 pt-8 text-center text-sm text-white">
           <p>&copy; {currentYear} {businessInfo.name}. All rights reserved.</p>
           <p className="mt-2">
             Built by{' '}
@@ -91,7 +91,7 @@ export function Footer() {
               href="https://rcweb.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gold-light hover:text-white transition-colors"
+              className="text-white underline decoration-gold-light hover:decoration-white transition-colors"
             >
               RC Web Solutions LLC
             </a>

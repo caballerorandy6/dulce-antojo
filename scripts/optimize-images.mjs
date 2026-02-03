@@ -22,27 +22,27 @@ const NO_BACKUP = process.argv.includes('--no-backup')
 // Max dimensions per category (2x retina)
 // Format: { maxWidth, maxHeight, quality }
 const CATEGORIES = {
-  'brand/logo.avif': { maxWidth: 576, maxHeight: 576, quality: 75 },
-  'brand/logo-1.avif': { maxWidth: 200, maxHeight: 200, quality: 75 },
+  'brand/logo.avif': { maxWidth: 384, maxHeight: 384, quality: 55 },
+  'brand/logo-1.avif': { maxWidth: 200, maxHeight: 200, quality: 55 },
 
-  'hero/cart-18.avif': { maxWidth: 1500, maxHeight: 1500, quality: 70 },
+  'hero/cart-18.avif': { maxWidth: 1500, maxHeight: 1265, quality: 50 },
 
   // Section header images (displayed at max h-32 = 128px, 2x = 256px)
-  'pages/our-services.avif': { maxWidth: 600, maxHeight: 300, quality: 75 },
-  'pages/why-choose-us.PNG': { maxWidth: 600, maxHeight: 300, quality: 75, convertToAvif: true },
-  'pages/what-our-clients-say.avif': { maxWidth: 600, maxHeight: 300, quality: 75 },
-  'pages/faq-2.avif': { maxWidth: 600, maxHeight: 300, quality: 75 },
-  'pages/get-a-quote.avif': { maxWidth: 600, maxHeight: 300, quality: 75 },
-  'pages/contact-2.avif': { maxWidth: 600, maxHeight: 300, quality: 75 },
-  'pages/services.avif': { maxWidth: 600, maxHeight: 300, quality: 75 },
+  'pages/our-services.avif': { maxWidth: 300, maxHeight: 200, quality: 55 },
+  'pages/why-choose-us.avif': { maxWidth: 300, maxHeight: 200, quality: 55 },
+  'pages/what-our-clients-say.avif': { maxWidth: 300, maxHeight: 200, quality: 55 },
+  'pages/faq-2.avif': { maxWidth: 300, maxHeight: 200, quality: 55 },
+  'pages/get-a-quote.avif': { maxWidth: 300, maxHeight: 200, quality: 55 },
+  'pages/contact-2.avif': { maxWidth: 300, maxHeight: 200, quality: 55 },
+  'pages/services.avif': { maxWidth: 300, maxHeight: 200, quality: 55 },
 
   // Larger page images
-  'pages/our-gallery-1.avif': { maxWidth: 1200, maxHeight: 800, quality: 70 },
-  'pages/faq-3.avif': { maxWidth: 800, maxHeight: 600, quality: 70 },
+  'pages/our-gallery-1.avif': { maxWidth: 1200, maxHeight: 800, quality: 50 },
+  'pages/faq-3.avif': { maxWidth: 800, maxHeight: 600, quality: 50 },
 }
 
-// Default max dimensions for service images (displayed at max ~475px, 2x = 950px)
-const SERVICE_DEFAULTS = { maxWidth: 1024, maxHeight: 1024, quality: 70 }
+// Default max dimensions for service images (displayed at max ~378x504 CSS, 2x = 756x1008)
+const SERVICE_DEFAULTS = { maxWidth: 768, maxHeight: 1024, quality: 45 }
 
 // Skip these directories (already tiny or not images)
 const SKIP_DIRS = ['stickers', 'videos']

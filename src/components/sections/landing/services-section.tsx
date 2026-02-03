@@ -76,10 +76,9 @@ export function ServicesSection() {
                 </p>
                 <Link
                   href={`/services/${service.slug}`}
-                  aria-label={`Learn more about ${service.name}`}
                   className="flex items-center justify-center gap-2 w-full text-sm font-medium text-white bg-pink-dark/90 backdrop-blur-sm px-4 py-2 rounded-md hover:bg-pink-dark transition-all cursor-pointer"
                 >
-                  Learn More
+                  Learn More<span className="sr-only"> about {service.name}</span>
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </CardContent>
@@ -92,7 +91,7 @@ export function ServicesSection() {
             asChild
             variant="outline"
             size="lg"
-            className="border-pink-medium text-pink-text hover:bg-pink-soft hover:text-gold transition-colors"
+            className="bg-white border-pink-medium text-pink-text hover:bg-pink-soft hover:text-gold transition-colors"
           >
             <Link href="/services">
               View All Services

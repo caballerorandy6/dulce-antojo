@@ -58,7 +58,7 @@ export function FAQSection() {
           <Button
             asChild
             variant="outline"
-            className="border-pink-medium text-pink-text hover:bg-pink-soft hover:text-gold transition-colors"
+            className="bg-white border-pink-medium text-pink-text hover:bg-pink-soft hover:text-gold transition-colors"
           >
             <Link href="/faq">
               View All FAQs

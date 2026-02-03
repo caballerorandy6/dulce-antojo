@@ -72,9 +72,9 @@ function ServiceCard({ service }: { service: Service }) {
         <Button
           asChild
           variant="outline"
-          className="w-full border-pink-medium text-pink-text hover:bg-pink-soft"
+          className="w-full bg-white border-pink-medium text-pink-text hover:bg-pink-soft"
         >
-          <Link href={`/services/${service.slug}`}>Learn More</Link>
+          <Link href={`/services/${service.slug}`}>Learn More<span className="sr-only"> about {service.name}</span></Link>
         </Button>
       </CardContent>
     </Card>

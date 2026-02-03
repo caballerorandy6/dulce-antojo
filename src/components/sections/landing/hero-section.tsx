@@ -13,6 +13,7 @@ export function HeroSection() {
     const element = document.getElementById('contact')
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
+      window.history.replaceState(null, '', '#contact')
     }
   }
 
@@ -20,6 +21,7 @@ export function HeroSection() {
     const element = document.getElementById('services')
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
+      window.history.replaceState(null, '', '#services')
     }
   }
 
