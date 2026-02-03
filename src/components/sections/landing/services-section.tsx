@@ -76,7 +76,8 @@ export function ServicesSection() {
                 </p>
                 <Link
                   href={`/services/${service.slug}`}
-                  className="flex items-center justify-center gap-2 w-full text-sm font-medium text-white bg-pink-accent/90 backdrop-blur-sm px-4 py-2 rounded-md hover:bg-pink-accent transition-all cursor-pointer"
+                  aria-label={`Learn more about ${service.name}`}
+                  className="flex items-center justify-center gap-2 w-full text-sm font-medium text-white bg-pink-dark/90 backdrop-blur-sm px-4 py-2 rounded-md hover:bg-pink-dark transition-all cursor-pointer"
                 >
                   Learn More
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

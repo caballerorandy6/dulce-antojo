@@ -262,7 +262,7 @@ export function ContactForm() {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-pink-accent hover:bg-pink-dark"
+            className="w-full bg-pink-dark hover:bg-pink-dark/90"
           >
             {isSubmitting ? 'Sending...' : 'Send Quote Request'}
           </Button>

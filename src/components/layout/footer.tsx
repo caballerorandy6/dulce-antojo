@@ -20,21 +20,21 @@ export function Footer() {
               className="mb-4 h-40"
               style={{ width: 'auto' }}
             />
-            <p className="text-white/80">{businessInfo.tagline}</p>
-            <p className="mt-2 text-sm text-white/60">
+            <p className="text-white">{businessInfo.tagline}</p>
+            <p className="mt-2 text-sm text-white/90">
               {businessInfo.description}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="mb-4 font-semibold text-white">Quick Links</h4>
+            <h3 className="mb-4 text-base font-semibold text-white">Quick Links</h3>
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-white/80 transition-colors hover:text-gold-light"
+                    className="text-white transition-colors hover:text-gold-light"
                   >
                     {link.label}
                   </Link>
@@ -45,11 +45,11 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="mb-4 font-semibold text-white">Contact</h4>
-            <p className="text-white/80">
+            <h3 className="mb-4 text-base font-semibold text-white">Contact</h3>
+            <p className="text-white">
               {businessInfo.location.city}, {businessInfo.location.state}
             </p>
-            <p className="mt-1 text-sm text-white/60">
+            <p className="mt-1 text-sm text-white/90">
               Service area: {businessInfo.location.serviceRadius}
             </p>
             <div className="mt-4 flex items-center gap-3">
@@ -83,7 +83,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-white/20 pt-8 text-center text-sm text-white/60">
+        <div className="mt-8 border-t border-white/20 pt-8 text-center text-sm text-white/90">
           <p>&copy; {currentYear} {businessInfo.name}. All rights reserved.</p>
           <p className="mt-2">
             Built by{' '}

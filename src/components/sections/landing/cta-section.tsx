@@ -26,14 +26,14 @@ export function CTASection() {
         <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
           Ready to Sweeten Your Event?
         </h2>
-        <p className="mb-8 text-lg text-white/90">
+        <p className="mb-8 text-lg text-white">
           Let&apos;s create something delicious together. Contact us today!
         </p>
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button
             asChild
             size="lg"
-            className="bg-white text-pink-accent hover:bg-pink-soft"
+            className="bg-white text-pink-dark hover:bg-pink-soft"
           >
             <a href="#contact">Get a Quote</a>
           </Button>
@@ -41,7 +41,7 @@ export function CTASection() {
             asChild
             variant="outline"
             size="lg"
-            className="border-white bg-white text-pink-accent hover:bg-pink-soft hover:text-gold transition-all"
+            className="border-white bg-white text-pink-dark hover:bg-pink-soft hover:text-gold transition-all"
           >
             <a
               href={businessInfo.contact.instagramUrl}

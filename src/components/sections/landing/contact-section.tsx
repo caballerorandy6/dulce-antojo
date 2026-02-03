@@ -58,7 +58,7 @@ export function ContactSection() {
                       href={businessInfo.contact.instagramUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-pink-accent hover:text-pink-dark"
+                      className="text-sm text-pink-dark hover:text-pink-dark/80"
                     >
                       {businessInfo.contact.instagram}
                     </a>
@@ -67,11 +67,11 @@ export function ContactSection() {
               </div>
             </div>
 
-            <div className="rounded-xl bg-pink-accent p-6 text-white">
+            <div className="rounded-xl bg-pink-dark p-6 text-white">
               <h3 className="mb-2 text-lg font-semibold">
                 Quick Response
               </h3>
-              <p className="text-sm text-white/90">
+              <p className="text-sm text-white">
                 We typically respond within 24 hours. For faster service,
                 DM us on Instagram!
               </p>
