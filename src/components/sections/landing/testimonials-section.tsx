@@ -32,7 +32,7 @@ export function TestimonialsSection() {
           {testimonials.map((testimonial) => (
             <Card
               key={testimonial.id}
-              className="w-full border-pink-medium/30 transition-colors hover:border-gold md:w-[calc(33.333%-16px)] animateProjectCard"
+              className="w-full bg-white border-pink-medium/30 transition-colors hover:border-gold md:w-[calc(33.333%-16px)] animateProjectCard"
             >
               <CardContent className="p-6">
                 <div className="mb-4 flex">
