@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { services } from '@/lib/constants'
 
-const baseUrl = 'https://dulceantojosnackcarts.com'
+const baseUrl = 'https://dulcesantojosnackcarts.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Static pages

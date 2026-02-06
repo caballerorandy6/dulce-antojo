@@ -1,6 +1,6 @@
 import type { Service } from '@/types'
 
-const baseUrl = 'https://dulceantojosnackcarts.com'
+const baseUrl = 'https://dulcesantojosnackcarts.com'
 
 interface JsonLdServiceProps {
   service: Service

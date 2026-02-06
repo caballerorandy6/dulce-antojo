@@ -1,4 +1,4 @@
-const baseUrl = 'https://dulceantojosnackcarts.com'
+const baseUrl = 'https://dulcesantojosnackcarts.com'
 
 interface BreadcrumbItem {
   name: string

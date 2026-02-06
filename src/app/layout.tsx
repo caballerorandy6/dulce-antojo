@@ -19,7 +19,7 @@ const cormorant = Cormorant_Garamond({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://dulceantojosnackcarts.com'),
+  metadataBase: new URL('https://dulcesantojosnackcarts.com'),
   title: {
     default: 'Dulce Antojo | Mini Pancakes & Snack Carts - Houston TX',
     template: '%s | Dulce Antojo Houston',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://dulceantojosnackcarts.com',
+    url: 'https://dulcesantojosnackcarts.com',
     siteName: 'Dulce Antojo',
     title: 'Dulce Antojo | Mini Pancakes & Snack Carts - Houston TX',
     description:

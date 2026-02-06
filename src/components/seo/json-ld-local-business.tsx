@@ -1,6 +1,6 @@
 import { businessInfo } from '@/lib/constants'
 
-const baseUrl = 'https://dulceantojosnackcarts.com'
+const baseUrl = 'https://dulcesantojosnackcarts.com'
 
 export function JsonLdLocalBusiness() {
   const jsonLd = {
