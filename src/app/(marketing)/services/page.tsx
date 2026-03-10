@@ -7,6 +7,18 @@ export const metadata: Metadata = {
   title: 'Dessert & Snack Cart Services for Events',
   description:
     'Explore our dessert and snack cart services for events in Houston, TX. Mini pancakes, paletas, churros, elote, and more. Book your event today!',
+  openGraph: {
+    title: 'Dessert & Snack Cart Services - Dulce Antojo Houston',
+    description: 'Mini pancakes, paletas, churros, elote, and more for your Houston events. Book your dessert cart today!',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630 }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Dessert & Snack Cart Services - Dulce Antojo Houston',
+    description: 'Mini pancakes, paletas, churros, elote, and more for your Houston events.',
+    images: ['/images/og-image.jpg'],
+  },
 }
 
 export default function ServicesPage() {

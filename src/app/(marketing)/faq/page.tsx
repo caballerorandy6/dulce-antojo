@@ -9,6 +9,18 @@ export const metadata: Metadata = {
   title: 'FAQ - Event Catering Questions',
   description:
     'Frequently asked questions about Dulce Antojo dessert cart services in Houston, TX. Booking, pricing, and event catering information.',
+  openGraph: {
+    title: 'FAQ - Dulce Antojo Houston',
+    description: 'Find answers about our dessert cart services, booking process, and event catering in Houston, TX.',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630 }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'FAQ - Dulce Antojo Houston',
+    description: 'Find answers about our dessert cart services in Houston, TX.',
+    images: ['/images/og-image.jpg'],
+  },
 }
 
 export default function FAQPage() {

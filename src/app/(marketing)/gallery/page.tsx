@@ -7,6 +7,18 @@ export const metadata: Metadata = {
   title: 'Event Gallery - Mini Pancakes, Churros & More',
   description:
     'See our dessert carts in action at events in Houston, TX. Photos from weddings, quinceañeras, birthdays, and corporate parties.',
+  openGraph: {
+    title: 'Event Gallery - Dulce Antojo Houston',
+    description: 'See our dessert carts bringing joy to events across Houston. Photos from weddings, quinceañeras, and more.',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630 }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Event Gallery - Dulce Antojo Houston',
+    description: 'See our dessert carts bringing joy to events across Houston.',
+    images: ['/images/og-image.jpg'],
+  },
 }
 
 export default function GalleryPage() {

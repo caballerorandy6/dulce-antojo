@@ -48,7 +48,8 @@
   --color-gold: #C9A86C;
   --color-gold-accent: #C9A86C;
   --color-gold-light: #D4B87A;
-  --color-gold-dark: #B8956A;
+  --color-gold-dark: #8B6914;
+  --color-gold-text: #7A5C12;
 
   /* Purple accent */
   --color-purple: #A855F7;
@@ -233,6 +234,10 @@
     font-family: var(--font-cormorant), serif;
     font-weight: 600;
     letter-spacing: 0.02em;
+  }
+  /* Display font utility - Cormorant Garamond for elegant headings */
+  .font-display {
+    font-family: var(--font-cormorant), serif;
   }
 }
 

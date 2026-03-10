@@ -41,7 +41,7 @@ export function CTASection() {
             asChild
             variant="outline"
             size="lg"
-            className="border-white bg-white text-pink-dark hover:bg-pink-soft hover:text-gold transition-all"
+            className="border-white bg-white text-pink-dark hover:bg-pink-soft hover:text-gold-dark transition-all"
           >
             <a
               href={businessInfo.contact.instagramUrl}

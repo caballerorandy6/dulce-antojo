@@ -263,8 +263,8 @@ export function AdminLogin() {
         {activeTab === 'create' && admin && (
           <PaymentForm adminEmail={admin.email} />
         )}
-        {activeTab === 'history' && (
-          <PaymentHistoryDb />
+        {activeTab === 'history' && admin && (
+          <PaymentHistoryDb adminEmail={admin.email} />
         )}
         {activeTab === 'settings' && admin && (
           <ChangePassword email={admin.email} />

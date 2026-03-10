@@ -2,6 +2,19 @@
 
 import { db, initializeDatabase } from '@/lib/db'
 
+// Verify admin exists in database
+async function verifyAdmin(adminEmail: string): Promise<boolean> {
+  try {
+    const admin = await db.execute({
+      sql: 'SELECT id FROM admin_users WHERE email = ?',
+      args: [adminEmail.toLowerCase()],
+    })
+    return admin.rows.length > 0
+  } catch {
+    return false
+  }
+}
+
 export interface DbPayment {
   id: number
   stripe_session_id: string | null
@@ -71,13 +84,17 @@ export async function savePayment(data: {
   }
 }
 
-// Get all payments
-export async function getPayments(): Promise<{
+// Get all payments (requires admin auth)
+export async function getPayments(adminEmail: string): Promise<{
   success: boolean
   payments?: DbPayment[]
   error?: string
 }> {
   await ensureDb()
+
+  if (!await verifyAdmin(adminEmail)) {
+    return { success: false, error: 'Unauthorized' }
+  }
 
   try {
     const result = await db.execute(
@@ -108,8 +125,8 @@ export async function getPayments(): Promise<{
   }
 }
 
-// Get payment stats
-export async function getPaymentStats(): Promise<{
+// Get payment stats (requires admin auth)
+export async function getPaymentStats(adminEmail: string): Promise<{
   success: boolean
   stats?: {
     totalRevenue: number
@@ -121,6 +138,10 @@ export async function getPaymentStats(): Promise<{
   error?: string
 }> {
   await ensureDb()
+
+  if (!await verifyAdmin(adminEmail)) {
+    return { success: false, error: 'Unauthorized' }
+  }
 
   try {
     // Total stats
@@ -160,9 +181,13 @@ export async function getPaymentStats(): Promise<{
   }
 }
 
-// Update payment notes
-export async function updatePaymentNotes(paymentId: number, notes: string) {
+// Update payment notes (requires admin auth)
+export async function updatePaymentNotes(adminEmail: string, paymentId: number, notes: string) {
   await ensureDb()
+
+  if (!await verifyAdmin(adminEmail)) {
+    return { success: false, error: 'Unauthorized' }
+  }
 
   try {
     await db.execute({
@@ -177,9 +202,13 @@ export async function updatePaymentNotes(paymentId: number, notes: string) {
   }
 }
 
-// Mark as contacted
-export async function markAsContacted(paymentId: number, contacted: boolean) {
+// Mark as contacted (requires admin auth)
+export async function markAsContacted(adminEmail: string, paymentId: number, contacted: boolean) {
   await ensureDb()
+
+  if (!await verifyAdmin(adminEmail)) {
+    return { success: false, error: 'Unauthorized' }
+  }
 
   try {
     await db.execute({
@@ -194,9 +223,13 @@ export async function markAsContacted(paymentId: number, contacted: boolean) {
   }
 }
 
-// Update event date
-export async function updateEventDate(paymentId: number, eventDate: string) {
+// Update event date (requires admin auth)
+export async function updateEventDate(adminEmail: string, paymentId: number, eventDate: string) {
   await ensureDb()
+
+  if (!await verifyAdmin(adminEmail)) {
+    return { success: false, error: 'Unauthorized' }
+  }
 
   try {
     await db.execute({

@@ -25,7 +25,11 @@ import {
 } from '@/app/actions/db-payments'
 import { PaymentHistorySkeleton } from './admin-skeleton'
 
-export function PaymentHistoryDb() {
+interface PaymentHistoryDbProps {
+  adminEmail: string
+}
+
+export function PaymentHistoryDb({ adminEmail }: PaymentHistoryDbProps) {
   const [payments, setPayments] = useState<DbPayment[]>([])
   const [stats, setStats] = useState<{
     totalRevenue: number
@@ -44,8 +48,8 @@ export function PaymentHistoryDb() {
     setError('')
 
     const [paymentsResult, statsResult] = await Promise.all([
-      getPayments(),
-      getPaymentStats(),
+      getPayments(adminEmail),
+      getPaymentStats(adminEmail),
     ])
 
     if (paymentsResult.success && paymentsResult.payments) {
@@ -83,7 +87,7 @@ export function PaymentHistoryDb() {
   }
 
   const handleToggleContacted = async (payment: DbPayment) => {
-    const result = await markAsContacted(payment.id, !payment.contacted)
+    const result = await markAsContacted(adminEmail, payment.id, !payment.contacted)
     if (result.success) {
       setPayments((prev) =>
         prev.map((p) =>
@@ -94,7 +98,7 @@ export function PaymentHistoryDb() {
   }
 
   const handleSaveNotes = async (paymentId: number) => {
-    const result = await updatePaymentNotes(paymentId, notesValue)
+    const result = await updatePaymentNotes(adminEmail, paymentId, notesValue)
     if (result.success) {
       setPayments((prev) =>
         prev.map((p) =>

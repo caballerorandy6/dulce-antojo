@@ -10,6 +10,18 @@ export const metadata: Metadata = {
   title: 'Get a Quote - Book Your Event Cart',
   description:
     'Get a free quote for your event in Houston, TX. Contact Dulce Antojo for mini pancakes, churros, paletas, and snack cart catering.',
+  openGraph: {
+    title: 'Get a Quote - Dulce Antojo Houston',
+    description: 'Get a free quote for your event in Houston, TX. Mini pancakes, churros, paletas, and snack cart catering.',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630 }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Get a Quote - Dulce Antojo Houston',
+    description: 'Get a free quote for your event in Houston, TX.',
+    images: ['/images/og-image.jpg'],
+  },
 }
 
 export default function ContactPage() {
@@ -43,6 +55,7 @@ export default function ContactPage() {
       {/* Contact Content */}
       <section className="relative px-4 py-16 pb-24">
         <div className="mx-auto max-w-6xl">
+          <h2 className="sr-only">Contact Information and Form</h2>
           <div className="grid gap-8 lg:grid-cols-3">
             {/* Contact Info */}
             <div className="space-y-6">

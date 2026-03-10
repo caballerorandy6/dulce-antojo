@@ -56,10 +56,11 @@ export function HeroSection() {
         {/* Main Content - Center */}
         <div className="flex flex-col items-center text-center">
           {/* Logo */}
-          <div className="mb-4 md:mb-6 animate-on-load animate-scale-in">
+          <h1 className="sr-only">{businessInfo.name} - Mini Pancakes & More for Events in Houston TX</h1>
+          <div className="mb-4 md:mb-6 animate-on-load animate-scale-in" aria-hidden="true">
             <Image
               src="/images/brand/logo.avif"
-              alt={`${businessInfo.name} - Mini Pancakes & More`}
+              alt=""
               width={500}
               height={200}
               className="h-48 md:h-60 lg:h-72"

@@ -23,9 +23,7 @@ export async function POST(request: NextRequest) {
       signature,
       process.env.STRIPE_WEBHOOK_SECRET!
     )
-  } catch (err) {
-    const error = err as Error
-    console.error('Webhook signature verification failed:', error.message)
+  } catch {
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
   }
 
@@ -36,18 +34,13 @@ export async function POST(request: NextRequest) {
       await handleSuccessfulPayment(session)
       break
     }
-    case 'payment_intent.succeeded': {
-      const paymentIntent = event.data.object as Stripe.PaymentIntent
-      console.log('Payment succeeded:', paymentIntent.id)
+    case 'payment_intent.succeeded':
+    case 'payment_intent.payment_failed':
+      // Handled by checkout.session.completed
       break
-    }
-    case 'payment_intent.payment_failed': {
-      const paymentIntent = event.data.object as Stripe.PaymentIntent
-      console.log('Payment failed:', paymentIntent.id)
-      break
-    }
     default:
-      console.log(`Unhandled event type: ${event.type}`)
+      // Unhandled event type
+      break
   }
 
   return NextResponse.json({ received: true })
@@ -59,13 +52,6 @@ async function handleSuccessfulPayment(session: Stripe.Checkout.Session) {
   const amount = session.amount_total ? session.amount_total / 100 : 0
   const customerEmail = session.customer_details?.email
 
-  console.log('Payment successful:', {
-    customerName,
-    description,
-    amount,
-    customerEmail,
-  })
-
   // Save payment to database
   try {
     await savePayment({
@@ -76,9 +62,8 @@ async function handleSuccessfulPayment(session: Stripe.Checkout.Session) {
       amount,
       description,
     })
-    console.log('Payment saved to database')
-  } catch (error) {
-    console.error('Failed to save payment to database:', error)
+  } catch {
+    // Payment save failed - webhook will retry
   }
 
   // Send confirmation email to business owner
@@ -96,9 +81,8 @@ async function handleSuccessfulPayment(session: Stripe.Checkout.Session) {
         paymentDate: new Date().toISOString(),
       }),
     })
-    console.log('Confirmation email sent to business owner')
-  } catch (error) {
-    console.error('Failed to send confirmation email:', error)
+  } catch {
+    // Email send failed
   }
 
   // Send receipt email to customer if email available
@@ -118,9 +102,8 @@ async function handleSuccessfulPayment(session: Stripe.Checkout.Session) {
           isCustomerCopy: true,
         }),
       })
-      console.log('Receipt email sent to customer:', customerEmail)
-    } catch (error) {
-      console.error('Failed to send customer receipt:', error)
+    } catch {
+      // Customer email failed
     }
   }
 }

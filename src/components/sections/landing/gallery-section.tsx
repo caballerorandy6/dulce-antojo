@@ -30,7 +30,9 @@ export function GallerySection() {
     <section
       id="gallery"
       className="relative bg-pink-soft py-10 md:py-16 pb-20 md:pb-24"
+      aria-labelledby="gallery-heading"
     >
+      <h2 id="gallery-heading" className="sr-only">Photo Gallery</h2>
       {/* Infinite Marquee Carousel */}
       <div className="w-full overflow-hidden">
         <div className="flex animate-marquee w-fit">
@@ -89,7 +91,7 @@ export function GallerySection() {
           asChild
           variant="outline"
           size="lg"
-          className="border-pink-medium text-pink-text hover:bg-white hover:text-gold transition-colors"
+          className="border-pink-medium text-pink-text hover:bg-white hover:text-gold-dark transition-colors"
         >
           <Link href="/gallery">
             Discover Our Sweet Moments

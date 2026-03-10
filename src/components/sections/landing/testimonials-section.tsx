@@ -14,10 +14,11 @@ export function TestimonialsSection() {
       <FloatingStickers stickerIndices={[2, 5, 8]} positionIndices={[0, 2, 4]} />
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-12 text-center">
-          <div className="mb-6 flex justify-center animateHeading">
+          <h2 className="sr-only">What Our Clients Say</h2>
+          <div className="mb-6 flex justify-center animateHeading" aria-hidden="true">
             <Image
               src="/images/pages/what-our-clients-say.avif"
-              alt="What Our Clients Say"
+              alt=""
               width={500}
               height={140}
               className="h-20 w-auto md:h-28 lg:h-32"

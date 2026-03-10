@@ -25,11 +25,6 @@ export async function POST(request: Request) {
     const fromEmail = process.env.CONTACT_EMAIL_FROM || 'onboarding@resend.dev'
     const toEmail = process.env.CONTACT_EMAIL_TO || 'aracelymeza1128@gmail.com'
 
-    console.log('Sending email...')
-    console.log('From:', fromEmail)
-    console.log('To:', toEmail)
-    console.log('API Key exists:', !!process.env.RESEND_API_KEY)
-
     const { data, error } = await resend.emails.send({
       from: fromEmail,
       to: toEmail,
@@ -48,21 +43,17 @@ export async function POST(request: Request) {
     })
 
     if (error) {
-      console.error('Resend error:', JSON.stringify(error, null, 2))
       return NextResponse.json(
-        { error: 'Failed to send email', details: error },
+        { error: 'Failed to send email' },
         { status: 500 }
       )
     }
-
-    console.log('Email sent successfully:', data)
 
     return NextResponse.json(
       { success: true, message: 'Quote request sent successfully' },
       { status: 200 }
     )
-  } catch (error) {
-    console.error('API error:', error)
+  } catch {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

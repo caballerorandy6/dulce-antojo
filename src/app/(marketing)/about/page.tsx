@@ -8,6 +8,18 @@ export const metadata: Metadata = {
   title: 'About Us - Houston Event Catering',
   description:
     'Meet Aracely, founder of Dulce Antojo. Learn about our story and mission to bring sweet dessert cart experiences to Houston events.',
+  openGraph: {
+    title: 'About Dulce Antojo - Houston Event Catering',
+    description: 'Meet Aracely, founder of Dulce Antojo. Sweet dessert cart experiences for Houston events.',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630 }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Dulce Antojo - Houston Event Catering',
+    description: 'Meet Aracely, founder of Dulce Antojo.',
+    images: ['/images/og-image.jpg'],
+  },
 }
 
 export default function AboutPage() {

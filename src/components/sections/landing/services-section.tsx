@@ -24,10 +24,11 @@ export function ServicesSection() {
       <FloatingStickers stickerIndices={[0, 3, 6]} positionIndices={[0, 2, 3]} />
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-12 text-center">
-          <div className="mb-6 flex justify-center animateHeading">
+          <h2 className="sr-only">Our Services</h2>
+          <div className="mb-6 flex justify-center animateHeading" aria-hidden="true">
             <Image
               src="/images/pages/our-services.avif"
-              alt="Our Services"
+              alt=""
               width={500}
               height={140}
               className="h-20 w-auto md:h-28 lg:h-32"
@@ -91,7 +92,7 @@ export function ServicesSection() {
             asChild
             variant="outline"
             size="lg"
-            className="bg-white border-pink-medium text-pink-text hover:bg-pink-soft hover:text-gold transition-colors"
+            className="bg-white border-pink-medium text-pink-text hover:bg-pink-soft hover:text-gold-dark transition-colors"
           >
             <Link href="/services">
               View All Services

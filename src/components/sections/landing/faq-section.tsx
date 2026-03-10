@@ -23,10 +23,11 @@ export function FAQSection() {
       <FloatingStickers stickerIndices={[3, 6, 12]} positionIndices={[0, 1, 3]} />
       <div className="relative mx-auto max-w-3xl">
         <div className="mb-12 text-center">
-          <div className="mb-6 flex justify-center animateHeading">
+          <h2 className="sr-only">Frequently Asked Questions</h2>
+          <div className="mb-6 flex justify-center animateHeading" aria-hidden="true">
             <Image
               src="/images/pages/faq-2.avif"
-              alt="Frequently Asked Questions"
+              alt=""
               width={500}
               height={140}
               className="h-20 w-auto md:h-28 lg:h-32"
@@ -58,7 +59,7 @@ export function FAQSection() {
           <Button
             asChild
             variant="outline"
-            className="bg-white border-pink-medium text-pink-text hover:bg-pink-soft hover:text-gold transition-colors"
+            className="bg-white border-pink-medium text-pink-text hover:bg-pink-soft hover:text-gold-dark transition-colors"
           >
             <Link href="/faq">
               View All FAQs
