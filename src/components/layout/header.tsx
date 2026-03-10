@@ -6,7 +6,8 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet'
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { businessInfo, navLinks } from '@/lib/constants'
 import { Lordicon } from '@/components/shared/lordicon'
 import { cn } from '@/lib/utils'
@@ -227,6 +228,9 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-72 bg-white/95 backdrop-blur-md">
+              <VisuallyHidden>
+                <SheetTitle>Navigation Menu</SheetTitle>
+              </VisuallyHidden>
               <nav className="flex flex-col gap-2 pt-8" aria-label="Mobile navigation">
                 {isLandingPage ? (
                   // Landing page - anchor links

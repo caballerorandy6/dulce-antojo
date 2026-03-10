@@ -111,3 +111,17 @@ export const serviceInquirySchema = z.object({
 })
 
 export type ServiceInquiryData = z.infer<typeof serviceInquirySchema>
+
+// ============================================
+// PAYMENT SCHEMAS
+// ============================================
+
+// Create payment link schema (Admin panel)
+export const createPaymentSchema = z.object({
+  customerName: z.string().min(2, 'Customer name is required'),
+  amount: z.number().min(1, 'Amount must be at least $1'),
+  description: z.string().min(1, 'Description is required'),
+  adminPassword: z.string(),
+})
+
+export type CreatePaymentData = z.infer<typeof createPaymentSchema>

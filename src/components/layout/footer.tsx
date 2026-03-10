@@ -84,7 +84,12 @@ export function Footer() {
         </div>
 
         <div className="mt-8 border-t border-white/20 pt-8 text-center text-sm text-white">
-          <p>&copy; {currentYear} {businessInfo.name}. All rights reserved.</p>
+          <p>
+            <Link href="/admin" className="hover:text-gold-light transition-colors" aria-label="Site administration">
+              &copy;
+            </Link>
+            {' '}{currentYear} {businessInfo.name}. All rights reserved.
+          </p>
           <p className="mt-2">
             Built by{' '}
             <a
