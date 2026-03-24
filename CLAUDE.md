@@ -1,224 +1,123 @@
-# Dulce Antojo - Landing Page Project
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
-Landing page for **Dulce Antojo** - a Mexican dessert and snack cart service for events in Houston, TX.
 
+Landing page for **Dulce Antojo** - Mexican dessert and snack cart service for events in Houston, TX.
+
+- **Domain:** dulcesantojosnackcarts.com
 - **Instagram:** @dulceantojo.houstontx
-- **Location:** Houston, TX (50-mile service radius)
-- **Primary Language:** English (Spanish support planned)
-- **Type:** Conversion-optimized landing page with local SEO
+- **Service Area:** Houston, TX (50-mile radius)
 
----
+## Commands
+
+```bash
+npm run dev      # Start dev server at localhost:3000
+npm run build    # Production build
+npm run lint     # ESLint
+```
+
+No test framework is configured.
 
 ## Tech Stack
 
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| Next.js | 15+ | Main framework (App Router) |
-| React | 19+ | UI Library |
-| TypeScript | 5+ | Type safety |
-| TailwindCSS | 4+ | Styling |
-| shadcn/ui | latest | UI Components |
-| React Hook Form | 7+ | Form handling |
-| Zod | 3+ | Schema validation |
-| Resend | latest | Email sending |
-| Lucide Icons | latest | Iconography |
+- **Next.js 16** with App Router (images unoptimized in next.config.ts)
+- **React 19** with Server Components
+- **TypeScript 5**
+- **Tailwind CSS 4** (using `@theme inline` syntax in globals.css)
+- **shadcn/ui** components in `src/components/ui/`
+- **React Hook Form + Zod** for form validation
+- **Resend + React Email** for contact form emails
+- **Stripe** for payment links and webhooks
+- **Turso (libsql)** for database (admin/payments)
 
----
+## Architecture
 
-## Brand Design Guide
-
-### Color Palette
-
-```css
-:root {
-  /* Primary Colors */
-  --pink-primary: #F8B4C4;      /* Main logo pink */
-  --pink-light: #FDE8ED;        /* Light background */
-  --pink-soft: #FADCE5;         /* Soft pink */
-  --pink-accent: #E891A8;       /* Accent pink */
-
-  /* Secondary Colors */
-  --teal-primary: #4A9B8C;      /* Logo text teal */
-  --teal-dark: #2D7A6C;         /* Dark teal for emphasis */
-  --gold-accent: #D4A574;       /* Logo border gold */
-
-  /* Neutrals */
-  --cream-bg: #FFF9F9;          /* Cream pink background */
-  --text-dark: #4A4A4A;         /* Main text */
-  --text-muted: #7A7A7A;        /* Secondary text */
-
-  /* States */
-  --success: #68B984;
-  --error: #E57373;
-}
+### Route Groups
+```
+src/app/
+├── (marketing)/          # Public pages with shared header/footer layout
+│   ├── page.tsx          # Homepage
+│   ├── services/[slug]/  # Dynamic service pages
+│   ├── gallery/
+│   ├── contact/
+│   ├── about/
+│   └── faq/
+├── (admin)/admin/        # Admin dashboard (password protected)
+├── payment/success/      # Stripe redirect page (outside both groups)
+└── api/
+    ├── contact/          # Contact form → Resend email
+    └── webhooks/stripe/  # Stripe webhook handler
 ```
 
-**Tailwind Classes:** `pink-primary`, `pink-light`, `pink-accent`, `teal-primary`, `teal-dark`, `gold-accent`, `cream-bg`
+### Key Data Flow Patterns
 
-### Typography
-- **Display/Headings:** Playfair Display or Cormorant Garamond (elegant)
-- **Body:** DM Sans or Nunito (readable, friendly)
-- **Accents:** Dancing Script (decorative details)
+**Contact Form:** Client form (`components/forms/contact-form.tsx`) → POST to `/api/contact` → Zod validation → React Email render → Resend API. Confetti animation on success via dynamic `canvas-confetti` import.
 
-### Visual Style
-- **Tone:** Feminine, sweet, professional, festive
-- **Aesthetic:** Soft pink, delicate, Instagram-friendly
-- **Elements:** Rounded borders, soft shadows, kawaii-style illustrations
-- **Icons:** Lucide Icons with soft strokes
+**Stripe Payments:** Admin creates payment link via server action (`actions/payments.ts`) → Customer pays → Stripe webhook (`api/webhooks/stripe/route.ts`) → saves to Turso DB + sends confirmation emails. Email errors are silently caught so webhook always returns 200.
 
----
+**Admin Auth:** No middleware or session management. Auth is component-state based in `components/admin/admin-login.tsx` (refreshing resets auth). Every DB operation re-verifies admin email exists in `admin_users` table via `verifyAdmin()` in `actions/db-payments.ts`. First visit triggers admin registration setup.
 
-## Services (13 Total)
+**Database:** Turso tables (`admin_users`, `payments`) are lazily initialized via `ensureDb()` pattern — `initializeDatabase()` in `src/lib/db.ts` uses `.batch()` to create tables on first use. Two payment creation functions exist: `createPaymentLink()` (legacy, uses env `ADMIN_PASSWORD`) and `createPaymentLinkDb()` (current, uses DB auth).
 
-### Sweet
-1. **Mini Pancakes** - 10 mini pancakes, 4 drizzles, 6 toppings
-2. **Paletas Locas** - +10 flavors, 7 toppings, 2 fresh fruits
-3. **Paleta Cart Rental** - From 50 popsicles, self-serve
-4. **Sorbet** - 6 flavors, 6 toppings, sweet or savory
-5. **Sundaes** - 1-2 ice cream flavors, drizzles, 6 toppings
-6. **Churro Sundaes** - 2 churros 5in, ice cream, toppings
-7. **Churros** - 10in or (2) 5in, drizzles
-8. **Fresa Cups** - 8oz strawberries, cream/chocolate
+### Key Data Files
+- `src/lib/constants.ts` - All business data: services, FAQs, testimonials, event types
+- `src/lib/validations.ts` - Zod schemas for forms
+- `src/types/index.ts` - TypeScript interfaces
+- `src/emails/` - React Email templates
 
-### Savory
-9. **Corn in a Cup** - 8oz, corn toppings, 3 chips
-10. **Tosti-Elote** - With Tostitos, corn toppings
-11. **Snack Cup** - 8oz, 9 toppings, chamoy/tajín
-12. **Ramen/Maruchan** - With Mexican toppings
+### SEO Components
+Located in `src/components/seo/`:
+- JSON-LD structured data for LocalBusiness, Service, FAQ, Breadcrumbs
+- `src/app/sitemap.ts` and `src/app/robots.ts` for crawlers
 
-### Packages
-13. **Mix & Match** - Custom 2-service package
+## Environment Variables
 
-**All Services Include:** 1-2 hours service, professional attendant, customizable add-ons
-
----
-
-## Project Structure
-
+Required for full functionality:
 ```
-src/
-├── app/
-│   ├── (marketing)/        # Public routes group
-│   │   ├── page.tsx        # Homepage
-│   │   ├── services/
-│   │   │   ├── page.tsx
-│   │   │   └── [slug]/
-│   │   ├── contact/
-│   │   ├── gallery/
-│   │   ├── about/
-│   │   ├── faq/
-│   │   └── layout.tsx      # Header + Footer
-│   ├── api/
-│   │   └── contact/
-│   │       └── route.ts
-│   ├── globals.css
-│   └── layout.tsx
-├── components/
-│   ├── ui/                 # shadcn components
-│   ├── sections/           # Page sections
-│   │   ├── hero.tsx
-│   │   ├── services-grid.tsx
-│   │   ├── testimonials.tsx
-│   │   └── cta-section.tsx
-│   ├── layout/
-│   │   ├── header.tsx
-│   │   ├── footer.tsx
-│   │   └── mobile-nav.tsx
-│   ├── forms/
-│   │   └── contact-form.tsx
-│   └── shared/
-│       ├── service-card.tsx
-│       └── section-header.tsx
-├── lib/
-│   ├── utils.ts
-│   ├── validations.ts      # Zod schemas
-│   └── constants.ts        # Business data
-├── hooks/
-├── types/
-│   └── index.ts
+RESEND_API_KEY           # Email sending
+CONTACT_EMAIL_FROM       # Sender email
+CONTACT_EMAIL_TO         # Recipient for contact forms
+
+STRIPE_SECRET_KEY        # Stripe API
+STRIPE_WEBHOOK_SECRET    # Webhook verification
+
+TURSO_DATABASE_URL       # Database connection
+TURSO_AUTH_TOKEN         # Database auth
+
+ADMIN_PASSWORD           # Simple admin auth (legacy)
+NEXT_PUBLIC_APP_URL      # For Stripe redirects
 ```
 
----
+## Brand Colors & Theming
+
+Defined in `src/app/globals.css` using Tailwind 4 `@theme inline` syntax. Colors are also set as `:root` CSS custom properties for shadcn/ui compatibility (light and dark mode defined, though dark mode is not actively used).
+
+Key colors: `pink-accent` (#FF6B95), `pink-bg` (#FFE4EC), `magenta` (#E84A7A), `gold` (#C9A86C).
+
+Note: `teal-primary` is mapped to magenta (#E84A7A), not actual teal — legacy naming from a rebranding.
+
+Fonts: Geist Sans (body), Cormorant Garamond (display headings via `.font-display`).
 
 ## Critical Rules
 
-### ALWAYS:
-1. Use Server Components by default
-2. Import specifically from shadcn/ui (no barrel imports)
-3. Validate with Zod before sending data
-4. Implement loading states and error boundaries
-5. Optimize images with next/image
-6. Use CSS variables for theme colors
-7. Mobile-first responsive design
-8. Parallel data fetching with Promise.all
+### Always
+- Server Components by default (`'use client'` only when needed)
+- Import shadcn components individually: `from '@/components/ui/button'`
+- Validate with Zod before processing data
+- Use `next/image` with descriptive alt text
+- Mobile-first responsive design
+- Parallel data fetching with `Promise.all`
 
-### NEVER:
-1. Use `'use client'` without real need
-2. Create data waterfalls (use Promise.all)
-3. Import full libraries (tree-shaking)
-4. Hardcode colors (use CSS variables)
-5. Omit alt text on images
-6. Ignore mobile-first design
-7. Use barrel exports
+### Never
+- Barrel imports from ui folder
+- Hardcode colors (use CSS variables/Tailwind theme)
+- Create data waterfalls
+- Skip alt text on images
 
-### GIT COMMITS:
-- DO NOT mention Claude, Anthropic, OpenAI or any AI/company in commits
-- DO NOT use "Co-Authored-By" with AI references
-- Keep commits clean and professional
-- ALWAYS show the commit message to the user BEFORE executing git commit
-- Wait for user approval before committing
-
----
-
-## Agents Configuration
-
-Located in `.claude/agents/`:
-
-| Agent | File | Use Case |
-|-------|------|----------|
-| Design Reviewer | `design-reviewer.md` | UI/UX review |
-| Performance Auditor | `performance-auditor.md` | React/Next.js optimization |
-| Accessibility Checker | `accessibility-checker.md` | WCAG compliance |
-| SEO Optimizer | `seo-optimizer.md` | Local & technical SEO |
-| Test Writer | `test-writer.md` | Component testing |
-| Code Reviewer | `code-reviewer.md` | Best practices |
-
----
-
-## SEO - Houston Local
-
-### Target Keywords
-- "snack cart Houston TX"
-- "mini pancakes catering Houston"
-- "event desserts Houston"
-- "Mexican dessert carts Houston"
-- "churros for events Houston"
-- "elote catering Houston"
-
-### Required Schema Markup
-- LocalBusiness
-- FoodEstablishment
-- Service
-- Review/Rating
-
----
-
-## Quick Commands
-
-```bash
-npm run dev      # Start development server
-npm run build    # Build for production
-npm run lint     # Run ESLint
-```
-
----
-
-## Extended Documentation
-
-See `.claude/` folder for:
-- `agents/` - Specialized review agents
-- `prompts/` - Reusable task prompts
-- `data/` - Business data reference
-- `rules/` - Detailed project rules
-- `skills/` - React best practices
+### Git Commits
+- Format: `<type>(<scope>): <description>` (e.g., `feat(contact): add form validation`)
+- Do not include AI references (Claude, Anthropic, OpenAI) in commits
+- Show commit message to user before executing
+- Wait for approval before committing
