@@ -55,11 +55,11 @@ src/app/
 
 **Contact Form:** Client form (`components/forms/contact-form.tsx`) → POST to `/api/contact` → Zod validation → React Email render → Resend API. Confetti animation on success via dynamic `canvas-confetti` import.
 
-**Stripe Payments:** Admin creates payment link via server action (`actions/payments.ts`) → Customer pays → Stripe webhook (`api/webhooks/stripe/route.ts`) → saves to Turso DB + sends confirmation emails. Email errors are silently caught so webhook always returns 200.
+**Stripe Payments:** Admin creates payment link via server action (`actions/payments.ts`) → Customer pays → Stripe webhook (`api/webhooks/stripe/route.ts`) → saves to Turso DB via `savePayment()` in `lib/save-payment.ts` (NOT a server action — webhook-only) + sends confirmation emails. If the DB save fails the webhook returns 500 so Stripe retries; the `stripe_session_id` UNIQUE constraint makes retries idempotent and skips duplicate emails.
 
-**Admin Auth:** No middleware or session management. Auth is component-state based in `components/admin/admin-login.tsx` (refreshing resets auth). Every DB operation re-verifies admin email exists in `admin_users` table via `verifyAdmin()` in `actions/db-payments.ts`. First visit triggers admin registration setup.
+**Admin Auth:** Login (`loginAdmin` in `actions/auth.ts`) verifies the bcrypt password, then issues a signed httpOnly session cookie via `lib/session.ts` (HMAC over `{id,email,name,exp}`, 8h expiry). Every admin server action calls `getSession()` and rejects if there is no valid cookie — the client never sends an identity to be trusted. Session survives refresh; `getCurrentAdmin()` restores it. Registering the first admin requires `ADMIN_SETUP_TOKEN`.
 
-**Database:** Turso tables (`admin_users`, `payments`) are lazily initialized via `ensureDb()` pattern — `initializeDatabase()` in `src/lib/db.ts` uses `.batch()` to create tables on first use. Two payment creation functions exist: `createPaymentLink()` (legacy, uses env `ADMIN_PASSWORD`) and `createPaymentLinkDb()` (current, uses DB auth).
+**Database:** Turso tables (`admin_users`, `payments`) are lazily initialized via `ensureDb()` pattern — `initializeDatabase()` in `src/lib/db.ts` uses `.batch()` to create tables on first use. Payment links are created by `createPaymentLinkDb()` in `actions/payments.ts` (session-authenticated).
 
 ### Key Data Files
 - `src/lib/constants.ts` - All business data: services, FAQs, testimonials, event types
@@ -86,8 +86,11 @@ STRIPE_WEBHOOK_SECRET    # Webhook verification
 TURSO_DATABASE_URL       # Database connection
 TURSO_AUTH_TOKEN         # Database auth
 
-ADMIN_PASSWORD           # Simple admin auth (legacy)
+ADMIN_PASSWORD           # Simple admin auth (legacy, unused)
 NEXT_PUBLIC_APP_URL      # For Stripe redirects
+
+SESSION_SECRET           # HMAC key for signed admin session cookie (min 16 chars)
+ADMIN_SETUP_TOKEN        # Secret required to register a NEW admin from /admin
 ```
 
 ## Brand Colors & Theming

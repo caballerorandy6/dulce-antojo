@@ -3,6 +3,7 @@
 import { db, initializeDatabase } from '@/lib/db'
 import bcrypt from 'bcryptjs'
 import { z } from 'zod'
+import { createSession, destroySession, getSession } from '@/lib/session'
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email'),
@@ -11,10 +12,10 @@ const loginSchema = z.object({
 
 const registerSchema = loginSchema.extend({
   name: z.string().min(2, 'Name is required'),
+  setupToken: z.string().min(1, 'Setup token is required'),
 })
 
 const changePasswordSchema = z.object({
-  email: z.string().email(),
   currentPassword: z.string(),
   newPassword: z.string().min(6, 'Password must be at least 6 characters'),
 })
@@ -56,30 +57,53 @@ export async function loginAdmin(data: { email: string; password: string }) {
       return { success: false, error: 'Invalid email or password' }
     }
 
-    return {
-      success: true,
-      admin: {
-        id: admin.id as number,
-        email: admin.email as string,
-        name: admin.name as string,
-      },
+    const authenticatedAdmin = {
+      id: admin.id as number,
+      email: admin.email as string,
+      name: admin.name as string,
     }
+
+    // Issue a signed session cookie; every admin action verifies this, not a
+    // client-supplied email.
+    await createSession(authenticatedAdmin)
+
+    return { success: true, admin: authenticatedAdmin }
   } catch (error) {
     console.error('Login error:', error)
     return { success: false, error: 'Login failed' }
   }
 }
 
-// Register first admin (only works if no admins exist)
-export async function registerFirstAdmin(data: { email: string; password: string; name: string }) {
+// Log out: clear the session cookie
+export async function logoutAdmin() {
+  await destroySession()
+  return { success: true }
+}
+
+// Return the currently authenticated admin (used to restore state on refresh)
+export async function getCurrentAdmin() {
+  const session = await getSession()
+  if (!session) return { authenticated: false as const }
+  return { authenticated: true as const, admin: session }
+}
+
+// Register first admin (only works if no admins exist AND the setup token matches)
+export async function registerFirstAdmin(data: { email: string; password: string; name: string; setupToken: string }) {
   await ensureDb()
 
   const result = registerSchema.safeParse(data)
   if (!result.success) {
-    return { success: false, error: 'Validation failed', details: result.error.flatten().fieldErrors }
+    return { success: false, error: 'Validation failed', details: z.treeifyError(result.error) }
   }
 
-  const { email, password, name } = result.data
+  const { email, password, name, setupToken } = result.data
+
+  // Gate the first-admin registration behind a secret so it can't be claimed
+  // by whoever loads /admin first.
+  const expectedToken = process.env.ADMIN_SETUP_TOKEN
+  if (!expectedToken || setupToken !== expectedToken) {
+    return { success: false, error: 'Invalid setup token' }
+  }
 
   try {
     // Check if any admin exists
@@ -105,8 +129,13 @@ export async function registerFirstAdmin(data: { email: string; password: string
   }
 }
 
-// Change password
-export async function changePassword(data: { email: string; currentPassword: string; newPassword: string }) {
+// Change password (operates on the currently authenticated admin)
+export async function changePassword(data: { currentPassword: string; newPassword: string }) {
+  const session = await getSession()
+  if (!session) {
+    return { success: false, error: 'Unauthorized' }
+  }
+
   await ensureDb()
 
   const result = changePasswordSchema.safeParse(data)
@@ -114,7 +143,8 @@ export async function changePassword(data: { email: string; currentPassword: str
     return { success: false, error: 'Validation failed' }
   }
 
-  const { email, currentPassword, newPassword } = result.data
+  const { currentPassword, newPassword } = result.data
+  const email = session.email
 
   try {
     // Verify current password

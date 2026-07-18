@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { stripe } from '@/lib/stripe'
 import { Resend } from 'resend'
 import { PaymentConfirmationEmail } from '@/emails/payment-confirmation-email'
-import { savePayment } from '@/app/actions/db-payments'
+import { savePayment } from '@/lib/save-payment'
 import Stripe from 'stripe'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -31,7 +31,12 @@ export async function POST(request: NextRequest) {
   switch (event.type) {
     case 'checkout.session.completed': {
       const session = event.data.object as Stripe.Checkout.Session
-      await handleSuccessfulPayment(session)
+      const handled = await handleSuccessfulPayment(session)
+      if (!handled) {
+        // Saving failed — return 500 so Stripe retries the delivery. The
+        // stripe_session_id UNIQUE constraint keeps retries from duplicating.
+        return NextResponse.json({ error: 'Failed to record payment' }, { status: 500 })
+      }
       break
     }
     case 'payment_intent.succeeded':
@@ -46,24 +51,29 @@ export async function POST(request: NextRequest) {
   return NextResponse.json({ received: true })
 }
 
-async function handleSuccessfulPayment(session: Stripe.Checkout.Session) {
+async function handleSuccessfulPayment(session: Stripe.Checkout.Session): Promise<boolean> {
   const customerName = session.metadata?.customerName || session.customer_details?.name || 'Customer'
   const description = session.metadata?.description || 'Payment'
   const amount = session.amount_total ? session.amount_total / 100 : 0
   const customerEmail = session.customer_details?.email
 
   // Save payment to database
-  try {
-    await savePayment({
-      stripeSessionId: session.id,
-      stripePaymentIntentId: session.payment_intent as string,
-      customerName,
-      customerEmail: customerEmail || undefined,
-      amount,
-      description,
-    })
-  } catch {
-    // Payment save failed - webhook will retry
+  const saveResult = await savePayment({
+    stripeSessionId: session.id,
+    stripePaymentIntentId: session.payment_intent as string,
+    customerName,
+    customerEmail: customerEmail || undefined,
+    amount,
+    description,
+  })
+
+  if (!saveResult.success) {
+    return false
+  }
+
+  // Already recorded on a previous delivery — don't re-send the emails.
+  if (saveResult.alreadyRecorded) {
+    return true
   }
 
   // Send confirmation email to business owner
@@ -106,4 +116,6 @@ async function handleSuccessfulPayment(session: Stripe.Checkout.Session) {
       // Customer email failed
     }
   }
+
+  return true
 }

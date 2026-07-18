@@ -10,7 +10,7 @@ import { PaymentForm } from './payment-form'
 import { PaymentHistoryDb } from './payment-history-db'
 import { ChangePassword } from './change-password'
 import { AdminFormSkeleton } from './admin-skeleton'
-import { loginAdmin, registerFirstAdmin, hasAdminUser } from '@/app/actions/auth'
+import { loginAdmin, registerFirstAdmin, hasAdminUser, logoutAdmin, getCurrentAdmin } from '@/app/actions/auth'
 
 type Tab = 'create' | 'history' | 'settings'
 
@@ -31,17 +31,25 @@ export function AdminLogin() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
+  const [setupToken, setSetupToken] = useState('')
   const [error, setError] = useState('')
   const [formLoading, setFormLoading] = useState(false)
 
-  // Check if setup is needed
+  // Restore an existing session (survives refresh) and check if setup is needed
   useEffect(() => {
-    async function checkSetup() {
+    async function init() {
+      const current = await getCurrentAdmin()
+      if (current.authenticated) {
+        setAdmin(current.admin)
+        setIsAuthenticated(true)
+        setIsLoading(false)
+        return
+      }
       const hasAdmin = await hasAdminUser()
       setNeedsSetup(!hasAdmin)
       setIsLoading(false)
     }
-    checkSetup()
+    init()
   }, [])
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -66,7 +74,7 @@ export function AdminLogin() {
     setFormLoading(true)
     setError('')
 
-    const result = await registerFirstAdmin({ email, password, name })
+    const result = await registerFirstAdmin({ email, password, name, setupToken })
 
     if (result.success) {
       // Auto-login after registration
@@ -83,7 +91,8 @@ export function AdminLogin() {
     setFormLoading(false)
   }
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await logoutAdmin()
     setIsAuthenticated(false)
     setAdmin(null)
     setEmail('')
@@ -140,6 +149,17 @@ export function AdminLogin() {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Min. 6 characters"
                   minLength={6}
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="setupToken">Setup Token</Label>
+                <Input
+                  id="setupToken"
+                  type="password"
+                  value={setupToken}
+                  onChange={(e) => setSetupToken(e.target.value)}
+                  placeholder="From your environment config"
                   required
                 />
               </div>
@@ -260,15 +280,9 @@ export function AdminLogin() {
         </div>
 
         {/* Content */}
-        {activeTab === 'create' && admin && (
-          <PaymentForm adminEmail={admin.email} />
-        )}
-        {activeTab === 'history' && admin && (
-          <PaymentHistoryDb adminEmail={admin.email} />
-        )}
-        {activeTab === 'settings' && admin && (
-          <ChangePassword email={admin.email} />
-        )}
+        {activeTab === 'create' && admin && <PaymentForm />}
+        {activeTab === 'history' && admin && <PaymentHistoryDb />}
+        {activeTab === 'settings' && admin && <ChangePassword />}
       </div>
     </div>
   )

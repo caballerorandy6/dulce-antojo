@@ -8,11 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Lock, Check } from 'lucide-react'
 import { changePassword } from '@/app/actions/auth'
 
-interface ChangePasswordProps {
-  email: string
-}
-
-export function ChangePassword({ email }: ChangePasswordProps) {
+export function ChangePassword() {
   const [currentPassword, setCurrentPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -38,7 +34,6 @@ export function ChangePassword({ email }: ChangePasswordProps) {
     setIsLoading(true)
 
     const result = await changePassword({
-      email,
       currentPassword,
       newPassword,
     })

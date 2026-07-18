@@ -1,19 +1,7 @@
 'use server'
 
 import { db, initializeDatabase } from '@/lib/db'
-
-// Verify admin exists in database
-async function verifyAdmin(adminEmail: string): Promise<boolean> {
-  try {
-    const admin = await db.execute({
-      sql: 'SELECT id FROM admin_users WHERE email = ?',
-      args: [adminEmail.toLowerCase()],
-    })
-    return admin.rows.length > 0
-  } catch {
-    return false
-  }
-}
+import { getSession } from '@/lib/session'
 
 export interface DbPayment {
   id: number
@@ -41,60 +29,18 @@ async function ensureDb() {
   }
 }
 
-// Save payment from Stripe webhook
-export async function savePayment(data: {
-  stripeSessionId: string
-  stripePaymentIntentId?: string
-  customerName: string
-  customerEmail?: string
-  amount: number
-  description?: string
-}) {
-  await ensureDb()
-
-  try {
-    // Check if payment already exists
-    const existing = await db.execute({
-      sql: 'SELECT id FROM payments WHERE stripe_session_id = ?',
-      args: [data.stripeSessionId],
-    })
-
-    if (existing.rows.length > 0) {
-      return { success: true, message: 'Payment already recorded' }
-    }
-
-    await db.execute({
-      sql: `INSERT INTO payments
-        (stripe_session_id, stripe_payment_intent_id, customer_name, customer_email, amount, description)
-        VALUES (?, ?, ?, ?, ?, ?)`,
-      args: [
-        data.stripeSessionId,
-        data.stripePaymentIntentId || null,
-        data.customerName,
-        data.customerEmail || null,
-        data.amount,
-        data.description || null,
-      ],
-    })
-
-    return { success: true }
-  } catch (error) {
-    console.error('Failed to save payment:', error)
-    return { success: false, error: 'Failed to save payment' }
-  }
-}
-
-// Get all payments (requires admin auth)
-export async function getPayments(adminEmail: string): Promise<{
+// Get all payments (requires an authenticated admin session)
+export async function getPayments(): Promise<{
   success: boolean
   payments?: DbPayment[]
   error?: string
 }> {
-  await ensureDb()
-
-  if (!await verifyAdmin(adminEmail)) {
+  const session = await getSession()
+  if (!session) {
     return { success: false, error: 'Unauthorized' }
   }
+
+  await ensureDb()
 
   try {
     const result = await db.execute(
@@ -125,8 +71,8 @@ export async function getPayments(adminEmail: string): Promise<{
   }
 }
 
-// Get payment stats (requires admin auth)
-export async function getPaymentStats(adminEmail: string): Promise<{
+// Get payment stats (requires an authenticated admin session)
+export async function getPaymentStats(): Promise<{
   success: boolean
   stats?: {
     totalRevenue: number
@@ -137,11 +83,12 @@ export async function getPaymentStats(adminEmail: string): Promise<{
   }
   error?: string
 }> {
-  await ensureDb()
-
-  if (!await verifyAdmin(adminEmail)) {
+  const session = await getSession()
+  if (!session) {
     return { success: false, error: 'Unauthorized' }
   }
+
+  await ensureDb()
 
   try {
     // Total stats
@@ -150,14 +97,16 @@ export async function getPaymentStats(adminEmail: string): Promise<{
       ['paid']
     )
 
-    // This month stats
+    // This month stats. created_at is stored as SQLite CURRENT_TIMESTAMP
+    // ("YYYY-MM-DD HH:MM:SS"), so compare with date() to avoid the format
+    // mismatch that dropped day-1 payments before.
     const startOfMonth = new Date()
     startOfMonth.setDate(1)
-    startOfMonth.setHours(0, 0, 0, 0)
+    const startOfMonthDate = startOfMonth.toISOString().slice(0, 10)
 
     const monthResult = await db.execute({
-      sql: 'SELECT COUNT(*) as count, SUM(amount) as total FROM payments WHERE status = ? AND created_at >= ?',
-      args: ['paid', startOfMonth.toISOString()],
+      sql: 'SELECT COUNT(*) as count, SUM(amount) as total FROM payments WHERE status = ? AND date(created_at) >= date(?)',
+      args: ['paid', startOfMonthDate],
     })
 
     // Pending contact
@@ -181,13 +130,14 @@ export async function getPaymentStats(adminEmail: string): Promise<{
   }
 }
 
-// Update payment notes (requires admin auth)
-export async function updatePaymentNotes(adminEmail: string, paymentId: number, notes: string) {
-  await ensureDb()
-
-  if (!await verifyAdmin(adminEmail)) {
+// Update payment notes (requires an authenticated admin session)
+export async function updatePaymentNotes(paymentId: number, notes: string) {
+  const session = await getSession()
+  if (!session) {
     return { success: false, error: 'Unauthorized' }
   }
+
+  await ensureDb()
 
   try {
     await db.execute({
@@ -202,13 +152,14 @@ export async function updatePaymentNotes(adminEmail: string, paymentId: number, 
   }
 }
 
-// Mark as contacted (requires admin auth)
-export async function markAsContacted(adminEmail: string, paymentId: number, contacted: boolean) {
-  await ensureDb()
-
-  if (!await verifyAdmin(adminEmail)) {
+// Mark as contacted (requires an authenticated admin session)
+export async function markAsContacted(paymentId: number, contacted: boolean) {
+  const session = await getSession()
+  if (!session) {
     return { success: false, error: 'Unauthorized' }
   }
+
+  await ensureDb()
 
   try {
     await db.execute({
@@ -223,13 +174,14 @@ export async function markAsContacted(adminEmail: string, paymentId: number, con
   }
 }
 
-// Update event date (requires admin auth)
-export async function updateEventDate(adminEmail: string, paymentId: number, eventDate: string) {
-  await ensureDb()
-
-  if (!await verifyAdmin(adminEmail)) {
+// Update event date (requires an authenticated admin session)
+export async function updateEventDate(paymentId: number, eventDate: string) {
+  const session = await getSession()
+  if (!session) {
     return { success: false, error: 'Unauthorized' }
   }
+
+  await ensureDb()
 
   try {
     await db.execute({

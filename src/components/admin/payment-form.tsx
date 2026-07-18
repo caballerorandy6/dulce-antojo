@@ -8,11 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Copy, Check, DollarSign, User, FileText } from 'lucide-react'
 import { createPaymentLinkDb } from '@/app/actions/payments'
 
-interface PaymentFormProps {
-  adminEmail: string
-}
-
-export function PaymentForm({ adminEmail }: PaymentFormProps) {
+export function PaymentForm() {
   const [customerName, setCustomerName] = useState('')
   const [amount, setAmount] = useState('')
   const [description, setDescription] = useState('')
@@ -31,7 +27,6 @@ export function PaymentForm({ adminEmail }: PaymentFormProps) {
       customerName,
       amount: parseFloat(amount),
       description,
-      adminEmail,
     })
 
     if (result.success && result.paymentLink) {
