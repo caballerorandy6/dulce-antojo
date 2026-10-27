@@ -45,13 +45,6 @@ export function JsonLdLocalBusiness() {
       opens: '09:00',
       closes: '21:00',
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5',
-      reviewCount: '100',
-      bestRating: '5',
-      worstRating: '1',
-    },
   }
 
   return (

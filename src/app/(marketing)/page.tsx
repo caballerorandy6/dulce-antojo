@@ -3,7 +3,6 @@ import { HeroSection } from '@/components/sections/landing/hero-section'
 import { ServicesSection } from '@/components/sections/landing/services-section'
 import { FeaturesSection } from '@/components/sections/landing/features-section'
 import { GallerySection } from '@/components/sections/landing/gallery-section'
-import { TestimonialsSection } from '@/components/sections/landing/testimonials-section'
 import { FAQSection } from '@/components/sections/landing/faq-section'
 import { ContactSection } from '@/components/sections/landing/contact-section'
 import { CTASection } from '@/components/sections/landing/cta-section'
@@ -117,7 +116,6 @@ export default function HomePage() {
         <GallerySection />
         <ServicesSection />
         <FeaturesSection />
-        <TestimonialsSection />
         <FAQSection />
         <ContactSection />
         <CTASection />

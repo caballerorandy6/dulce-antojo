@@ -16,7 +16,6 @@ const landingNavLinks = [
   { href: '#gallery', label: 'Gallery', id: 'gallery' },
   { href: '#services', label: 'Services', id: 'services' },
   { href: '#features', label: 'Features', id: 'features' },
-  { href: '#testimonials', label: 'Testimonials', id: 'testimonials' },
   { href: '#faq', label: 'FAQ', id: 'faq' },
   { href: '#contact', label: 'Contact', id: 'contact' },
 ]

@@ -73,13 +73,6 @@ export function HeroSection() {
           <p className="mb-4 text-lg text-white md:text-xl drop-shadow-md animate-on-load animate-fade-in-up animation-delay-200">
             The sweetest part of your event
           </p>
-
-          {/* Social Proof */}
-          <div className="mb-4 flex items-center justify-center gap-2 text-white/90 animate-on-load animate-fade-in animation-delay-300">
-            <span className="text-[#FFD700] text-sm md:text-base drop-shadow-[0_0_8px_rgba(255,215,0,0.6)]" aria-hidden="true">★★★★★</span>
-            <span className="sr-only">5 out of 5 stars rating</span>
-            <span className="text-xs md:text-sm">100+ Happy Events</span>
-          </div>
         </div>
 
         {/* CTAs - Bottom */}
