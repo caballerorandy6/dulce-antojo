@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: 'Dulce Antojo | Mini Pancakes & Snack Carts - Houston TX',
     description:
       'Premium Mexican dessert and snack carts for events in Houston, TX. Book your event today!',
-    url: 'https://dulcesantojosnackcarts.com',
+    url: 'https://dulce-antojo.vercel.app',
     images: [
       {
         url: '/images/og-image.jpg',
@@ -43,12 +43,12 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FoodEstablishment',
-  '@id': 'https://dulcesantojosnackcarts.com/#business',
+  '@id': 'https://dulce-antojo.vercel.app/#business',
   name: businessInfo.name,
   alternateName: 'Dulce Antojo Mini Pancakes & More',
   description: businessInfo.description,
-  url: 'https://dulcesantojosnackcarts.com',
-  image: 'https://dulcesantojosnackcarts.com/images/og-image.jpg',
+  url: 'https://dulce-antojo.vercel.app',
+  image: 'https://dulce-antojo.vercel.app/images/og-image.jpg',
   address: {
     '@type': 'PostalAddress',
     addressLocality: businessInfo.location.city,

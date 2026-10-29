@@ -41,7 +41,7 @@ Dulce Antojo now offers secure online payment for event deposits! Book your mini
 - Secure checkout powered by Stripe
 - 24-hour response guaranteed
 
-Ready to sweeten your next event? Visit dulcesantojosnackcarts.com or DM us on Instagram @dulceantojo.houstontx
+Ready to sweeten your next event? Visit dulce-antojo.vercel.app or DM us on Instagram @dulceantojo.houstontx
 
 #HoustonEvents #DessertCart #MiniPancakes #Houston
 
@@ -106,7 +106,7 @@ We serve the Houston area (50-mile radius) with:
 
 Perfect for birthdays, quinceañeras, baby showers, corporate events, and any celebration!
 
-Message us or visit dulcesantojosnackcarts.com
+Message us or visit dulce-antojo.vercel.app
 
 Local. Fresh. Delicious.
 

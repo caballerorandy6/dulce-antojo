@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page for **Dulce Antojo** - Mexican dessert and snack cart service for events in Houston, TX.
 
-- **Domain:** dulcesantojosnackcarts.com
+- **Domain:** dulce-antojo.vercel.app
 - **Instagram:** @dulceantojo.houstontx
 - **Service Area:** Houston, TX (50-mile radius)
 

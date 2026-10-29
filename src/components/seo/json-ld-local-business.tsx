@@ -1,6 +1,6 @@
 import { businessInfo } from '@/lib/constants'
 
-const baseUrl = 'https://dulcesantojosnackcarts.com'
+const baseUrl = 'https://dulce-antojo.vercel.app'
 
 export function JsonLdLocalBusiness() {
   const jsonLd = {

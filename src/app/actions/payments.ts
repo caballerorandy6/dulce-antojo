@@ -50,7 +50,7 @@ export async function createPaymentLinkDb(data: {
       after_completion: {
         type: 'redirect',
         redirect: {
-          url: `${process.env.NEXT_PUBLIC_APP_URL || 'https://dulcesantojosnackcarts.com'}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
+          url: `${process.env.NEXT_PUBLIC_APP_URL || 'https://dulce-antojo.vercel.app'}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
         },
       },
     })

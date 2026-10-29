@@ -1,4 +1,4 @@
-const baseUrl = 'https://dulcesantojosnackcarts.com'
+const baseUrl = 'https://dulce-antojo.vercel.app'
 
 interface BreadcrumbItem {
   name: string
