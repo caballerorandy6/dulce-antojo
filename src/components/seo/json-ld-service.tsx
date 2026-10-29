@@ -1,6 +1,6 @@
 import type { Service } from '@/types'
 
-const baseUrl = 'https://dulce-antojo.vercel.app'
+const baseUrl = 'https://dulce-antojo-snack-carts.vercel.app'
 
 interface JsonLdServiceProps {
   service: Service

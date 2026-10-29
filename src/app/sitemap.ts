@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { services } from '@/lib/constants'
 
-const baseUrl = 'https://dulce-antojo.vercel.app'
+const baseUrl = 'https://dulce-antojo-snack-carts.vercel.app'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Static pages

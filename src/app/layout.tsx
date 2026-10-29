@@ -19,7 +19,7 @@ const cormorant = Cormorant_Garamond({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://dulce-antojo.vercel.app'),
+  metadataBase: new URL('https://dulce-antojo-snack-carts.vercel.app'),
   title: {
     default: 'Dulce Antojo | Mini Pancakes & Snack Carts - Houston TX',
     template: '%s | Dulce Antojo Houston',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://dulce-antojo.vercel.app',
+    url: 'https://dulce-antojo-snack-carts.vercel.app',
     siteName: 'Dulce Antojo',
     title: 'Dulce Antojo | Mini Pancakes & Snack Carts - Houston TX',
     description:
